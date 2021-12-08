@@ -4,18 +4,19 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.lstec</groupId>
-    <artifactId>jvm-stuff</artifactId>
-    <version>1.0-SNAPSHOT</version>
-
     <parent>
         <groupId>io.airlift</groupId>
         <artifactId>airbase</artifactId>
         <version>113</version>
     </parent>
     
+    <groupId>com.lstec</groupId>
+    <artifactId>jvm-stuff</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    
     <properties>
-        <dep.jmh.version>1.32</dep.jmh.version>
+        <project.build.targetJdk>17</project.build.targetJdk>
+        <air.check.skip-extended>true</air.check.skip-extended>
     </properties>
     
     <dependencies>
@@ -24,17 +25,32 @@
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-core</artifactId>
             <version>${dep.jmh.version}</version>
+            <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-generator-annprocess</artifactId>
             <version>${dep.jmh.version}</version>
+            <scope>test</scope>
         </dependency>
+        
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <failIfNoTests>false</failIfNoTests>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
