@@ -1,5 +1,7 @@
 package com.lstec.jvm.hash;
 
+import org.openjdk.jmh.annotations.CompilerControl;
+
 import static it.unimi.dsi.fastutil.HashCommon.arraySize;
 import static it.unimi.dsi.fastutil.HashCommon.murmurHash3;
 
@@ -13,7 +15,8 @@ public class VectorizedLongCountHashTable
     private final long[] hashTable2;
     private final long[] hashTable3;
     private final int hashCapacity;
-    private final int mask;
+    private final int cycleMask;
+    private final int hashPositionMask;
     private int zeroCount;
     private int hashCollisions0;
     private int hashCollisions1;
@@ -32,7 +35,8 @@ public class VectorizedLongCountHashTable
         hashTable2 = new long[hashCapacity * 2]; // value + count
         hashTable3 = new long[hashCapacity * 2]; // value + count
 
-        mask = hashTable0.length - 1;
+        cycleMask = hashTable0.length - 1;
+        hashPositionMask = hashCapacity - 1;
     }
 
     static class BatchBuffers
@@ -43,6 +47,10 @@ public class VectorizedLongCountHashTable
         private final int toProcess1[];
         private final int toProcess2[];
         private final int toProcess3[];
+        private int toProcess0Index = 0;
+        private int toProcess1Index = 0;
+        private int toProcess2Index = 0;
+        private int toProcess3Index = 0;
 
         public BatchBuffers(int batchSize)
         {
@@ -52,6 +60,19 @@ public class VectorizedLongCountHashTable
             toProcess1 = new int[batchSize];
             toProcess2 = new int[batchSize];
             toProcess3 = new int[batchSize];
+        }
+
+        public void reset()
+        {
+            toProcess0Index = 0;
+            toProcess1Index = 0;
+            toProcess2Index = 0;
+            toProcess3Index = 0;
+        }
+
+        public boolean anythingToProcess()
+        {
+            return toProcess0Index + toProcess1Index + toProcess2Index + toProcess3Index > 0;
         }
     }
 
@@ -82,6 +103,7 @@ public class VectorizedLongCountHashTable
 
     void put(long[] values, int startPosition, int batchSize, BatchBuffers batchBuffers)
     {
+        batchBuffers.reset();
         // TODO lysy: handle 0
 //        if (value == 0) {
 //            entryCount += zeroCount == 0 ? 1 : 0;
@@ -89,15 +111,12 @@ public class VectorizedLongCountHashTable
 //            return;
 //        }
 
-        int[] positions = batchBuffers.positions;
 //        long[] currentValues = batchBuffers.currentValues;
-        int toProcess0[] = batchBuffers.toProcess0;
-        int toProcess1[] = batchBuffers.toProcess1;
-        int toProcess2[] = batchBuffers.toProcess2;
-        int toProcess3[] = batchBuffers.toProcess3;
-        for (int i = 0; i < batchSize; i++) {
-            positions[i] = position(values[startPosition + i]);
-        }
+//        int toProcess0[] = batchBuffers.toProcess0;
+//        int toProcess1[] = batchBuffers.toProcess1;
+//        int toProcess2[] = batchBuffers.toProcess2;
+//        int toProcess3[] = batchBuffers.toProcess3;
+        int[] positions = hashPositions(values, startPosition, batchSize, batchBuffers);
 
 //        for (int i = 0; i < batchSize; i += 4) {
 //            currentValues[i] = hashTable0[positions[i]];
@@ -106,96 +125,131 @@ public class VectorizedLongCountHashTable
 //            currentValues[i + 3] = hashTable3[positions[i + 3]];
 //        }
 
-        int toProcess0Index = 0;
-        int toProcess1Index = 0;
-        int toProcess2Index = 0;
-        int toProcess3Index = 0;
-        
+        boolean[] toInc = new boolean[4];
+        boolean[] toInsertNew = new boolean[4];
         for (int i = 0; i < batchSize; i += 4) {
-            if (values[startPosition + i] == hashTable0[positions[i]]) {
-                hashTable0[positions[i] + 1]++;
-            }
-            else if (hashTable0[positions[i]] == 0) {
-                hashTable0[positions[i]] = values[startPosition + i];
-                hashTable0[positions[i] + 1] = 1;
-                entryCount0++;
-            }
-            else {
-                // increment position and mask to handle wrap around
-                positions[i] = (positions[i] + 2) & mask;
-                toProcess0[toProcess0Index++] = i;
-                hashCollisions0++;
-            }
+            toInc[0] = values[startPosition + i] == hashTable0[positions[i]];
+            toInc[1] = values[startPosition + i + 1] == hashTable1[positions[i + 1]];
+            toInc[2] = values[startPosition + i + 2] == hashTable2[positions[i + 2]];
+            toInc[3] = values[startPosition + i + 3] == hashTable3[positions[i + 3]];
+            toInsertNew[0] = hashTable0[positions[i]] == 0;
+            toInsertNew[1] = hashTable1[positions[i + 1]] == 0;
+            toInsertNew[2] = hashTable2[positions[i + 2]] == 0;
+            toInsertNew[3] = hashTable3[positions[i + 3]] == 0;
+            toInsertNew[0] &= !toInc[0];
+            toInsertNew[1] &= !toInc[1];
+            toInsertNew[2] &= !toInc[2];
+            toInsertNew[3] &= !toInc[3];
 
-            if (values[startPosition + i + 1] == hashTable1[positions[i + 1]]) {
-                hashTable0[positions[i + 1] + 1]++;
-            }
-            else if (hashTable1[positions[i + 1]] == 0) {
-                hashTable0[positions[i + 1]] = values[startPosition + i + 1];
-                hashTable0[positions[i + 1] + 1] = 1;
-                entryCount1++;
-            }
-            else {
-                // increment position and mask to handle wrap around
-                positions[i + 1] = (positions[i + 1] + 2) & mask;
-                toProcess1[toProcess1Index++] = i;
-                hashCollisions1++;
-            }
+//            hashTable0[positions[i] + 1] = toInc[0] ? hashTable0[positions[i] + 1] + 1 : hashTable0[positions[i] + 1];
+//            hashTable1[positions[i + 1] + 1] = toInc[1] ? hashTable1[positions[i + 1] + 1] + 1 : hashTable1[positions[i + 1] + 1];
+//            hashTable2[positions[i + 2] + 1] = toInc[2] ? hashTable2[positions[i + 2] + 1] + 1 : hashTable2[positions[i + 2] + 1];
+//            hashTable3[positions[i + 3] + 1] = toInc[3] ? hashTable3[positions[i + 3] + 1] + 1 : hashTable3[positions[i + 3] + 1];
 
-            if (values[startPosition + i + 2] == hashTable2[positions[i + 2]]) {
-                hashTable0[positions[i + 2] + 1]++;
-            }
-            else if (hashTable2[positions[i + 2]] == 0) {
-                hashTable0[positions[i + 2]] = values[startPosition + i + 2];
-                hashTable0[positions[i + 2] + 1] = 1;
-                entryCount2++;
-            }
-            else {
-                // increment position and mask to handle wrap around
-                positions[i + 2] = (positions[i + 2] + 2) & mask;
-                toProcess2[toProcess2Index++] = i;
-                hashCollisions2++;
-            }
-
-            if (values[startPosition + i + 3] == hashTable3[positions[i + 3]]) {
-                hashTable0[positions[i + 3] + 1]++;
-            }
-            else if (hashTable3[positions[i + 3]] == 0) {
-                hashTable0[positions[i + 3]] = values[startPosition + i + 3];
-                hashTable0[positions[i + 3] + 1] = 1;
-                entryCount3++;
-            }
-            else {
-                // increment position and mask to handle wrap around
-                positions[i + 3] = (positions[i + 3] + 3) & mask;
-                toProcess3[toProcess3Index++] = i;
-                hashCollisions3++;
+            hashTable0[positions[i] + 1] = (hashTable0[positions[i] + 1] + 1) * (toInc[0] ? 1 : 0) - 1;
+            hashTable1[positions[i + 1] + 1] = (hashTable1[positions[i + 1] + 1] + 1) * (toInc[0] ? 1 : 0) - 1;
+            hashTable2[positions[i + 2] + 1] = (hashTable2[positions[i + 2] + 1] + 1) * (toInc[0] ? 1 : 0) - 1;
+            hashTable3[positions[i + 3] + 1] = (hashTable3[positions[i + 3] + 1] + 1) * (toInc[0] ? 1 : 0) - 1;
+            
+            boolean anyNewOrConflict = !toInc[0] | !toInc[1] | !toInc[2] | !toInc[3];
+            if (anyNewOrConflict) {
+                newOrConflict(values, startPosition, batchBuffers, positions, toInc, toInsertNew, i);
             }
         }
 
-        for (int i = 0; i < toProcess0Index; i++) {
-            int toProcessIndex = toProcess0[i];
+        if (batchBuffers.anythingToProcess()) {
+            processConflicts(values, positions, batchBuffers);
+        }
+    }
+
+    @CompilerControl(CompilerControl.Mode.DONT_INLINE)
+    private int[] hashPositions(long[] values, int startPosition, int batchSize, BatchBuffers batchBuffers)
+    {
+        int[] positions = batchBuffers.positions;
+        for (int i = 0; i < batchSize; i++) {
+            positions[i] = position(values[startPosition + i]);
+        }
+        return positions;
+    }
+
+    @CompilerControl(CompilerControl.Mode.DONT_INLINE)
+    private void newOrConflict(long[] values, int startPosition, BatchBuffers batchBuffers, int[] positions, boolean[] toInc, boolean[] toInsertNew, int i)
+    {
+        if (toInsertNew[0]) {
+            hashTable0[positions[i]] = values[startPosition + i];
+            hashTable0[positions[i] + 1] = 1;
+            entryCount0++;
+        }
+        else if (!toInc[0]) {
+            // increment position and mask to handle wrap around
+            positions[i] = (positions[i] + 2) & cycleMask;
+            batchBuffers.toProcess0[batchBuffers.toProcess0Index++] = i;
+            hashCollisions0++;
+        }
+
+        if (toInsertNew[1]) {
+            hashTable1[positions[i + 1]] = values[startPosition + i + 1];
+            hashTable1[positions[i + 1] + 1] = 1;
+            entryCount1++;
+        }
+        else if (!toInc[1]) {
+            // increment position and mask to handle wrap around
+            positions[i + 1] = (positions[i + 1] + 2) & cycleMask;
+            batchBuffers.toProcess1[batchBuffers.toProcess1Index++] = i;
+            hashCollisions1++;
+        }
+
+        if (toInsertNew[2]) {
+            hashTable2[positions[i + 2]] = values[startPosition + i + 2];
+            hashTable2[positions[i + 2] + 1] = 1;
+            entryCount2++;
+        }
+        else if (!toInc[2]) {
+            // increment position and mask to handle wrap around
+            positions[i + 2] = (positions[i + 2] + 2) & cycleMask;
+            batchBuffers.toProcess2[batchBuffers.toProcess2Index++] = i;
+            hashCollisions2++;
+        }
+
+        if (toInsertNew[3]) {
+            hashTable3[positions[i + 3]] = values[startPosition + i + 3];
+            hashTable3[positions[i + 3] + 1] = 1;
+            entryCount3++;
+        }
+        else if (!toInc[3]) {
+            // increment position and mask to handle wrap around
+            positions[i + 3] = (positions[i + 3] + 2) & cycleMask;
+            batchBuffers.toProcess3[batchBuffers.toProcess3Index++] = i;
+            hashCollisions3++;
+        }
+    }
+
+    @CompilerControl(CompilerControl.Mode.DONT_INLINE)
+    private void processConflicts(long[] values, int[] positions, BatchBuffers batchBuffers)
+    {
+        for (int i = 0; i < batchBuffers.toProcess0Index; i++) {
+            int toProcessIndex = batchBuffers.toProcess0[i];
             int position = positions[toProcessIndex];
             long value = values[toProcessIndex];
             put0(position, value);
         }
 
-        for (int i = 0; i < toProcess1Index; i++) {
-            int toProcessIndex = toProcess1[i];
+        for (int i = 0; i < batchBuffers.toProcess1Index; i++) {
+            int toProcessIndex = batchBuffers.toProcess1[i];
             int position = positions[toProcessIndex];
             long value = values[toProcessIndex];
             put1(position, value);
         }
 
-        for (int i = 0; i < toProcess2Index; i++) {
-            int toProcessIndex = toProcess2[i];
+        for (int i = 0; i < batchBuffers.toProcess2Index; i++) {
+            int toProcessIndex = batchBuffers.toProcess2[i];
             int position = positions[toProcessIndex];
             long value = values[toProcessIndex];
             put2(position, value);
         }
 
-        for (int i = 0; i < toProcess3Index; i++) {
-            int toProcessIndex = toProcess3[i];
+        for (int i = 0; i < batchBuffers.toProcess3Index; i++) {
+            int toProcessIndex = batchBuffers.toProcess3[i];
             int position = positions[toProcessIndex];
             long value = values[toProcessIndex];
             put3(position, value);
@@ -217,7 +271,7 @@ public class VectorizedLongCountHashTable
             }
 
             // increment position and mask to handle wrap around
-            position = (position + 3) & mask;
+            position = (position + 3) & cycleMask;
             hashCollisions3++;
         }
 
@@ -243,7 +297,7 @@ public class VectorizedLongCountHashTable
             }
 
             // increment position and mask to handle wrap around
-            position = (position + 2) & mask;
+            position = (position + 2) & cycleMask;
             hashCollisions2++;
         }
 
@@ -269,7 +323,7 @@ public class VectorizedLongCountHashTable
             }
 
             // increment position and mask to handle wrap around
-            position = (position + 2) & mask;
+            position = (position + 2) & cycleMask;
             hashCollisions1++;
         }
 
@@ -305,7 +359,7 @@ public class VectorizedLongCountHashTable
             }
 
             // increment position and mask to handle wrap around
-            position = (position + 2) & mask;
+            position = (position + 2) & cycleMask;
             hashCollisions0++;
         }
 
@@ -318,7 +372,7 @@ public class VectorizedLongCountHashTable
 
     private int position(long value)
     {
-        return ((int) murmurHash3(value)) & mask;
+        return (((int) murmurHash3(value)) & hashPositionMask) * 2;
     }
 
     @Override

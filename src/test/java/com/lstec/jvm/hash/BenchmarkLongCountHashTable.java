@@ -120,7 +120,9 @@ public class BenchmarkLongCountHashTable
                         .measurementIterations(10)
 //                        .addProfiler(AsyncProfiler.class, String.format("dir=%s;output=text;output=flamegraph", profilerOutputDir))
                         .addProfiler(DTraceAsmProfiler.class, String.format("hotThreshold=0.1;tooBigThreshold=3000;saveLog=true;saveLogTo=%s", profilerOutputDir, profilerOutputDir))
-                        .jvmArgs("-Xmx10g"))
+                        .jvmArgs("-Xmx10g")
+//                        .forks(0)
+                )
                 .includeMethod("vectorLongCountHashTable")
                 .run();
 
