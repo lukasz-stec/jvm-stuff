@@ -5,4 +5,6 @@ public interface LongCountHashTable
     void put(LongAraayBlock block);
 
     long[] getCounts();
+
+    int getHashCollisions();
 }

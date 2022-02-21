@@ -1,5 +1,6 @@
 package com.lstec.jvm.hash;
 
+import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
 import com.lstec.jvm.Benchmarks;
 import org.openjdk.jmh.annotations.Benchmark;
@@ -91,18 +92,36 @@ public class BenchmarkLongCountHashTable
         return hashTable.getCounts();
     }
 
+    @Benchmark
+    @OperationsPerInvocation(POSITIONS)
+    public Object vectorLongCountHashTable(BenchmarkData data)
+    {
+        LongCountHashTable hashTable = new VectorizedLongCountHashTable(data.groupCount);
+
+        for (LongAraayBlock page : data.getPages()) {
+            hashTable.put(page);
+        }
+        Preconditions.checkArgument(hashTable.getHashCollisions() == 0);
+
+        return hashTable.getCounts();
+    }
+
     public static void main(String[] args)
             throws RunnerException
     {
+        BenchmarkData benchmarkData = new BenchmarkData();
+        benchmarkData.setup();
+        new BenchmarkLongCountHashTable().vectorLongCountHashTable((benchmarkData));
         String profilerOutputDir = profilerOutputDir();
         Benchmarks.benchmark(BenchmarkLongCountHashTable.class)
                 .withOptions(optionsBuilder -> optionsBuilder
-//                        .param("groupCount", "4")
+                        .param("groupCount", "4")
                         .warmupIterations(30)
                         .measurementIterations(10)
 //                        .addProfiler(AsyncProfiler.class, String.format("dir=%s;output=text;output=flamegraph", profilerOutputDir))
                         .addProfiler(DTraceAsmProfiler.class, String.format("hotThreshold=0.1;tooBigThreshold=3000;saveLog=true;saveLogTo=%s", profilerOutputDir, profilerOutputDir))
                         .jvmArgs("-Xmx10g"))
+                .includeMethod("vectorLongCountHashTable")
                 .run();
 
         File dir = new File(profilerOutputDir);

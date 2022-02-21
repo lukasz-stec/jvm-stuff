@@ -87,4 +87,10 @@ public class ScalarLongCountHashTable
         }
         return counts;
     }
+
+    @Override
+    public int getHashCollisions()
+    {
+        return hashCollisions;
+    }
 }
