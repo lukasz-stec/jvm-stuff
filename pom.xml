@@ -20,6 +20,16 @@
     </properties>
     
     <dependencies>
+        <dependency>
+            <groupId>it.unimi.dsi</groupId>
+            <artifactId>fastutil</artifactId>
+            <version>8.3.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+        </dependency>
+        
         <!-- jmh -->
         <dependency>
             <groupId>org.openjdk.jmh</groupId>
