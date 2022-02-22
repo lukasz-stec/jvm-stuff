@@ -35,14 +35,14 @@ import java.util.concurrent.TimeUnit;
 @BenchmarkMode(Mode.AverageTime)
 public class BenchmarkLongCountHashTable
 {
-    private static final int POSITIONS = 10_000_000;
+    private static final int POSITIONS = 1024 * 1024 * 8;
 
     @SuppressWarnings("FieldMayBeFinal")
     @State(Scope.Thread)
     public static class BenchmarkData
     {
         @Param({"4", "100000", "3000000"})
-        private int groupCount = 4;
+        private int groupCount = 16;
 
         private List<LongAraayBlock> pages;
 
@@ -115,12 +115,14 @@ public class BenchmarkLongCountHashTable
         String profilerOutputDir = profilerOutputDir();
         Benchmarks.benchmark(BenchmarkLongCountHashTable.class)
                 .withOptions(optionsBuilder -> optionsBuilder
-                        .param("groupCount", "4")
-                        .warmupIterations(30)
-                        .measurementIterations(10)
+                                .param("groupCount", "16")
+                                .warmupIterations(30)
+                                .measurementIterations(10)
 //                        .addProfiler(AsyncProfiler.class, String.format("dir=%s;output=text;output=flamegraph", profilerOutputDir))
-                        .addProfiler(DTraceAsmProfiler.class, String.format("hotThreshold=0.1;tooBigThreshold=3000;saveLog=true;saveLogTo=%s", profilerOutputDir, profilerOutputDir))
-                        .jvmArgs("-Xmx10g")
+                                .addProfiler(DTraceAsmProfiler.class, String.format("hotThreshold=0.1;tooBigThreshold=3000;saveLog=true;saveLogTo=%s", profilerOutputDir, profilerOutputDir))
+                                .jvmArgsPrepend("--enable-preview")
+                                .jvmArgs("-Xmx10g")
+                                .jvmArgsAppend("--add-modules=jdk.incubator.vector")
 //                        .forks(0)
                 )
                 .includeMethod("vectorLongCountHashTable")

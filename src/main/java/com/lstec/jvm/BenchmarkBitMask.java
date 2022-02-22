@@ -17,7 +17,6 @@ import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.options.ChainedOptionsBuilder;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 import org.openjdk.jmh.runner.options.VerboseMode;
-import org.testng.annotations.Test;
 
 import java.io.File;
 import java.io.IOException;
@@ -31,7 +30,6 @@ import static java.lang.String.format;
 import static java.time.format.DateTimeFormatter.ISO_DATE_TIME;
 import static java.util.concurrent.TimeUnit.MILLISECONDS;
 import static java.util.concurrent.TimeUnit.NANOSECONDS;
-import static org.testng.Assert.assertEquals;
 
 @State(Scope.Thread)
 @OutputTimeUnit(NANOSECONDS)
@@ -327,16 +325,6 @@ public class BenchmarkBitMask
                 bits[wordIndex] &= ~(1L << index);
             }
         }
-    }
-
-    @Test
-    public void test()
-    {
-        BenchmarkData data = new BenchmarkData();
-        data.setup();
-
-        BenchmarkBitMask benchmark = new BenchmarkBitMask();
-        assertEquals(benchmark.booleanMask(data), benchmark.bitMaskUnrolledDirect(data));
     }
 
     public static void main(String[] args)
