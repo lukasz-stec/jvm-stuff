@@ -43,8 +43,6 @@ public class VectorizedLongCountHashTable
     static class BatchBuffers
     {
         private final int positions[];
-        private final long currentValues[];
-        private final long currentCounts[];
         private final int toProcess[][];
         private final int toProcess0[];
         private final int toProcess1[];
@@ -57,8 +55,6 @@ public class VectorizedLongCountHashTable
         {
             positions = new int[batchSize];
             countPositions = new int[batchSize];
-            currentValues = new long[4];
-            currentCounts = new long[4];
             toProcess0 = new int[batchSize];
             toProcess1 = new int[batchSize];
             toProcess2 = new int[batchSize];
