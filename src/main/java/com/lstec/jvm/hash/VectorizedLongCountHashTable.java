@@ -149,8 +149,12 @@ public class VectorizedLongCountHashTable
 
         LongVector currentCountsVector = LongVector.fromArray(LongVector.SPECIES_256, hashTable, 0, countPositions, i);
         LongVector incremented = currentCountsVector.add(ONE_VECTOR, toInc);
-        incremented.intoArray(hashTable, 0, countPositions, i);
-
+//        incremented.intoArray(hashTable, 0, countPositions, i);
+        hashTable[countPositions[i]] = incremented.lane(0);
+        hashTable[countPositions[i + 1]] = incremented.lane(1);
+        hashTable[countPositions[i + 2]] = incremented.lane(2);
+        hashTable[countPositions[i + 3]] = incremented.lane(3);
+        
         boolean anyNewOrConflict = toInc.not().anyTrue();
         if (anyNewOrConflict) {
             newOrConflict(values, startPosition, batchBuffers, positions, toInc, currentValuesVector, i);
