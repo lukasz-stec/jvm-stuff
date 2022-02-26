@@ -42,7 +42,7 @@ public class BenchmarkLongCountHashTable
     public static class BenchmarkData
     {
         @Param({"4", "100000", "3000000"})
-        private int groupCount = 16;
+        private int groupCount = 4;
 
         private List<LongAraayBlock> pages;
 
@@ -115,17 +115,18 @@ public class BenchmarkLongCountHashTable
         String profilerOutputDir = profilerOutputDir();
         Benchmarks.benchmark(BenchmarkLongCountHashTable.class)
                 .withOptions(optionsBuilder -> optionsBuilder
-                                .param("groupCount", "16")
+                                .param("groupCount", "4")
                                 .warmupIterations(30)
                                 .measurementIterations(10)
 //                        .addProfiler(AsyncProfiler.class, String.format("dir=%s;output=text;output=flamegraph", profilerOutputDir))
-                                .addProfiler(DTraceAsmProfiler.class, String.format("hotThreshold=0.1;tooBigThreshold=3000;saveLog=true;saveLogTo=%s", profilerOutputDir, profilerOutputDir))
+                                .addProfiler(DTraceAsmProfiler.class, String.format("hotThreshold=0.05;tooBigThreshold=3000;saveLog=true;saveLogTo=%s", profilerOutputDir, profilerOutputDir))
                                 .jvmArgsPrepend("--enable-preview")
                                 .jvmArgs("-Xmx10g")
                                 .jvmArgsAppend("--add-modules=jdk.incubator.vector")
 //                        .forks(0)
                 )
                 .includeMethod("vectorLongCountHashTable")
+//                .includeMethod("longCountHashTable")
                 .run();
 
         File dir = new File(profilerOutputDir);

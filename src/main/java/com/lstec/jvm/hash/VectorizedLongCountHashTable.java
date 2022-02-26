@@ -1,7 +1,9 @@
 package com.lstec.jvm.hash;
 
+import com.google.common.base.Preconditions;
 import jdk.incubator.vector.LongVector;
 import jdk.incubator.vector.VectorMask;
+import org.jetbrains.annotations.NotNull;
 import org.openjdk.jmh.annotations.CompilerControl;
 
 import static it.unimi.dsi.fastutil.HashCommon.arraySize;
@@ -12,35 +14,31 @@ public class VectorizedLongCountHashTable
         implements LongCountHashTable
 {
     public static final LongVector ZERO_VECTOR = LongVector.zero(LongVector.SPECIES_256);
+    public static final LongVector ONE_VECTOR = LongVector.broadcast(LongVector.SPECIES_256, 1);
     private static final float FILL_RATIO = 0.75f;
 
-    private final long[] hashTable0;
-    private final long[] hashTable1;
-    private final long[] hashTable2;
-    private final long[] hashTable3;
+    private final long[] hashTable;
     private final int hashCapacity;
-    private final int cycleMask;
     private final int hashPositionMask;
-    private int zeroCount;
-    private int hashCollisions0;
-    private int hashCollisions1;
-    private int hashCollisions2;
-    private int hashCollisions3;
-    private int entryCount0;
-    private int entryCount1;
-    private int entryCount2;
-    private int entryCount3;
+    private final int hashTable1Start;
+    private final int hashTable2Start;
+    private final int hashTable3Start;
+    private ArrayHashTable[] hashTables;
 
     public VectorizedLongCountHashTable(int expectedSize)
     {
         hashCapacity = arraySize(expectedSize, FILL_RATIO);
-        hashTable0 = new long[hashCapacity * 2]; // value + count
-        hashTable1 = new long[hashCapacity * 2]; // value + count
-        hashTable2 = new long[hashCapacity * 2]; // value + count
-        hashTable3 = new long[hashCapacity * 2]; // value + count
+        hashTable = new long[hashCapacity * 2 * 4]; // 4 hash tables with value + count
 
-        cycleMask = hashTable0.length - 1;
         hashPositionMask = hashCapacity - 1;
+        hashTable1Start = hashCapacity;
+        hashTable2Start = hashCapacity * 2;
+        hashTable3Start = hashCapacity * 3;
+        hashTables = new ArrayHashTable[4];
+        hashTables[0] = new ArrayHashTable(hashTable, 0, hashCapacity);
+        hashTables[1] = new ArrayHashTable(hashTable, hashTable1Start, hashCapacity);
+        hashTables[2] = new ArrayHashTable(hashTable, hashTable2Start, hashCapacity);
+        hashTables[3] = new ArrayHashTable(hashTable, hashTable3Start, hashCapacity);
     }
 
     static class BatchBuffers
@@ -48,37 +46,49 @@ public class VectorizedLongCountHashTable
         private final int positions[];
         private final long currentValues[];
         private final long currentCounts[];
+        private final int toProcess[][];
         private final int toProcess0[];
         private final int toProcess1[];
         private final int toProcess2[];
         private final int toProcess3[];
-        private int toProcess0Index = 0;
-        private int toProcess1Index = 0;
-        private int toProcess2Index = 0;
-        private int toProcess3Index = 0;
+        public final int[] countPositions;
+        private final int toProcessIndex[];
 
         public BatchBuffers(int batchSize)
         {
             positions = new int[batchSize];
+            countPositions = new int[batchSize];
             currentValues = new long[4];
             currentCounts = new long[4];
             toProcess0 = new int[batchSize];
             toProcess1 = new int[batchSize];
             toProcess2 = new int[batchSize];
             toProcess3 = new int[batchSize];
+            toProcess = new int[4][];
+            toProcess[0] = toProcess0;
+            toProcess[1] = toProcess1;
+            toProcess[2] = toProcess2;
+            toProcess[3] = toProcess3;
+
+            toProcessIndex = new int[4];
         }
 
         public void reset()
         {
-            toProcess0Index = 0;
-            toProcess1Index = 0;
-            toProcess2Index = 0;
-            toProcess3Index = 0;
+            toProcessIndex[0] = 0;
+            toProcessIndex[1] = 0;
+            toProcessIndex[2] = 0;
+            toProcessIndex[3] = 0;
         }
 
         public boolean anythingToProcess()
         {
-            return toProcess0Index + toProcess1Index + toProcess2Index + toProcess3Index > 0;
+            return toProcessIndex[0] + toProcessIndex[1] + toProcessIndex[2] + toProcessIndex[3] > 0;
+        }
+
+        public void toProcess(int hashTableIndex, int index)
+        {
+            toProcess[hashTableIndex][toProcessIndex[hashTableIndex]++] = index;
         }
     }
 
@@ -99,86 +109,30 @@ public class VectorizedLongCountHashTable
         int batchSizeNot4 = lastBatchSize % 4;
 
         if (lastBatchSize > 0) {
+            ArrayHashTable hashTable0 = hashTables[0];
             put(values, batchStart, lastBatchSize - batchSizeNot4, batchBuffers);
             batchStart += lastBatchSize - batchSizeNot4;
             for (int i = batchStart; i < block.getPositionCount(); i++) {
-                put0(position(values[i]), values[i]);
+                hashTable0.put(position(values[i]), values[i]);
             }
         }
     }
 
     void put(long[] values, int startPosition, int batchSize, BatchBuffers batchBuffers)
     {
-        batchBuffers.reset();
         // TODO lysy: handle 0
 //        if (value == 0) {
 //            entryCount += zeroCount == 0 ? 1 : 0;
 //            zeroCount++;
 //            return;
 //        }
+        batchBuffers.reset();
 
-        long[] currentValues = batchBuffers.currentValues;
-        long[] currentCounts = batchBuffers.currentCounts;
-//        int toProcess0[] = batchBuffers.toProcess0;
-//        int toProcess1[] = batchBuffers.toProcess1;
-//        int toProcess2[] = batchBuffers.toProcess2;
-//        int toProcess3[] = batchBuffers.toProcess3;
         int[] positions = hashPositions(values, startPosition, batchSize, batchBuffers);
-
-//        for (int i = 0; i < batchSize; i += 4) {
-//            currentValues[i] = hashTable0[positions[i]];
-//            currentValues[i + 1] = hashTable1[positions[i + 1]];
-//            currentValues[i + 2] = hashTable2[positions[i + 2]];
-//            currentValues[i + 3] = hashTable3[positions[i + 3]];
-//        }
-//
-//        for (int i = 0; i < batchSize; i += 4) {
-//            currentCounts[i] = hashTable0[positions[i] + 1];
-//            currentCounts[i + 1] = hashTable1[positions[i + 1] + 1];
-//            currentCounts[i + 2] = hashTable2[positions[i + 2] + 1];
-//            currentCounts[i + 3] = hashTable3[positions[i + 3] + 1];
-//        }
+        int[] countPositions = storeCountPositions(batchBuffers, positions);
 
         for (int i = 0; i < batchSize; i += 4) {
-            int i1 = i + 1;
-            int i2 = i + 2;
-            int i3 = i + 3;
-            currentValues[0] = hashTable0[positions[i]];
-            currentValues[1] = hashTable1[positions[i1]];
-            currentValues[2] = hashTable2[positions[i2]];
-            currentValues[3] = hashTable3[positions[i3]];
-            currentCounts[0] = hashTable0[positions[i] + 1];
-            currentCounts[1] = hashTable1[positions[i1] + 1];
-            currentCounts[2] = hashTable2[positions[i2] + 1];
-            currentCounts[3] = hashTable3[positions[i3] + 1];
-
-            LongVector valueVector = LongVector.fromArray(LongVector.SPECIES_256, values, startPosition + i);
-            LongVector currentValuesVector = LongVector.fromArray(LongVector.SPECIES_256, currentValues, 0);
-            VectorMask<Long> toInc = valueVector.compare(EQ, currentValuesVector);
-            VectorMask<Long> toInsertNew = currentValuesVector.compare(EQ, ZERO_VECTOR);
-            toInsertNew.and(toInc.not());
-
-//            hashTable0[positions[i] + 1] = toInc[0] ? hashTable0[positions[i] + 1] + 1 : hashTable0[positions[i] + 1];
-//            hashTable1[positions[i + 1] + 1] = toInc[1] ? hashTable1[positions[i + 1] + 1] + 1 : hashTable1[positions[i + 1] + 1];
-//            hashTable2[positions[i + 2] + 1] = toInc[2] ? hashTable2[positions[i + 2] + 1] + 1 : hashTable2[positions[i + 2] + 1];
-//            hashTable3[positions[i + 3] + 1] = toInc[3] ? hashTable3[positions[i + 3] + 1] + 1 : hashTable3[positions[i + 3] + 1];
-
-            LongVector currentCountsVector = LongVector.fromArray(LongVector.SPECIES_256, currentCounts, 0);
-            LongVector incremented = currentCountsVector.add(1, toInc);
-            hashTable0[positions[i] + 1] = incremented.lane(0);
-            hashTable1[positions[i1] + 1] = incremented.lane(1);
-            hashTable2[positions[i2] + 1] = incremented.lane(2);
-            hashTable3[positions[i3] + 1] = incremented.lane(3);
-
-//            hashTable0[positions[i] + 1] = (hashTable0[positions[i] + 1] + 1) * (toInc.laneIsSet(0) ? 1 : 0) - 1;
-//            hashTable1[positions[i + 1] + 1] = (hashTable1[positions[i + 1] + 1] + 1) * (toInc.laneIsSet(1) ? 1 : 0) - 1;
-//            hashTable2[positions[i + 2] + 1] = (hashTable2[positions[i + 2] + 1] + 1) * (toInc.laneIsSet(2) ? 1 : 0) - 1;
-//            hashTable3[positions[i + 3] + 1] = (hashTable3[positions[i + 3] + 1] + 1) * (toInc.laneIsSet(3) ? 1 : 0) - 1;
-
-            boolean anyNewOrConflict = toInc.not().anyTrue();
-            if (anyNewOrConflict) {
-                newOrConflict(values, startPosition, batchBuffers, positions, toInc, toInsertNew, i);
-            }
+            processSmallBatch(values, startPosition, batchBuffers, positions, countPositions, i);
         }
 
         if (batchBuffers.anythingToProcess()) {
@@ -187,213 +141,77 @@ public class VectorizedLongCountHashTable
     }
 
     @CompilerControl(CompilerControl.Mode.DONT_INLINE)
+    private void processSmallBatch(long[] values, int startPosition, BatchBuffers batchBuffers, int[] positions, int[] countPositions, int i)
+    {
+        LongVector valueVector = LongVector.fromArray(LongVector.SPECIES_256, values, startPosition + i);
+        LongVector currentValuesVector = LongVector.fromArray(LongVector.SPECIES_256, hashTable, 0, positions, i);
+        VectorMask<Long> toInc = valueVector.compare(EQ, currentValuesVector);
+
+        LongVector currentCountsVector = LongVector.fromArray(LongVector.SPECIES_256, hashTable, 0, countPositions, i);
+        LongVector incremented = currentCountsVector.add(ONE_VECTOR, toInc);
+        incremented.intoArray(hashTable, 0, countPositions, i);
+
+        boolean anyNewOrConflict = toInc.not().anyTrue();
+        if (anyNewOrConflict) {
+            newOrConflict(values, startPosition, batchBuffers, positions, toInc, currentValuesVector, i);
+        }
+    }
+
+    @CompilerControl(CompilerControl.Mode.DONT_INLINE)
+    private int[] storeCountPositions(BatchBuffers batchBuffers, int[] positions)
+    {
+        int[] countPositions = batchBuffers.countPositions;
+        for (int i = 0; i < countPositions.length; i++) {
+            countPositions[i] = positions[i] + 1;
+        }
+        return countPositions;
+    }
+
+        @CompilerControl(CompilerControl.Mode.DONT_INLINE)
     private int[] hashPositions(long[] values, int startPosition, int batchSize, BatchBuffers batchBuffers)
     {
         int[] positions = batchBuffers.positions;
-        for (int i = 0; i < batchSize; i++) {
+        for (int i = 0; i < batchSize; i += 4) {
             positions[i] = position(values[startPosition + i]);
+            positions[i + 1] = position(values[startPosition + i + 1]) + hashTable1Start;
+            positions[i + 2] = position(values[startPosition + i + 2]) + hashTable2Start;
+            positions[i + 3] = position(values[startPosition + i + 3]) + hashTable3Start;
         }
         return positions;
     }
 
-    @CompilerControl(CompilerControl.Mode.DONT_INLINE)
+        @CompilerControl(CompilerControl.Mode.DONT_INLINE)
     private void newOrConflict(long[] values, int startPosition, BatchBuffers batchBuffers, int[] positions,
-            VectorMask<Long> toInc, VectorMask<Long> toInsertNew, int i)
+            VectorMask<Long> toInc, LongVector currentValuesVector, int i)
     {
+        VectorMask<Long> toInsertNew = currentValuesVector.compare(EQ, ZERO_VECTOR);
+        toInsertNew.and(toInc.not());
+
         VectorMask<Long> notInc = toInc.not();
-        if (toInsertNew.laneIsSet(0)) {
-            hashTable0[positions[i]] = values[startPosition + i];
-            hashTable0[positions[i] + 1] = 1;
-            entryCount0++;
-        }
-        else if (notInc.laneIsSet(0)) {
-            // increment position and mask to handle wrap around
-            positions[i] = (positions[i] + 2) & cycleMask;
-            batchBuffers.toProcess0[batchBuffers.toProcess0Index++] = i;
-            hashCollisions0++;
-        }
 
-        if (toInsertNew.laneIsSet(1)) {
-            hashTable1[positions[i + 1]] = values[startPosition + i + 1];
-            hashTable1[positions[i + 1] + 1] = 1;
-            entryCount1++;
-        }
-        else if (notInc.laneIsSet(1)) {
-            // increment position and mask to handle wrap around
-            positions[i + 1] = (positions[i + 1] + 2) & cycleMask;
-            batchBuffers.toProcess1[batchBuffers.toProcess1Index++] = i;
-            hashCollisions1++;
-        }
-
-        if (toInsertNew.laneIsSet(2)) {
-            hashTable2[positions[i + 2]] = values[startPosition + i + 2];
-            hashTable2[positions[i + 2] + 1] = 1;
-            entryCount2++;
-        }
-        else if (notInc.laneIsSet(2)) {
-            // increment position and mask to handle wrap around
-            positions[i + 2] = (positions[i + 2] + 2) & cycleMask;
-            batchBuffers.toProcess2[batchBuffers.toProcess2Index++] = i;
-            hashCollisions2++;
-        }
-
-        if (toInsertNew.laneIsSet(3)) {
-            hashTable3[positions[i + 3]] = values[startPosition + i + 3];
-            hashTable3[positions[i + 3] + 1] = 1;
-            entryCount3++;
-        }
-        else if (notInc.laneIsSet(3)) {
-            // increment position and mask to handle wrap around
-            positions[i + 3] = (positions[i + 3] + 2) & cycleMask;
-            batchBuffers.toProcess3[batchBuffers.toProcess3Index++] = i;
-            hashCollisions3++;
+        for (int hashTableIndex = 0; hashTableIndex < 4; hashTableIndex++) {
+            if (toInsertNew.laneIsSet(hashTableIndex)) {
+                hashTables[hashTableIndex].insert(positions[i + hashTableIndex], values[startPosition + i + hashTableIndex]);
+            }
+            else if (notInc.laneIsSet(hashTableIndex)) {
+                positions[i + hashTableIndex] = hashTables[hashTableIndex].nextPosition(positions[i + hashTableIndex]);
+                batchBuffers.toProcess(hashTableIndex, i);
+            }
         }
     }
 
-    @CompilerControl(CompilerControl.Mode.DONT_INLINE)
+        @CompilerControl(CompilerControl.Mode.DONT_INLINE)
     private void processConflicts(long[] values, int[] positions, BatchBuffers batchBuffers)
     {
-        for (int i = 0; i < batchBuffers.toProcess0Index; i++) {
-            int toProcessIndex = batchBuffers.toProcess0[i];
-            int position = positions[toProcessIndex];
-            long value = values[toProcessIndex];
-            put0(position, value);
-        }
+        for (int hashTableIndex = 0; hashTableIndex < 4; hashTableIndex++) {
 
-        for (int i = 0; i < batchBuffers.toProcess1Index; i++) {
-            int toProcessIndex = batchBuffers.toProcess1[i];
-            int position = positions[toProcessIndex];
-            long value = values[toProcessIndex];
-            put1(position, value);
-        }
-
-        for (int i = 0; i < batchBuffers.toProcess2Index; i++) {
-            int toProcessIndex = batchBuffers.toProcess2[i];
-            int position = positions[toProcessIndex];
-            long value = values[toProcessIndex];
-            put2(position, value);
-        }
-
-        for (int i = 0; i < batchBuffers.toProcess3Index; i++) {
-            int toProcessIndex = batchBuffers.toProcess3[i];
-            int position = positions[toProcessIndex];
-            long value = values[toProcessIndex];
-            put3(position, value);
-        }
-    }
-
-    private boolean put3(int position, long value)
-    {
-        while (true) {
-            long current = hashTable3[position];
-            if (current == 0) {
-                break;
+            for (int i = 0; i < batchBuffers.toProcessIndex[hashTableIndex]; i++) {
+                int toProcessIndex = batchBuffers.toProcess[hashTableIndex][i];
+                int position = positions[toProcessIndex];
+                long value = values[toProcessIndex];
+                hashTables[hashTableIndex].put(position, value);
             }
-
-            if (value == current) {
-                // increase count
-                hashTable3[position + 1]++;
-                return true;
-            }
-
-            // increment position and mask to handle wrap around
-            position = (position + 2) & cycleMask;
-            hashCollisions3++;
         }
-
-        // new entry
-        hashTable3[position] = value;
-        hashTable3[position + 1] = 1;
-        entryCount3++;
-        return false;
-    }
-
-    private boolean put2(int position, long value)
-    {
-        while (true) {
-            long current = hashTable2[position];
-            if (current == 0) {
-                break;
-            }
-
-            if (value == current) {
-                // increase count
-                hashTable2[position + 1]++;
-                return true;
-            }
-
-            // increment position and mask to handle wrap around
-            position = (position + 2) & cycleMask;
-            hashCollisions2++;
-        }
-
-        // new entry
-        hashTable2[position] = value;
-        hashTable2[position + 1] = 1;
-        entryCount2++;
-        return false;
-    }
-
-    private boolean put1(int position, long value)
-    {
-        while (true) {
-            long current = hashTable1[position];
-            if (current == 0) {
-                break;
-            }
-
-            if (value == current) {
-                // increase count
-                hashTable1[position + 1]++;
-                return true;
-            }
-
-            // increment position and mask to handle wrap around
-            position = (position + 2) & cycleMask;
-            hashCollisions1++;
-        }
-
-        // new entry
-        hashTable1[position] = value;
-        hashTable1[position + 1] = 1;
-        entryCount1++;
-        return false;
-    }
-
-    private boolean put0(long value, long count)
-    {
-        return put0(position(value), value, count);
-    }
-
-    private boolean put0(int position, long value)
-    {
-        return put0(position, value, 1);
-    }
-
-    private boolean put0(int position, long value, long count)
-    {
-        while (true) {
-            long current = hashTable0[position];
-            if (current == 0) {
-                break;
-            }
-
-            if (value == current) {
-                // increase count
-                hashTable0[position + 1]++;
-                return true;
-            }
-
-            // increment position and mask to handle wrap around
-            position = (position + 2) & cycleMask;
-            hashCollisions0++;
-        }
-
-        // new entry
-        hashTable0[position] = value;
-        hashTable0[position + 1] = count;
-        entryCount0++;
-        return false;
     }
 
     private int position(long value)
@@ -404,42 +222,110 @@ public class VectorizedLongCountHashTable
     @Override
     public long[] getCounts()
     {
-        for (int i = 0; i < hashTable1.length; i += 2) {
-            if (hashTable1[i] != 0) {
-                put0(hashTable1[i], hashTable1[i + 1]);
-            }
-        }
-        for (int i = 0; i < hashTable2.length; i += 2) {
-            if (hashTable2[i] != 0) {
-                put0(hashTable2[i], hashTable2[i + 1]);
-            }
-        }
-        for (int i = 0; i < hashTable3.length; i += 2) {
-            if (hashTable3[i] != 0) {
-                put0(hashTable3[i], hashTable3[i + 1]);
+        // populate hash table 0 with all entries from tables 1, 2, 3
+        ArrayHashTable hashTable0 = hashTables[0];
+        for (int i = hashTable1Start; i < hashTable.length; i += 2) {
+            if (hashTable[i] != 0) {
+                hashTable0.put(position(this.hashTable[i]), this.hashTable[i], this.hashTable[i + 1]);
             }
         }
 
-        long[] counts = new long[entryCount0 * 2];
-        int countsPosition = 0;
-        if (zeroCount > 0) {
-            counts[0] = 0;
-            counts[1] = zeroCount;
-            countsPosition = 2;
+        return hashTable0.getCounts();
+    }
+
+    static class ArrayHashTable
+    {
+        private final long[] hashTable;
+        private final int startOffset;
+        private final int hashCapacity;
+        private int zeroCount;
+        private int hashCollisions;
+        private int entryCount;
+        private final int endIndex;
+
+        ArrayHashTable(long[] hashTable, int startOffset, int hashCapacity)
+        {
+
+            this.hashTable = hashTable;
+            this.startOffset = startOffset;
+            this.hashCapacity = hashCapacity;
+            this.endIndex = startOffset + hashCapacity * 2;
         }
-        for (int i = 0; i < hashTable0.length && countsPosition < counts.length; i += 2) {
-            if (hashTable0[i] != 0) {
-                counts[countsPosition] = hashTable0[i];
-                counts[countsPosition + 1] = hashTable0[i + 1];
-                countsPosition += 2;
+
+        public void insert(int position, long value)
+        {
+            hashTable[position] = value;
+            hashTable[position + 1] = 1;
+            entryCount++;
+            Preconditions.checkArgument(entryCount <= 16);
+        }
+
+        public int nextPosition(int position)
+        {
+            position = position + 2;
+            if (position == endIndex) {
+                position = startOffset;
             }
+            hashCollisions++;
+            return position;
         }
-        return counts;
+
+        private boolean put(int position, long value)
+        {
+            return put(position, value, 1);
+        }
+
+        private boolean put(int position, long value, long count)
+        {
+            while (true) {
+                long current = hashTable[position];
+                if (current == 0) {
+                    break;
+                }
+
+                if (value == current) {
+                    // increase count
+                    hashTable[position + 1] += count;
+                    return true;
+                }
+
+                // increment position and mask to handle wrap around
+                position = nextPosition(position);
+            }
+
+            // new entry
+            insert(position, value);
+            return false;
+        }
+
+        public long[] getCounts()
+        {
+            long[] counts = new long[entryCount * 2];
+            int countsPosition = 0;
+
+            if (zeroCount > 0) {
+                counts[0] = 0;
+                counts[1] = zeroCount;
+                countsPosition = 2;
+            }
+            for (int i = 0; i < hashCapacity * 2 && countsPosition < counts.length; i += 2) {
+                if (hashTable[i] != 0) {
+                    counts[countsPosition] = hashTable[i];
+                    counts[countsPosition + 1] = hashTable[i + 1];
+                    countsPosition += 2;
+                }
+            }
+            return counts;
+        }
     }
 
     @Override
     public int getHashCollisions()
     {
-        return hashCollisions0 + hashCollisions1 + hashCollisions2 + hashCollisions3;
+        int hashCollisions = 0;
+        for (int i = 0; i < 4; i++) {
+            hashCollisions += hashTables[i].hashCollisions;
+        }
+        return hashCollisions;
     }
 }
