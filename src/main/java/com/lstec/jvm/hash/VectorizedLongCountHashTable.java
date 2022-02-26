@@ -3,7 +3,6 @@ package com.lstec.jvm.hash;
 import com.google.common.base.Preconditions;
 import jdk.incubator.vector.LongVector;
 import jdk.incubator.vector.VectorMask;
-import org.jetbrains.annotations.NotNull;
 import org.openjdk.jmh.annotations.CompilerControl;
 
 import static it.unimi.dsi.fastutil.HashCommon.arraySize;
@@ -154,7 +153,7 @@ public class VectorizedLongCountHashTable
         hashTable[countPositions[i + 1]] = incremented.lane(1);
         hashTable[countPositions[i + 2]] = incremented.lane(2);
         hashTable[countPositions[i + 3]] = incremented.lane(3);
-        
+
         boolean anyNewOrConflict = toInc.not().anyTrue();
         if (anyNewOrConflict) {
             newOrConflict(values, startPosition, batchBuffers, positions, toInc, currentValuesVector, i);
@@ -171,7 +170,7 @@ public class VectorizedLongCountHashTable
         return countPositions;
     }
 
-        @CompilerControl(CompilerControl.Mode.DONT_INLINE)
+    @CompilerControl(CompilerControl.Mode.DONT_INLINE)
     private int[] hashPositions(long[] values, int startPosition, int batchSize, BatchBuffers batchBuffers)
     {
         int[] positions = batchBuffers.positions;
@@ -184,7 +183,7 @@ public class VectorizedLongCountHashTable
         return positions;
     }
 
-        @CompilerControl(CompilerControl.Mode.DONT_INLINE)
+    @CompilerControl(CompilerControl.Mode.DONT_INLINE)
     private void newOrConflict(long[] values, int startPosition, BatchBuffers batchBuffers, int[] positions,
             VectorMask<Long> toInc, LongVector currentValuesVector, int i)
     {
@@ -204,7 +203,7 @@ public class VectorizedLongCountHashTable
         }
     }
 
-        @CompilerControl(CompilerControl.Mode.DONT_INLINE)
+    @CompilerControl(CompilerControl.Mode.DONT_INLINE)
     private void processConflicts(long[] values, int[] positions, BatchBuffers batchBuffers)
     {
         for (int hashTableIndex = 0; hashTableIndex < 4; hashTableIndex++) {
