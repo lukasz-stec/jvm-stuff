@@ -2,7 +2,7 @@ package com.lstec.jvm.hash;
 
 public interface LongCountHashTable
 {
-    void put(LongAraayBlock block);
+    void putBlock(LongAraayBlock block);
 
     long[] getCounts();
 

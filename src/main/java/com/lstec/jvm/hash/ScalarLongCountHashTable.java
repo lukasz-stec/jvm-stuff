@@ -1,5 +1,7 @@
 package com.lstec.jvm.hash;
 
+import org.openjdk.jmh.annotations.CompilerControl;
+
 import static it.unimi.dsi.fastutil.HashCommon.arraySize;
 import static it.unimi.dsi.fastutil.HashCommon.murmurHash3;
 
@@ -23,14 +25,17 @@ public class ScalarLongCountHashTable
     }
 
     @Override
-    public void put(LongAraayBlock block)
+    @CompilerControl(CompilerControl.Mode.DONT_INLINE)
+    public void putBlock(LongAraayBlock block)
     {
         long[] values = block.getValues();
-        for (int i = 0; i < block.getPositionCount(); i++) {
+        int positionCount = block.getPositionCount();
+        for (int i = 0; i < positionCount; i++) {
             put(values[i]);
         }
     }
 
+    @CompilerControl(CompilerControl.Mode.INLINE)
     void put(long value)
     {
         if (value == 0) {

@@ -5,6 +5,7 @@ import com.google.common.collect.ImmutableList;
 import com.lstec.jvm.Benchmarks;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.BenchmarkMode;
+import org.openjdk.jmh.annotations.CompilerControl;
 import org.openjdk.jmh.annotations.Fork;
 import org.openjdk.jmh.annotations.Measurement;
 import org.openjdk.jmh.annotations.Mode;
@@ -59,7 +60,7 @@ public class BenchmarkLongCountHashTable
             ImmutableList.Builder<LongAraayBlock> pages = ImmutableList.builder();
             int currentPosition = 0;
             for (int i = 0; i < positionCount; i++) {
-                int rand = ThreadLocalRandom.current().nextInt(groupCount) + 1;
+                int rand = ThreadLocalRandom.current().nextInt(groupCount) + 1; // + 1 to avoid 0 value for tests
                 current[currentPosition++] = rand;
                 if (currentPosition == pageSize) {
                     pages.add(new LongAraayBlock(current, currentPosition));
@@ -81,12 +82,13 @@ public class BenchmarkLongCountHashTable
 
     @Benchmark
     @OperationsPerInvocation(POSITIONS)
+    @CompilerControl(CompilerControl.Mode.DONT_INLINE)
     public Object longCountHashTable(BenchmarkData data)
     {
         LongCountHashTable hashTable = new ScalarLongCountHashTable(data.groupCount);
 
         for (LongAraayBlock page : data.getPages()) {
-            hashTable.put(page);
+            hashTable.putBlock(page);
         }
 
         return hashTable.getCounts();
@@ -94,14 +96,15 @@ public class BenchmarkLongCountHashTable
 
     @Benchmark
     @OperationsPerInvocation(POSITIONS)
+    @CompilerControl(CompilerControl.Mode.DONT_INLINE)
     public Object vectorLongCountHashTable(BenchmarkData data)
     {
         LongCountHashTable hashTable = new VectorizedLongCountHashTable(data.groupCount);
 
         for (LongAraayBlock page : data.getPages()) {
-            hashTable.put(page);
+            hashTable.putBlock(page);
         }
-        Preconditions.checkArgument(hashTable.getHashCollisions() == 0);
+        Preconditions.checkArgument(hashTable.getHashCollisions() == 0, "got %s collisions", hashTable.getHashCollisions());
 
         return hashTable.getCounts();
     }
@@ -125,7 +128,7 @@ public class BenchmarkLongCountHashTable
                                 .jvmArgsAppend("--add-modules=jdk.incubator.vector")
 //                        .forks(0)
                 )
-                .includeMethod("vectorLongCountHashTable")
+//                .includeMethod("vectorLongCountHashTable")
 //                .includeMethod("longCountHashTable")
                 .run();
 
