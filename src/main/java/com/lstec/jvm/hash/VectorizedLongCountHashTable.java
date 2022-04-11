@@ -279,7 +279,7 @@ public class VectorizedLongCountHashTable
             VectorMask<Long> toInc, LongVector currentValuesVector, int i)
     {
         VectorMask<Long> toInsertNew = currentValuesVector.compare(EQ, ZERO_VECTOR);
-        toInsertNew.and(toInc.not());
+        toInsertNew = toInsertNew.and(toInc.not());
 
         VectorMask<Long> notInc = toInc.not();
 
