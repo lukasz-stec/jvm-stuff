@@ -1,5 +1,6 @@
 package com.lstec.jvm;
 
+import com.google.common.base.Verify;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.BenchmarkMode;
 import org.openjdk.jmh.annotations.CompilerControl;
@@ -13,7 +14,6 @@ import org.openjdk.jmh.annotations.Scope;
 import org.openjdk.jmh.annotations.Setup;
 import org.openjdk.jmh.annotations.State;
 import org.openjdk.jmh.annotations.Warmup;
-import org.openjdk.jmh.profile.DTraceAsmProfiler;
 import org.openjdk.jmh.runner.RunnerException;
 
 import java.io.File;
@@ -26,6 +26,24 @@ import java.util.concurrent.TimeUnit;
 
 import static com.lstec.jvm.Benchmarks.benchmark;
 
+/**
+ * Benchmark             (matchRatio)  Mode  Cnt  Score   Error  Units
+ * BenchmarkCMOV.branch             0  avgt   10  0.235 ± 0.014  ns/op
+ * BenchmarkCMOV.branch           0.2  avgt   10  1.897 ± 0.059  ns/op
+ * BenchmarkCMOV.branch           0.5  avgt   10  3.257 ± 0.035  ns/op
+ * BenchmarkCMOV.branch           0.8  avgt   10  1.812 ± 0.035  ns/op
+ * BenchmarkCMOV.branch             1  avgt   10  0.313 ± 0.006  ns/op
+ * BenchmarkCMOV.cmov               0  avgt   10  0.234 ± 0.002  ns/op
+ * BenchmarkCMOV.cmov             0.2  avgt   10  0.421 ± 0.010  ns/op
+ * BenchmarkCMOV.cmov             0.5  avgt   10  0.420 ± 0.009  ns/op
+ * BenchmarkCMOV.cmov             0.8  avgt   10  0.419 ± 0.007  ns/op
+ * BenchmarkCMOV.cmov               1  avgt   10  0.317 ± 0.005  ns/op
+ * BenchmarkCMOV.trick              0  avgt   10  0.336 ± 0.007  ns/op
+ * BenchmarkCMOV.trick            0.2  avgt   10  0.495 ± 0.008  ns/op
+ * BenchmarkCMOV.trick            0.5  avgt   10  0.492 ± 0.007  ns/op
+ * BenchmarkCMOV.trick            0.8  avgt   10  0.479 ± 0.007  ns/op
+ * BenchmarkCMOV.trick              1  avgt   10  0.231 ± 0.004  ns/op
+ */
 @State(Scope.Thread)
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
 @Fork(1)
@@ -83,6 +101,21 @@ public class BenchmarkCMOV
         return array;
     }
 
+    @Benchmark
+    @OperationsPerInvocation(ITERATIONS)
+    @CompilerControl(CompilerControl.Mode.DONT_INLINE)
+    public Object branch(BenchmarkData data)
+    {
+        int[] array = data.array;
+        boolean[] match = data.match;
+        for (int i = 0; i < ITERATIONS; i++) {
+            if (match[i]) {
+                array[i] = -1;
+            }
+        }
+        return array;
+    }
+
     public static void main(String[] args)
             throws RunnerException, IOException
     {
@@ -95,17 +128,21 @@ public class BenchmarkCMOV
         }
         String profilerOutputDir = profilerOutputDir();
 
-        benchmark(BenchmarkCMOV.class)
-                .withOptions(optionsBuilder -> optionsBuilder
+        try {
+            benchmark(BenchmarkCMOV.class)
+//                    .withOptions(optionsBuilder -> optionsBuilder
 //                        .jvmArgsAppend("-XX:ConditionalMoveLimit=10")
-//                        .param("matchRatio", "0.5")
-                        .addProfiler(DTraceAsmProfiler.class, String.format("hotThreshold=0.1;tooBigThreshold=3000;saveLog=true;saveLogTo=%s", profilerOutputDir, profilerOutputDir)))
+//                                    .param("matchRatio", "0.5")
+//                                    .addProfiler(DTraceAsmProfiler.class, String.format("hotThreshold=0.1;tooBigThreshold=3000;saveLog=true;saveLogTo=%s", profilerOutputDir, profilerOutputDir))
+//                    )
 //                .includeMethod("cmov")
-                .run();
-
-        File dir = new File(profilerOutputDir);
-        if (dir.list().length == 0) {
-            dir.delete();
+                    .run();
+        }
+        finally {
+            File dir = new File(profilerOutputDir);
+            if (dir.list().length == 0) {
+                Verify.verify(dir.delete(), "%s not deleted", dir);
+            }
         }
     }
 
