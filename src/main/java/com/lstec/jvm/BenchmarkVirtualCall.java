@@ -13,7 +13,6 @@ import org.openjdk.jmh.annotations.Setup;
 import org.openjdk.jmh.annotations.State;
 import org.openjdk.jmh.annotations.Warmup;
 import org.openjdk.jmh.infra.BenchmarkParams;
-import org.openjdk.jmh.runner.RunnerException;
 
 import java.io.File;
 import java.io.IOException;
@@ -27,12 +26,15 @@ import static com.lstec.jvm.Benchmarks.benchmark;
 
 /**
  * Benchmark                                       (usedBaseTypes)  Mode  Cnt   Score   Error  Units
- * BenchmarkVirtualCall.testVirtualCallInlined                   1  avgt   10   0.378 ± 0.008  ns/op
- * BenchmarkVirtualCall.testVirtualCallInlined                   2  avgt   10   0.735 ± 0.021  ns/op
- * BenchmarkVirtualCall.testVirtualCallInlined                   3  avgt   10  11.063 ± 0.381  ns/op
- * BenchmarkVirtualCall.testVirtualCallNotInlined                1  avgt   10   2.363 ± 0.013  ns/op
- * BenchmarkVirtualCall.testVirtualCallNotInlined                2  avgt   10   6.751 ± 0.160  ns/op
- * BenchmarkVirtualCall.testVirtualCallNotInlined                3  avgt   10  11.421 ± 0.113  ns/op
+ * BenchmarkVirtualCall.testManualDispatch                       1  avgt   10   0.553 ± 0.022  ns/op
+ * BenchmarkVirtualCall.testManualDispatch                       2  avgt   10   0.676 ± 0.014  ns/op
+ * BenchmarkVirtualCall.testManualDispatch                       3  avgt   10   0.928 ± 0.027  ns/op
+ * BenchmarkVirtualCall.testVirtualCallInlined                   1  avgt   10   0.373 ± 0.006  ns/op
+ * BenchmarkVirtualCall.testVirtualCallInlined                   2  avgt   10   0.735 ± 0.036  ns/op
+ * BenchmarkVirtualCall.testVirtualCallInlined                   3  avgt   10  11.120 ± 0.215  ns/op
+ * BenchmarkVirtualCall.testVirtualCallNotInlined                1  avgt   10   2.411 ± 0.036  ns/op
+ * BenchmarkVirtualCall.testVirtualCallNotInlined                2  avgt   10   6.704 ± 0.223  ns/op
+ * BenchmarkVirtualCall.testVirtualCallNotInlined                3  avgt   10  11.837 ± 0.359  ns/op
  */
 @State(Scope.Thread)
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
@@ -157,7 +159,33 @@ public class BenchmarkVirtualCall
         return result;
     }
 
-    public static void main(String[] args) throws Exception
+    @Benchmark
+    @CompilerControl(CompilerControl.Mode.DONT_INLINE)
+    public Object testManualDispatch(BenchmarkData data)
+    {
+        long result = 0;
+        for (int i = 0; i < data.usedInOuterFunction.length; i++) {
+            long increment = 0;
+            BenchmarkData.Base base = data.usedInOuterFunction[i];
+            if (base instanceof BenchmarkData.Impl0) {
+                increment = base.virtualCall();
+            }
+            else if (base instanceof BenchmarkData.Impl1) {
+                increment = base.virtualCall();
+            }
+            else if (base instanceof BenchmarkData.Impl2) {
+                increment = base.virtualCall();
+            }
+            else {
+                throw new RuntimeException("base type not supported " + base);
+            }
+            result += increment;
+        }
+        return result;
+    }
+
+    public static void main(String[] args)
+            throws Exception
     {
         String profilerOutputDir = profilerOutputDir();
 
