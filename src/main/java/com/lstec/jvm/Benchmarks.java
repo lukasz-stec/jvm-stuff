@@ -23,9 +23,17 @@ import org.openjdk.jmh.runner.options.OptionsBuilder;
 import org.openjdk.jmh.runner.options.VerboseMode;
 import org.openjdk.jmh.runner.options.WarmupMode;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.Collection;
+import java.util.Comparator;
+import java.util.function.BiConsumer;
 import java.util.function.Consumer;
+import java.util.stream.Stream;
 
 import static java.lang.String.format;
 import static java.time.format.DateTimeFormatter.ISO_DATE_TIME;
@@ -54,6 +62,7 @@ public final class Benchmarks
     {
         private final ChainedOptionsBuilder optionsBuilder;
         private final Class<?> benchmarkClass;
+        private String profilerOutputDir;
 
         private BenchmarkBuilder(ChainedOptionsBuilder optionsBuilder, Class<?> benchmarkClass)
         {
@@ -64,6 +73,12 @@ public final class Benchmarks
         public BenchmarkBuilder withOptions(Consumer<ChainedOptionsBuilder> optionsConsumer)
         {
             optionsConsumer.accept(optionsBuilder);
+            return this;
+        }
+
+        public BenchmarkBuilder withOptions(BiConsumer<ChainedOptionsBuilder, String> optionsConsumer)
+        {
+            optionsConsumer.accept(optionsBuilder, requireNonNull(profilerOutputDir, "profilerOutputDir is null"));
             return this;
         }
 
@@ -85,7 +100,45 @@ public final class Benchmarks
             if (optionsBuilder.build().getIncludes().isEmpty()) {
                 includeAll();
             }
-            return new Runner(optionsBuilder.build()).run();
+            try {
+                if (profilerOutputDir != null) {
+                    new File(profilerOutputDir).mkdirs();
+                }
+                return new Runner(optionsBuilder.build()).run();
+            }
+            finally {
+                if (profilerOutputDir != null) {
+                    File dir = new File(profilerOutputDir);
+                    if (dir.list().length == 0) {
+                        dir.delete();
+                    }
+                }
+            }
+        }
+
+        public BenchmarkBuilder withProfilerOutputBaseDir(String profilerOutputBaseDir)
+        {
+            this.profilerOutputDir = profilerOutputDir(profilerOutputBaseDir);
+            return this;
+        }
+
+        private static String profilerOutputDir(String profileOutputBaseDir)
+        {
+            requireNonNull(profileOutputBaseDir, "profileOutputBaseDir is null");
+            try {
+                Stream<Path> files = Files.exists(Path.of(profileOutputBaseDir)) ? Files.list(Paths.get(profileOutputBaseDir)) : Stream.empty();
+                String subDirName = String.valueOf(files
+                        .map(path -> path.getFileName().toString())
+                        .filter(path -> path.matches("\\d+"))
+                        .map(path -> Integer.parseInt(path) + 1)
+                        .sorted(Comparator.reverseOrder())
+                        .findFirst().orElse(0));
+
+                return profileOutputBaseDir + "/" + subDirName;
+            }
+            catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 }
