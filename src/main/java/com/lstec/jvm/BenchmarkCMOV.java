@@ -78,12 +78,14 @@ public class BenchmarkCMOV
     @Benchmark
     @OperationsPerInvocation(ITERATIONS)
     @CompilerControl(CompilerControl.Mode.DONT_INLINE)
-    public Object cmov(BenchmarkData data)
+    public Object branch(BenchmarkData data)
     {
         int[] array = data.array;
         boolean[] match = data.match;
         for (int i = 0; i < ITERATIONS; i++) {
-            array[i] = match[i] ? -1 : array[i];
+            if (match[i]) {
+                array[i] = -1;
+            }
         }
         return array;
     }
@@ -104,14 +106,12 @@ public class BenchmarkCMOV
     @Benchmark
     @OperationsPerInvocation(ITERATIONS)
     @CompilerControl(CompilerControl.Mode.DONT_INLINE)
-    public Object branch(BenchmarkData data)
+    public Object cmov(BenchmarkData data)
     {
         int[] array = data.array;
         boolean[] match = data.match;
         for (int i = 0; i < ITERATIONS; i++) {
-            if (match[i]) {
-                array[i] = -1;
-            }
+            array[i] = match[i] ? -1 : array[i];
         }
         return array;
     }
