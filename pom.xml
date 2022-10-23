@@ -17,6 +17,7 @@
     <properties>
         <project.build.targetJdk>17</project.build.targetJdk>
         <air.check.skip-extended>true</air.check.skip-extended>
+        <dep.jmh.version>1.35</dep.jmh.version>
     </properties>
     
     <dependencies>

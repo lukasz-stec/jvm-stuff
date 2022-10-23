@@ -35,11 +35,11 @@ import static com.lstec.jvm.Benchmarks.benchmark;
  * BenchmarkArrayAlloc.alloc          256  avgt   10  72.004 ± 2.270  ns/op
  */
 @State(Scope.Thread)
-@OutputTimeUnit(TimeUnit.NANOSECONDS)
+@OutputTimeUnit(TimeUnit.MICROSECONDS)
 @Fork(1)
-@Warmup(iterations = 30, time = 500, timeUnit = TimeUnit.MILLISECONDS)
-@Measurement(iterations = 10, time = 500, timeUnit = TimeUnit.MILLISECONDS)
-@BenchmarkMode(Mode.AverageTime)
+@Warmup(iterations = 20, time = 1)
+@Measurement(iterations = 10, time = 1)
+@BenchmarkMode({Mode.Throughput})
 public class BenchmarkArrayAlloc
 {
 
@@ -62,7 +62,7 @@ public class BenchmarkArrayAlloc
         benchmark(BenchmarkArrayAlloc.class)
                 .withOptions(optionsBuilder ->
                                 optionsBuilder.forks(1)
-//                                .param("arraySize", "64")
+                                .param("arraySize", "1024", "8192", "65536")
 //                                .addProfiler(DTraceAsmProfiler.class, String.format("hotThreshold=0.1;tooBigThreshold=3000;saveLog=true;saveLogTo=%s", profilerOutputDir, profilerOutputDir))
                 )
 //                .includeMethod("cmov")
