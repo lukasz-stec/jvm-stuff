@@ -1,0 +1,3661 @@
+--- Execution profile ---
+Total samples       : 478128
+unknown_Java        : 2 (0.00%)
+not_walkable_Java   : 17 (0.00%)
+
+--- 188255841 total (39.37%), 188271 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.getCurrentValues
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 2] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 3] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 4] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 5] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 6] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [ 7] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [ 8] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [ 9] java.lang.reflect.Method.invoke
+  [10] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [11] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [12] java.util.concurrent.FutureTask.run
+  [13] java.util.concurrent.Executors$RunnableAdapter.call
+  [14] java.util.concurrent.FutureTask.run
+  [15] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [16] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [17] java.lang.Thread.run
+
+--- 125575186 total (26.26%), 125586 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.getCurrentValues
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 2] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 3] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 4] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 5] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 6] jdk.internal.reflect.GeneratedMethodAccessor3.invoke
+  [ 7] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [ 8] java.lang.reflect.Method.invoke
+  [ 9] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [10] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [11] java.util.concurrent.FutureTask.run
+  [12] java.util.concurrent.Executors$RunnableAdapter.call
+  [13] java.util.concurrent.FutureTask.run
+  [14] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [15] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [16] java.lang.Thread.run
+
+--- 37999343 total (7.95%), 37947 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.incrementCount
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.incrementCountForBatch
+  [ 2] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 3] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 4] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 5] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 6] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 7] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [ 8] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [ 9] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [10] java.lang.reflect.Method.invoke
+  [11] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [12] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [13] java.util.concurrent.FutureTask.run
+  [14] java.util.concurrent.Executors$RunnableAdapter.call
+  [15] java.util.concurrent.FutureTask.run
+  [16] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [17] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [18] java.lang.Thread.run
+
+--- 25829834 total (5.40%), 25794 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.incrementCount
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.incrementCountForBatch
+  [ 2] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 3] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 4] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 5] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 6] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 7] jdk.internal.reflect.GeneratedMethodAccessor3.invoke
+  [ 8] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [ 9] java.lang.reflect.Method.invoke
+  [10] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [11] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [12] java.util.concurrent.FutureTask.run
+  [13] java.util.concurrent.Executors$RunnableAdapter.call
+  [14] java.util.concurrent.FutureTask.run
+  [15] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [16] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [17] java.lang.Thread.run
+
+--- 6641634 total (1.39%), 6660 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.calculatePositions
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 2] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 3] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 4] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 5] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 6] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [ 7] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [ 8] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [ 9] java.lang.reflect.Method.invoke
+  [10] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [11] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [12] java.util.concurrent.FutureTask.run
+  [13] java.util.concurrent.Executors$RunnableAdapter.call
+  [14] java.util.concurrent.FutureTask.run
+  [15] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [16] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [17] java.lang.Thread.run
+
+--- 5830326 total (1.22%), 5851 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.calculatePositions
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 2] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 3] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 4] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 5] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 6] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [ 7] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [ 8] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [ 9] java.lang.reflect.Method.invoke
+  [10] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [11] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [12] java.util.concurrent.FutureTask.run
+  [13] java.util.concurrent.Executors$RunnableAdapter.call
+  [14] java.util.concurrent.FutureTask.run
+  [15] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [16] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [17] java.lang.Thread.run
+
+--- 5153651 total (1.08%), 5154 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.incrementCountForBatch
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 2] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 3] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 4] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 5] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 6] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [ 7] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [ 8] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [ 9] java.lang.reflect.Method.invoke
+  [10] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [11] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [12] java.util.concurrent.FutureTask.run
+  [13] java.util.concurrent.Executors$RunnableAdapter.call
+  [14] java.util.concurrent.FutureTask.run
+  [15] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [16] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [17] java.lang.Thread.run
+
+--- 5134684 total (1.07%), 5132 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.incrementCount
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.incrementCountForBatch
+  [ 2] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 3] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 4] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 5] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 6] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 7] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [ 8] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [ 9] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [10] java.lang.reflect.Method.invoke
+  [11] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [12] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [13] java.util.concurrent.FutureTask.run
+  [14] java.util.concurrent.Executors$RunnableAdapter.call
+  [15] java.util.concurrent.FutureTask.run
+  [16] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [17] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [18] java.lang.Thread.run
+
+--- 5087998 total (1.06%), 5085 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.incrementCount
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.incrementCountForBatch
+  [ 2] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 3] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 4] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 5] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 6] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 7] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [ 8] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [ 9] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [10] java.lang.reflect.Method.invoke
+  [11] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [12] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [13] java.util.concurrent.FutureTask.run
+  [14] java.util.concurrent.Executors$RunnableAdapter.call
+  [15] java.util.concurrent.FutureTask.run
+  [16] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [17] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [18] java.lang.Thread.run
+
+--- 4775039 total (1.00%), 4776 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.incrementCount
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.incrementCountForBatch
+  [ 2] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 3] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 4] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 5] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 6] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 7] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [ 8] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [ 9] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [10] java.lang.reflect.Method.invoke
+  [11] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [12] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [13] java.util.concurrent.FutureTask.run
+  [14] java.util.concurrent.Executors$RunnableAdapter.call
+  [15] java.util.concurrent.FutureTask.run
+  [16] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [17] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [18] java.lang.Thread.run
+
+--- 4448748 total (0.93%), 4461 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.calculatePositions
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 2] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 3] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 4] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 5] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 6] jdk.internal.reflect.GeneratedMethodAccessor3.invoke
+  [ 7] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [ 8] java.lang.reflect.Method.invoke
+  [ 9] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [10] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [11] java.util.concurrent.FutureTask.run
+  [12] java.util.concurrent.Executors$RunnableAdapter.call
+  [13] java.util.concurrent.FutureTask.run
+  [14] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [15] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [16] java.lang.Thread.run
+
+--- 3831690 total (0.80%), 3831 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.incrementCount
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.incrementCountForBatch
+  [ 2] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 3] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 4] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 5] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 6] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 7] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [ 8] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [ 9] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [10] java.lang.reflect.Method.invoke
+  [11] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [12] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [13] java.util.concurrent.FutureTask.run
+  [14] java.util.concurrent.Executors$RunnableAdapter.call
+  [15] java.util.concurrent.FutureTask.run
+  [16] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [17] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [18] java.lang.Thread.run
+
+--- 3751390 total (0.78%), 3765 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.calculatePositions
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 2] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 3] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 4] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 5] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 6] jdk.internal.reflect.GeneratedMethodAccessor3.invoke
+  [ 7] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [ 8] java.lang.reflect.Method.invoke
+  [ 9] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [10] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [11] java.util.concurrent.FutureTask.run
+  [12] java.util.concurrent.Executors$RunnableAdapter.call
+  [13] java.util.concurrent.FutureTask.run
+  [14] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [15] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [16] java.lang.Thread.run
+
+--- 3675099 total (0.77%), 3673 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.incrementCount
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.incrementCountForBatch
+  [ 2] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 3] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 4] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 5] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 6] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 7] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [ 8] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [ 9] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [10] java.lang.reflect.Method.invoke
+  [11] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [12] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [13] java.util.concurrent.FutureTask.run
+  [14] java.util.concurrent.Executors$RunnableAdapter.call
+  [15] java.util.concurrent.FutureTask.run
+  [16] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [17] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [18] java.lang.Thread.run
+
+--- 3502719 total (0.73%), 3501 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.incrementCount
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.incrementCountForBatch
+  [ 2] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 3] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 4] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 5] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 6] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 7] jdk.internal.reflect.GeneratedMethodAccessor3.invoke
+  [ 8] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [ 9] java.lang.reflect.Method.invoke
+  [10] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [11] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [12] java.util.concurrent.FutureTask.run
+  [13] java.util.concurrent.Executors$RunnableAdapter.call
+  [14] java.util.concurrent.FutureTask.run
+  [15] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [16] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [17] java.lang.Thread.run
+
+--- 3476538 total (0.73%), 3475 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.incrementCount
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.incrementCountForBatch
+  [ 2] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 3] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 4] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 5] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 6] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 7] jdk.internal.reflect.GeneratedMethodAccessor3.invoke
+  [ 8] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [ 9] java.lang.reflect.Method.invoke
+  [10] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [11] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [12] java.util.concurrent.FutureTask.run
+  [13] java.util.concurrent.Executors$RunnableAdapter.call
+  [14] java.util.concurrent.FutureTask.run
+  [15] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [16] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [17] java.lang.Thread.run
+
+--- 3469686 total (0.73%), 3470 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.incrementCountForBatch
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 2] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 3] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 4] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 5] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 6] jdk.internal.reflect.GeneratedMethodAccessor3.invoke
+  [ 7] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [ 8] java.lang.reflect.Method.invoke
+  [ 9] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [10] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [11] java.util.concurrent.FutureTask.run
+  [12] java.util.concurrent.Executors$RunnableAdapter.call
+  [13] java.util.concurrent.FutureTask.run
+  [14] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [15] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [16] java.lang.Thread.run
+
+--- 3266790 total (0.68%), 3265 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.incrementCount
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.incrementCountForBatch
+  [ 2] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 3] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 4] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 5] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 6] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 7] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [ 8] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [ 9] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [10] java.lang.reflect.Method.invoke
+  [11] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [12] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [13] java.util.concurrent.FutureTask.run
+  [14] java.util.concurrent.Executors$RunnableAdapter.call
+  [15] java.util.concurrent.FutureTask.run
+  [16] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [17] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [18] java.lang.Thread.run
+
+--- 3215397 total (0.67%), 3214 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.incrementCountForBatch
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 2] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 3] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 4] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 5] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 6] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [ 7] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [ 8] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [ 9] java.lang.reflect.Method.invoke
+  [10] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [11] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [12] java.util.concurrent.FutureTask.run
+  [13] java.util.concurrent.Executors$RunnableAdapter.call
+  [14] java.util.concurrent.FutureTask.run
+  [15] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [16] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [17] java.lang.Thread.run
+
+--- 3214473 total (0.67%), 3215 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.incrementCount
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.incrementCountForBatch
+  [ 2] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 3] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 4] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 5] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 6] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 7] jdk.internal.reflect.GeneratedMethodAccessor3.invoke
+  [ 8] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [ 9] java.lang.reflect.Method.invoke
+  [10] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [11] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [12] java.util.concurrent.FutureTask.run
+  [13] java.util.concurrent.Executors$RunnableAdapter.call
+  [14] java.util.concurrent.FutureTask.run
+  [15] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [16] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [17] java.lang.Thread.run
+
+--- 2539689 total (0.53%), 2542 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.getCurrentValues
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 2] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 3] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 4] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 5] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 6] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [ 7] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [ 8] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [ 9] java.lang.reflect.Method.invoke
+  [10] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [11] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [12] java.util.concurrent.FutureTask.run
+  [13] java.util.concurrent.Executors$RunnableAdapter.call
+  [14] java.util.concurrent.FutureTask.run
+  [15] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [16] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [17] java.lang.Thread.run
+
+--- 2481602 total (0.52%), 2481 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.incrementCount
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.incrementCountForBatch
+  [ 2] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 3] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 4] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 5] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 6] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 7] jdk.internal.reflect.GeneratedMethodAccessor3.invoke
+  [ 8] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [ 9] java.lang.reflect.Method.invoke
+  [10] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [11] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [12] java.util.concurrent.FutureTask.run
+  [13] java.util.concurrent.Executors$RunnableAdapter.call
+  [14] java.util.concurrent.FutureTask.run
+  [15] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [16] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [17] java.lang.Thread.run
+
+--- 2455093 total (0.51%), 2454 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.incrementCount
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.incrementCountForBatch
+  [ 2] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 3] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 4] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 5] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 6] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 7] jdk.internal.reflect.GeneratedMethodAccessor3.invoke
+  [ 8] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [ 9] java.lang.reflect.Method.invoke
+  [10] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [11] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [12] java.util.concurrent.FutureTask.run
+  [13] java.util.concurrent.Executors$RunnableAdapter.call
+  [14] java.util.concurrent.FutureTask.run
+  [15] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [16] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [17] java.lang.Thread.run
+
+--- 2364250 total (0.49%), 2366 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.incrementCount
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.incrementCountForBatch
+  [ 2] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 3] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 4] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 5] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 6] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 7] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [ 8] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [ 9] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [10] java.lang.reflect.Method.invoke
+  [11] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [12] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [13] java.util.concurrent.FutureTask.run
+  [14] java.util.concurrent.Executors$RunnableAdapter.call
+  [15] java.util.concurrent.FutureTask.run
+  [16] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [17] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [18] java.lang.Thread.run
+
+--- 2264340 total (0.47%), 2263 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.incrementCount
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.incrementCountForBatch
+  [ 2] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 3] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 4] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 5] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 6] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 7] jdk.internal.reflect.GeneratedMethodAccessor3.invoke
+  [ 8] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [ 9] java.lang.reflect.Method.invoke
+  [10] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [11] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [12] java.util.concurrent.FutureTask.run
+  [13] java.util.concurrent.Executors$RunnableAdapter.call
+  [14] java.util.concurrent.FutureTask.run
+  [15] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [16] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [17] java.lang.Thread.run
+
+--- 2160716 total (0.45%), 2160 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.incrementCountForBatch
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 2] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 3] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 4] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 5] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 6] jdk.internal.reflect.GeneratedMethodAccessor3.invoke
+  [ 7] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [ 8] java.lang.reflect.Method.invoke
+  [ 9] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [10] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [11] java.util.concurrent.FutureTask.run
+  [12] java.util.concurrent.Executors$RunnableAdapter.call
+  [13] java.util.concurrent.FutureTask.run
+  [14] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [15] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [16] java.lang.Thread.run
+
+--- 1795607 total (0.38%), 1796 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 1] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 2] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 3] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 4] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [ 5] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [ 6] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [ 7] java.lang.reflect.Method.invoke
+  [ 8] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [ 9] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [10] java.util.concurrent.FutureTask.run
+  [11] java.util.concurrent.Executors$RunnableAdapter.call
+  [12] java.util.concurrent.FutureTask.run
+  [13] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [14] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [15] java.lang.Thread.run
+
+--- 1693344 total (0.35%), 1695 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.getCurrentValues
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 2] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 3] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 4] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 5] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 6] jdk.internal.reflect.GeneratedMethodAccessor3.invoke
+  [ 7] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [ 8] java.lang.reflect.Method.invoke
+  [ 9] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [10] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [11] java.util.concurrent.FutureTask.run
+  [12] java.util.concurrent.Executors$RunnableAdapter.call
+  [13] java.util.concurrent.FutureTask.run
+  [14] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [15] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [16] java.lang.Thread.run
+
+--- 1659332 total (0.35%), 1660 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.incrementCountForBatch
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 2] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 3] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 4] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 5] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 6] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [ 7] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [ 8] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [ 9] java.lang.reflect.Method.invoke
+  [10] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [11] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [12] java.util.concurrent.FutureTask.run
+  [13] java.util.concurrent.Executors$RunnableAdapter.call
+  [14] java.util.concurrent.FutureTask.run
+  [15] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [16] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [17] java.lang.Thread.run
+
+--- 1569993 total (0.33%), 1571 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.incrementCount
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.incrementCountForBatch
+  [ 2] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 3] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 4] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 5] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 6] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 7] jdk.internal.reflect.GeneratedMethodAccessor3.invoke
+  [ 8] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [ 9] java.lang.reflect.Method.invoke
+  [10] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [11] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [12] java.util.concurrent.FutureTask.run
+  [13] java.util.concurrent.Executors$RunnableAdapter.call
+  [14] java.util.concurrent.FutureTask.run
+  [15] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [16] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [17] java.lang.Thread.run
+
+--- 1495678 total (0.31%), 1497 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.incrementCountForBatch
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 2] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 3] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 4] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 5] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 6] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [ 7] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [ 8] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [ 9] java.lang.reflect.Method.invoke
+  [10] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [11] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [12] java.util.concurrent.FutureTask.run
+  [13] java.util.concurrent.Executors$RunnableAdapter.call
+  [14] java.util.concurrent.FutureTask.run
+  [15] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [16] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [17] java.lang.Thread.run
+
+--- 1213665 total (0.25%), 1214 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 1] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 2] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 3] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 4] jdk.internal.reflect.GeneratedMethodAccessor3.invoke
+  [ 5] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [ 6] java.lang.reflect.Method.invoke
+  [ 7] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [ 8] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [ 9] java.util.concurrent.FutureTask.run
+  [10] java.util.concurrent.Executors$RunnableAdapter.call
+  [11] java.util.concurrent.FutureTask.run
+  [12] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [13] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [14] java.lang.Thread.run
+
+--- 1047598 total (0.22%), 1048 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.incrementCountForBatch
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 2] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 3] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 4] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 5] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 6] jdk.internal.reflect.GeneratedMethodAccessor3.invoke
+  [ 7] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [ 8] java.lang.reflect.Method.invoke
+  [ 9] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [10] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [11] java.util.concurrent.FutureTask.run
+  [12] java.util.concurrent.Executors$RunnableAdapter.call
+  [13] java.util.concurrent.FutureTask.run
+  [14] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [15] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [16] java.lang.Thread.run
+
+--- 984280 total (0.21%), 985 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.getCurrentValues
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 2] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 3] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 4] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 5] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 6] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [ 7] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [ 8] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [ 9] java.lang.reflect.Method.invoke
+  [10] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [11] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [12] java.util.concurrent.FutureTask.run
+  [13] java.util.concurrent.Executors$RunnableAdapter.call
+  [14] java.util.concurrent.FutureTask.run
+  [15] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [16] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [17] java.lang.Thread.run
+
+--- 907217 total (0.19%), 908 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.incrementCountForBatch
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 2] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 3] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 4] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 5] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 6] jdk.internal.reflect.GeneratedMethodAccessor3.invoke
+  [ 7] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [ 8] java.lang.reflect.Method.invoke
+  [ 9] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [10] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [11] java.util.concurrent.FutureTask.run
+  [12] java.util.concurrent.Executors$RunnableAdapter.call
+  [13] java.util.concurrent.FutureTask.run
+  [14] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [15] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [16] java.lang.Thread.run
+
+--- 646348 total (0.14%), 647 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.getCurrentValues
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 2] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 3] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 4] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 5] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 6] jdk.internal.reflect.GeneratedMethodAccessor3.invoke
+  [ 7] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [ 8] java.lang.reflect.Method.invoke
+  [ 9] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [10] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [11] java.util.concurrent.FutureTask.run
+  [12] java.util.concurrent.Executors$RunnableAdapter.call
+  [13] java.util.concurrent.FutureTask.run
+  [14] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [15] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [16] java.lang.Thread.run
+
+--- 609969 total (0.13%), 610 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.incrementCount
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.incrementCountForBatch
+  [ 2] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 3] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 4] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 5] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 6] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 7] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [ 8] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [ 9] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [10] java.lang.reflect.Method.invoke
+  [11] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [12] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [13] java.util.concurrent.FutureTask.run
+  [14] java.util.concurrent.Executors$RunnableAdapter.call
+  [15] java.util.concurrent.FutureTask.run
+  [16] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [17] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [18] java.lang.Thread.run
+
+--- 393942 total (0.08%), 394 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.incrementCount
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.incrementCountForBatch
+  [ 2] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 3] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 4] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 5] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 6] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 7] jdk.internal.reflect.GeneratedMethodAccessor3.invoke
+  [ 8] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [ 9] java.lang.reflect.Method.invoke
+  [10] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [11] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [12] java.util.concurrent.FutureTask.run
+  [13] java.util.concurrent.Executors$RunnableAdapter.call
+  [14] java.util.concurrent.FutureTask.run
+  [15] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [16] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [17] java.lang.Thread.run
+
+--- 342570 total (0.07%), 343 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.incrementCount
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.incrementCountForBatch
+  [ 2] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 3] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 4] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 5] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 6] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 7] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [ 8] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [ 9] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [10] java.lang.reflect.Method.invoke
+  [11] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [12] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [13] java.util.concurrent.FutureTask.run
+  [14] java.util.concurrent.Executors$RunnableAdapter.call
+  [15] java.util.concurrent.FutureTask.run
+  [16] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [17] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [18] java.lang.Thread.run
+
+--- 202818 total (0.04%), 203 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.incrementCount
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.incrementCountForBatch
+  [ 2] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 3] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 4] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 5] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 6] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 7] jdk.internal.reflect.GeneratedMethodAccessor3.invoke
+  [ 8] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [ 9] java.lang.reflect.Method.invoke
+  [10] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [11] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [12] java.util.concurrent.FutureTask.run
+  [13] java.util.concurrent.Executors$RunnableAdapter.call
+  [14] java.util.concurrent.FutureTask.run
+  [15] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [16] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [17] java.lang.Thread.run
+
+--- 195539 total (0.04%), 196 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.getCurrentValues
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 2] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 3] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 4] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 5] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 6] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [ 7] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [ 8] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [ 9] java.lang.reflect.Method.invoke
+  [10] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [11] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [12] java.util.concurrent.FutureTask.run
+  [13] java.util.concurrent.Executors$RunnableAdapter.call
+  [14] java.util.concurrent.FutureTask.run
+  [15] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [16] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [17] java.lang.Thread.run
+
+--- 177346 total (0.04%), 178 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.calculatePositions
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 2] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 3] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 4] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 5] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 6] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [ 7] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [ 8] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [ 9] java.lang.reflect.Method.invoke
+  [10] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [11] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [12] java.util.concurrent.FutureTask.run
+  [13] java.util.concurrent.Executors$RunnableAdapter.call
+  [14] java.util.concurrent.FutureTask.run
+  [15] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [16] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [17] java.lang.Thread.run
+
+--- 162083 total (0.03%), 162 samples
+  [ 0] __memset_avx2_erms
+  [ 1] MemAllocator::allocate() const
+  [ 2] TypeArrayKlass::allocate_common(int, bool, JavaThread*)
+  [ 3] InterpreterRuntime::newarray(JavaThread*, BasicType, int)
+  [ 4] com.lstec.jvm.hash.jug.CountAggregation_06.<init>
+  [ 5] com.lstec.jvm.hash.jug.CountAggregation_06.<init>
+  [ 6] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 7] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 8] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 9] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [10] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [11] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [12] java.lang.reflect.Method.invoke
+  [13] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [14] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [15] java.util.concurrent.FutureTask.run
+  [16] java.util.concurrent.Executors$RunnableAdapter.call
+  [17] java.util.concurrent.FutureTask.run
+  [18] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [19] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [20] java.lang.Thread.run
+
+--- 131499 total (0.03%), 132 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.calculatePositions
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 2] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 3] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 4] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 5] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 6] jdk.internal.reflect.GeneratedMethodAccessor3.invoke
+  [ 7] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [ 8] java.lang.reflect.Method.invoke
+  [ 9] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [10] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [11] java.util.concurrent.FutureTask.run
+  [12] java.util.concurrent.Executors$RunnableAdapter.call
+  [13] java.util.concurrent.FutureTask.run
+  [14] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [15] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [16] java.lang.Thread.run
+
+--- 113774 total (0.02%), 114 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.getCurrentValues
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 2] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 3] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 4] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 5] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 6] jdk.internal.reflect.GeneratedMethodAccessor3.invoke
+  [ 7] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [ 8] java.lang.reflect.Method.invoke
+  [ 9] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [10] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [11] java.util.concurrent.FutureTask.run
+  [12] java.util.concurrent.Executors$RunnableAdapter.call
+  [13] java.util.concurrent.FutureTask.run
+  [14] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [15] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [16] java.lang.Thread.run
+
+--- 112061 total (0.02%), 112 samples
+  [ 0] __memset_avx2_erms
+  [ 1] MemAllocator::allocate() const
+  [ 2] TypeArrayKlass::allocate_common(int, bool, JavaThread*)
+  [ 3] InterpreterRuntime::newarray(JavaThread*, BasicType, int)
+  [ 4] com.lstec.jvm.hash.jug.CountAggregation_06.<init>
+  [ 5] com.lstec.jvm.hash.jug.CountAggregation_06.<init>
+  [ 6] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 7] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 8] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 9] jdk.internal.reflect.GeneratedMethodAccessor3.invoke
+  [10] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [11] java.lang.reflect.Method.invoke
+  [12] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [13] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [14] java.util.concurrent.FutureTask.run
+  [15] java.util.concurrent.Executors$RunnableAdapter.call
+  [16] java.util.concurrent.FutureTask.run
+  [17] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [18] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [19] java.lang.Thread.run
+
+--- 84767 total (0.02%), 85 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.calculatePositions
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 2] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 3] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 4] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 5] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 6] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [ 7] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [ 8] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [ 9] java.lang.reflect.Method.invoke
+  [10] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [11] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [12] java.util.concurrent.FutureTask.run
+  [13] java.util.concurrent.Executors$RunnableAdapter.call
+  [14] java.util.concurrent.FutureTask.run
+  [15] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [16] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [17] java.lang.Thread.run
+
+--- 79815 total (0.02%), 80 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.calculatePosition
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.calculatePositions
+  [ 2] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 3] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 4] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 5] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 6] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 7] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [ 8] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [ 9] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [10] java.lang.reflect.Method.invoke
+  [11] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [12] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [13] java.util.concurrent.FutureTask.run
+  [14] java.util.concurrent.Executors$RunnableAdapter.call
+  [15] java.util.concurrent.FutureTask.run
+  [16] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [17] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [18] java.lang.Thread.run
+
+--- 63870 total (0.01%), 64 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.getCurrentValues
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 2] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 3] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 4] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 5] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 6] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [ 7] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [ 8] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [ 9] java.lang.reflect.Method.invoke
+  [10] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [11] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [12] java.util.concurrent.FutureTask.run
+  [13] java.util.concurrent.Executors$RunnableAdapter.call
+  [14] java.util.concurrent.FutureTask.run
+  [15] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [16] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [17] java.lang.Thread.run
+
+--- 58990 total (0.01%), 59 samples
+  [ 0] __memset_avx2_erms
+  [ 1] MarkBitMap::do_clear(MemRegion, bool)
+  [ 2] G1ClearBitMapTask::G1ClearBitmapHRClosure::do_heap_region(HeapRegion*)
+  [ 3] HeapRegionManager::par_iterate(HeapRegionClosure*, HeapRegionClaimer*, unsigned int) const
+  [ 4] G1ClearBitMapTask::work(unsigned int)
+  [ 5] GangWorker::loop()
+  [ 6] GangWorker::run()
+  [ 7] Thread::call_run()
+  [ 8] thread_native_entry(Thread*)
+  [ 9] start_thread
+
+--- 53860 total (0.01%), 54 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.calculatePositions
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 2] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 3] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 4] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 5] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 6] jdk.internal.reflect.GeneratedMethodAccessor3.invoke
+  [ 7] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [ 8] java.lang.reflect.Method.invoke
+  [ 9] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [10] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [11] java.util.concurrent.FutureTask.run
+  [12] java.util.concurrent.Executors$RunnableAdapter.call
+  [13] java.util.concurrent.FutureTask.run
+  [14] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [15] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [16] java.lang.Thread.run
+
+--- 51897 total (0.01%), 52 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.calculatePosition
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.calculatePositions
+  [ 2] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 3] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 4] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 5] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 6] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 7] jdk.internal.reflect.GeneratedMethodAccessor3.invoke
+  [ 8] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [ 9] java.lang.reflect.Method.invoke
+  [10] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [11] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [12] java.util.concurrent.FutureTask.run
+  [13] java.util.concurrent.Executors$RunnableAdapter.call
+  [14] java.util.concurrent.FutureTask.run
+  [15] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [16] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [17] java.lang.Thread.run
+
+--- 50903 total (0.01%), 51 samples
+  [ 0] G1ParCopyClosure<(G1Barrier)1, true>::do_oop(oopDesc**)
+  [ 1] ClassLoaderData::ChunkedHandleList::oops_do(OopClosure*)
+  [ 2] G1CLDScanClosure::do_cld(ClassLoaderData*)
+  [ 3] ClassLoaderDataGraph::roots_cld_do(CLDClosure*, CLDClosure*)
+  [ 4] G1RootProcessor::process_java_roots(G1RootClosures*, G1GCPhaseTimes*, unsigned int)
+  [ 5] G1RootProcessor::evacuate_roots(G1ParScanThreadState*, unsigned int)
+  [ 6] G1EvacuateRegionsTask::scan_roots(G1ParScanThreadState*, unsigned int)
+  [ 7] G1EvacuateRegionsBaseTask::work(unsigned int)
+  [ 8] GangWorker::loop()
+  [ 9] GangWorker::run()
+  [10] Thread::call_run()
+  [11] thread_native_entry(Thread*)
+  [12] start_thread
+
+--- 48862 total (0.01%), 49 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 1] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 2] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 3] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 4] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [ 5] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [ 6] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [ 7] java.lang.reflect.Method.invoke
+  [ 8] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [ 9] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [10] java.util.concurrent.FutureTask.run
+  [11] java.util.concurrent.Executors$RunnableAdapter.call
+  [12] java.util.concurrent.FutureTask.run
+  [13] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [14] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [15] java.lang.Thread.run
+
+--- 45903 total (0.01%), 46 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.getCurrentValues
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 2] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 3] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 4] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 5] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 6] jdk.internal.reflect.GeneratedMethodAccessor3.invoke
+  [ 7] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [ 8] java.lang.reflect.Method.invoke
+  [ 9] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [10] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [11] java.util.concurrent.FutureTask.run
+  [12] java.util.concurrent.Executors$RunnableAdapter.call
+  [13] java.util.concurrent.FutureTask.run
+  [14] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [15] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [16] java.lang.Thread.run
+
+--- 41866 total (0.01%), 42 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 1] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 2] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 3] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 4] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [ 5] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [ 6] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [ 7] java.lang.reflect.Method.invoke
+  [ 8] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [ 9] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [10] java.util.concurrent.FutureTask.run
+  [11] java.util.concurrent.Executors$RunnableAdapter.call
+  [12] java.util.concurrent.FutureTask.run
+  [13] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [14] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [15] java.lang.Thread.run
+
+--- 39863 total (0.01%), 40 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 2] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 3] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 4] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 5] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [ 6] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [ 7] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [ 8] java.lang.reflect.Method.invoke
+  [ 9] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [10] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [11] java.util.concurrent.FutureTask.run
+  [12] java.util.concurrent.Executors$RunnableAdapter.call
+  [13] java.util.concurrent.FutureTask.run
+  [14] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [15] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [16] java.lang.Thread.run
+
+--- 38957 total (0.01%), 39 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.getCurrentValues
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 2] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 3] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 4] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 5] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 6] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [ 7] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [ 8] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [ 9] java.lang.reflect.Method.invoke
+  [10] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [11] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [12] java.util.concurrent.FutureTask.run
+  [13] java.util.concurrent.Executors$RunnableAdapter.call
+  [14] java.util.concurrent.FutureTask.run
+  [15] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [16] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [17] java.lang.Thread.run
+
+--- 32915 total (0.01%), 33 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 1] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 2] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 3] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 4] jdk.internal.reflect.GeneratedMethodAccessor3.invoke
+  [ 5] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [ 6] java.lang.reflect.Method.invoke
+  [ 7] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [ 8] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [ 9] java.util.concurrent.FutureTask.run
+  [10] java.util.concurrent.Executors$RunnableAdapter.call
+  [11] java.util.concurrent.FutureTask.run
+  [12] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [13] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [14] java.lang.Thread.run
+
+--- 30928 total (0.01%), 31 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.calculatePositions
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 2] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 3] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 4] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 5] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 6] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [ 7] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [ 8] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [ 9] java.lang.reflect.Method.invoke
+  [10] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [11] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [12] java.util.concurrent.FutureTask.run
+  [13] java.util.concurrent.Executors$RunnableAdapter.call
+  [14] java.util.concurrent.FutureTask.run
+  [15] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [16] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [17] java.lang.Thread.run
+
+--- 30011 total (0.01%), 30 samples
+  [ 0] HeapRegionManager::par_iterate(HeapRegionClosure*, HeapRegionClaimer*, unsigned int) const
+  [ 1] G1PrepareEvacuationTask::work(unsigned int)
+  [ 2] GangWorker::loop()
+  [ 3] GangWorker::run()
+  [ 4] Thread::call_run()
+  [ 5] thread_native_entry(Thread*)
+  [ 6] start_thread
+
+--- 29998 total (0.01%), 30 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.getCurrentValues
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 2] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 3] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 4] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 5] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 6] jdk.internal.reflect.GeneratedMethodAccessor3.invoke
+  [ 7] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [ 8] java.lang.reflect.Method.invoke
+  [ 9] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [10] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [11] java.util.concurrent.FutureTask.run
+  [12] java.util.concurrent.Executors$RunnableAdapter.call
+  [13] java.util.concurrent.FutureTask.run
+  [14] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [15] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [16] java.lang.Thread.run
+
+--- 27980 total (0.01%), 28 samples
+  [ 0] __memset_avx2_erms
+  [ 1] G1FreeHumongousRegionClosure::do_heap_region(HeapRegion*)
+  [ 2] HeapRegionManager::iterate(HeapRegionClosure*) const
+  [ 3] G1PostEvacuateCollectionSetCleanupTask2::EagerlyReclaimHumongousObjectsTask::do_work(unsigned int)
+  [ 4] G1BatchedGangTask::work(unsigned int)
+  [ 5] GangWorker::loop()
+  [ 6] GangWorker::run()
+  [ 7] Thread::call_run()
+  [ 8] thread_native_entry(Thread*)
+  [ 9] start_thread
+
+--- 24900 total (0.01%), 25 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.calculatePositions
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 2] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 3] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 4] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 5] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 6] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [ 7] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [ 8] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [ 9] java.lang.reflect.Method.invoke
+  [10] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [11] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [12] java.util.concurrent.FutureTask.run
+  [13] java.util.concurrent.Executors$RunnableAdapter.call
+  [14] java.util.concurrent.FutureTask.run
+  [15] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [16] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [17] java.lang.Thread.run
+
+--- 23044 total (0.00%), 23 samples
+  [ 0] G1RemSet::prepare_region_for_scan(HeapRegion*)
+  [ 1] HeapRegionManager::par_iterate(HeapRegionClosure*, HeapRegionClaimer*, unsigned int) const
+  [ 2] G1PrepareEvacuationTask::work(unsigned int)
+  [ 3] GangWorker::loop()
+  [ 4] GangWorker::run()
+  [ 5] Thread::call_run()
+  [ 6] thread_native_entry(Thread*)
+  [ 7] start_thread
+
+--- 22009 total (0.00%), 22 samples
+  [ 0] G1RegionMarkStatsCache::reset()
+  [ 1] G1ConcurrentMark::pre_concurrent_start(GCCause::Cause)
+  [ 2] G1CollectedHeap::do_collection_pause_at_safepoint_helper(double)
+  [ 3] G1CollectedHeap::do_collection_pause_at_safepoint(double)
+  [ 4] VM_G1TryInitiateConcMark::doit()
+  [ 5] VM_Operation::evaluate()
+  [ 6] VMThread::inner_execute(VM_Operation*)
+  [ 7] VMThread::loop()
+  [ 8] VMThread::run()
+  [ 9] Thread::call_run()
+  [10] thread_native_entry(Thread*)
+  [11] start_thread
+
+--- 20993 total (0.00%), 21 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.calculatePositions
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 2] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 3] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 4] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 5] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 6] jdk.internal.reflect.GeneratedMethodAccessor3.invoke
+  [ 7] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [ 8] java.lang.reflect.Method.invoke
+  [ 9] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [10] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [11] java.util.concurrent.FutureTask.run
+  [12] java.util.concurrent.Executors$RunnableAdapter.call
+  [13] java.util.concurrent.FutureTask.run
+  [14] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [15] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [16] java.lang.Thread.run
+
+--- 20013 total (0.00%), 20 samples
+  [ 0] G1PrepareEvacuationTask::G1PrepareRegionsClosure::do_heap_region(HeapRegion*)
+  [ 1] HeapRegionManager::par_iterate(HeapRegionClosure*, HeapRegionClaimer*, unsigned int) const
+  [ 2] G1PrepareEvacuationTask::work(unsigned int)
+  [ 3] GangWorker::loop()
+  [ 4] GangWorker::run()
+  [ 5] Thread::call_run()
+  [ 6] thread_native_entry(Thread*)
+  [ 7] start_thread
+
+--- 18977 total (0.00%), 19 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 1] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 2] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 3] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 4] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [ 5] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [ 6] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [ 7] java.lang.reflect.Method.invoke
+  [ 8] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [ 9] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [10] java.util.concurrent.FutureTask.run
+  [11] java.util.concurrent.Executors$RunnableAdapter.call
+  [12] java.util.concurrent.FutureTask.run
+  [13] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [14] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [15] java.lang.Thread.run
+
+--- 18936 total (0.00%), 19 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 1] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 2] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 3] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 4] jdk.internal.reflect.GeneratedMethodAccessor3.invoke
+  [ 5] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [ 6] java.lang.reflect.Method.invoke
+  [ 7] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [ 8] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [ 9] java.util.concurrent.FutureTask.run
+  [10] java.util.concurrent.Executors$RunnableAdapter.call
+  [11] java.util.concurrent.FutureTask.run
+  [12] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [13] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [14] java.lang.Thread.run
+
+--- 17031 total (0.00%), 17 samples
+  [ 0] Interpreter
+  [ 1] [not_walkable_Java]
+
+--- 15956 total (0.00%), 16 samples
+  [ 0] NoteStartOfMarkHRClosure::do_heap_region(HeapRegion*)
+  [ 1] G1ConcurrentMark::pre_concurrent_start(GCCause::Cause)
+  [ 2] G1CollectedHeap::do_collection_pause_at_safepoint_helper(double)
+  [ 3] G1CollectedHeap::do_collection_pause_at_safepoint(double)
+  [ 4] VM_G1TryInitiateConcMark::doit()
+  [ 5] VM_Operation::evaluate()
+  [ 6] VMThread::inner_execute(VM_Operation*)
+  [ 7] VMThread::loop()
+  [ 8] VMThread::run()
+  [ 9] Thread::call_run()
+  [10] thread_native_entry(Thread*)
+  [11] start_thread
+
+--- 15044 total (0.00%), 15 samples
+  [ 0] _dl_update_slotinfo
+  [ 1] [unknown]
+
+--- 13997 total (0.00%), 14 samples
+  [ 0] G1FromCardCache::clear(unsigned int)
+  [ 1] HeapRegionRemSet::clear_locked(bool)
+  [ 2] HeapRegion::hr_clear(bool)
+  [ 3] G1CollectedHeap::free_humongous_region(HeapRegion*, FreeRegionList*)
+  [ 4] G1FreeHumongousRegionClosure::do_heap_region(HeapRegion*)
+  [ 5] HeapRegionManager::iterate(HeapRegionClosure*) const
+  [ 6] G1PostEvacuateCollectionSetCleanupTask2::EagerlyReclaimHumongousObjectsTask::do_work(unsigned int)
+  [ 7] G1BatchedGangTask::work(unsigned int)
+  [ 8] GangWorker::loop()
+  [ 9] GangWorker::run()
+  [10] Thread::call_run()
+  [11] thread_native_entry(Thread*)
+  [12] start_thread
+
+--- 12949 total (0.00%), 13 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.calculatePositions
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 2] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 3] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 4] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 5] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 6] jdk.internal.reflect.GeneratedMethodAccessor3.invoke
+  [ 7] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [ 8] java.lang.reflect.Method.invoke
+  [ 9] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [10] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [11] java.util.concurrent.FutureTask.run
+  [12] java.util.concurrent.Executors$RunnableAdapter.call
+  [13] java.util.concurrent.FutureTask.run
+  [14] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [15] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [16] java.lang.Thread.run
+
+--- 11963 total (0.00%), 12 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 2] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 3] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 4] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 5] jdk.internal.reflect.GeneratedMethodAccessor3.invoke
+  [ 6] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [ 7] java.lang.reflect.Method.invoke
+  [ 8] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [ 9] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [10] java.util.concurrent.FutureTask.run
+  [11] java.util.concurrent.Executors$RunnableAdapter.call
+  [12] java.util.concurrent.FutureTask.run
+  [13] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [14] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [15] java.lang.Thread.run
+
+--- 10008 total (0.00%), 10 samples
+  [ 0] G1FreeHumongousRegionClosure::do_heap_region(HeapRegion*)
+  [ 1] HeapRegionManager::iterate(HeapRegionClosure*) const
+  [ 2] G1PostEvacuateCollectionSetCleanupTask2::EagerlyReclaimHumongousObjectsTask::do_work(unsigned int)
+  [ 3] G1BatchedGangTask::work(unsigned int)
+  [ 4] GangWorker::loop()
+  [ 5] GangWorker::run()
+  [ 6] Thread::call_run()
+  [ 7] thread_native_entry(Thread*)
+  [ 8] start_thread
+
+--- 9984 total (0.00%), 10 samples
+  [ 0] void WeakProcessor::Task::work<G1STWIsAliveClosure, G1KeepAliveClosure>(unsigned int, G1STWIsAliveClosure*, G1KeepAliveClosure*)
+  [ 1] GangWorker::loop()
+  [ 2] GangWorker::run()
+  [ 3] Thread::call_run()
+  [ 4] thread_native_entry(Thread*)
+  [ 5] start_thread
+
+--- 9979 total (0.00%), 10 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 1] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 2] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 3] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 4] jdk.internal.reflect.GeneratedMethodAccessor3.invoke
+  [ 5] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [ 6] java.lang.reflect.Method.invoke
+  [ 7] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [ 8] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [ 9] java.util.concurrent.FutureTask.run
+  [10] java.util.concurrent.Executors$RunnableAdapter.call
+  [11] java.util.concurrent.FutureTask.run
+  [12] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [13] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [14] java.lang.Thread.run
+
+--- 7968 total (0.00%), 8 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.incrementCountForBatch
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 2] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 3] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 4] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 5] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 6] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [ 7] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [ 8] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [ 9] java.lang.reflect.Method.invoke
+  [10] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [11] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [12] java.util.concurrent.FutureTask.run
+  [13] java.util.concurrent.Executors$RunnableAdapter.call
+  [14] java.util.concurrent.FutureTask.run
+  [15] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [16] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [17] java.lang.Thread.run
+
+--- 7067 total (0.00%), 7 samples
+  [ 0] timerqueue_add_[k]
+  [ 1] enqueue_hrtimer_[k]
+  [ 2] __hrtimer_run_queues_[k]
+  [ 3] hrtimer_interrupt_[k]
+  [ 4] smp_apic_timer_interrupt_[k]
+  [ 5] apic_timer_interrupt_[k]
+  [ 6] com.lstec.jvm.hash.jug.CountAggregation_06.getCurrentValues
+  [ 7] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 8] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 9] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [10] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [11] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [12] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [13] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [14] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [15] java.lang.reflect.Method.invoke
+  [16] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [17] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [18] java.util.concurrent.FutureTask.run
+  [19] java.util.concurrent.Executors$RunnableAdapter.call
+  [20] java.util.concurrent.FutureTask.run
+  [21] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [22] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [23] java.lang.Thread.run
+
+--- 6999 total (0.00%), 7 samples
+  [ 0] G1BlockOffsetTablePart::zero_bottom_entry_raw()
+  [ 1] G1CollectedHeap::free_humongous_region(HeapRegion*, FreeRegionList*)
+  [ 2] G1FreeHumongousRegionClosure::do_heap_region(HeapRegion*)
+  [ 3] HeapRegionManager::iterate(HeapRegionClosure*) const
+  [ 4] G1PostEvacuateCollectionSetCleanupTask2::EagerlyReclaimHumongousObjectsTask::do_work(unsigned int)
+  [ 5] G1BatchedGangTask::work(unsigned int)
+  [ 6] GangWorker::loop()
+  [ 7] GangWorker::run()
+  [ 8] Thread::call_run()
+  [ 9] thread_native_entry(Thread*)
+  [10] start_thread
+
+--- 6998 total (0.00%), 7 samples
+  [ 0] G1ParScanThreadState::trim_queue_to_threshold(unsigned int)
+  [ 1] G1ParEvacuateFollowersClosure::do_void()
+  [ 2] G1EvacuateRegionsTask::evacuate_live_objects(G1ParScanThreadState*, unsigned int)
+  [ 3] G1EvacuateRegionsBaseTask::work(unsigned int)
+  [ 4] GangWorker::loop()
+  [ 5] GangWorker::run()
+  [ 6] Thread::call_run()
+  [ 7] thread_native_entry(Thread*)
+  [ 8] start_thread
+
+--- 6992 total (0.00%), 7 samples
+  [ 0] PeriodicTask::real_time_tick(int)
+  [ 1] WatcherThread::run()
+  [ 2] Thread::call_run()
+  [ 3] thread_native_entry(Thread*)
+  [ 4] start_thread
+
+--- 6015 total (0.00%), 6 samples
+  [ 0] pthread_cond_timedwait@@GLIBC_2.3.2
+  [ 1] [unknown]
+
+--- 6005 total (0.00%), 6 samples
+  [ 0] OtherRegionsTable::clear()
+  [ 1] HeapRegionRemSet::clear_locked(bool)
+  [ 2] HeapRegion::hr_clear(bool)
+  [ 3] G1CollectedHeap::free_humongous_region(HeapRegion*, FreeRegionList*)
+  [ 4] G1FreeHumongousRegionClosure::do_heap_region(HeapRegion*)
+  [ 5] HeapRegionManager::iterate(HeapRegionClosure*) const
+  [ 6] G1PostEvacuateCollectionSetCleanupTask2::EagerlyReclaimHumongousObjectsTask::do_work(unsigned int)
+  [ 7] G1BatchedGangTask::work(unsigned int)
+  [ 8] GangWorker::loop()
+  [ 9] GangWorker::run()
+  [10] Thread::call_run()
+  [11] thread_native_entry(Thread*)
+  [12] start_thread
+
+--- 6003 total (0.00%), 6 samples
+  [ 0] G1ScanHRForRegionClosure::scan_heap_roots(HeapRegion*)
+  [ 1] G1RemSet::scan_heap_roots(G1ParScanThreadState*, unsigned int, G1GCPhaseTimes::GCParPhases, G1GCPhaseTimes::GCParPhases, bool)
+  [ 2] G1EvacuateRegionsTask::scan_roots(G1ParScanThreadState*, unsigned int)
+  [ 3] G1EvacuateRegionsBaseTask::work(unsigned int)
+  [ 4] GangWorker::loop()
+  [ 5] GangWorker::run()
+  [ 6] Thread::call_run()
+  [ 7] thread_native_entry(Thread*)
+  [ 8] start_thread
+
+--- 5984 total (0.00%), 6 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.calculatePositions
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 2] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 3] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 4] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 5] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 6] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [ 7] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [ 8] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [ 9] java.lang.reflect.Method.invoke
+  [10] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [11] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [12] java.util.concurrent.FutureTask.run
+  [13] java.util.concurrent.Executors$RunnableAdapter.call
+  [14] java.util.concurrent.FutureTask.run
+  [15] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [16] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [17] java.lang.Thread.run
+
+--- 5982 total (0.00%), 6 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 2] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 3] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 4] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 5] jdk.internal.reflect.GeneratedMethodAccessor3.invoke
+  [ 6] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [ 7] java.lang.reflect.Method.invoke
+  [ 8] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [ 9] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [10] java.util.concurrent.FutureTask.run
+  [11] java.util.concurrent.Executors$RunnableAdapter.call
+  [12] java.util.concurrent.FutureTask.run
+  [13] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [14] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [15] java.lang.Thread.run
+
+--- 5977 total (0.00%), 6 samples
+  [ 0] G1FromCardCache::clear(unsigned int)
+  [ 1] G1RemSetTrackingPolicy::update_at_allocate(HeapRegion*)
+  [ 2] G1CollectedHeap::humongous_obj_allocate_initialize_regions(HeapRegion*, unsigned int, unsigned long)
+  [ 3] G1CollectedHeap::humongous_obj_allocate(unsigned long)
+  [ 4] G1CollectedHeap::attempt_allocation_humongous(unsigned long)
+  [ 5] G1CollectedHeap::mem_allocate(unsigned long, bool*)
+  [ 6] MemAllocator::mem_allocate(MemAllocator::Allocation&) const
+  [ 7] MemAllocator::allocate() const
+  [ 8] TypeArrayKlass::allocate_common(int, bool, JavaThread*)
+  [ 9] InterpreterRuntime::newarray(JavaThread*, BasicType, int)
+  [10] com.lstec.jvm.hash.jug.CountAggregation_06.<init>
+  [11] com.lstec.jvm.hash.jug.CountAggregation_06.<init>
+  [12] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [13] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [14] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [15] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [16] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [17] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [18] java.lang.reflect.Method.invoke
+  [19] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [20] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [21] java.util.concurrent.FutureTask.run
+  [22] java.util.concurrent.Executors$RunnableAdapter.call
+  [23] java.util.concurrent.FutureTask.run
+  [24] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [25] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [26] java.lang.Thread.run
+
+--- 5970 total (0.00%), 6 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.incrementCountForBatch
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 2] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 3] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 4] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 5] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 6] jdk.internal.reflect.GeneratedMethodAccessor3.invoke
+  [ 7] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [ 8] java.lang.reflect.Method.invoke
+  [ 9] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [10] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [11] java.util.concurrent.FutureTask.run
+  [12] java.util.concurrent.Executors$RunnableAdapter.call
+  [13] java.util.concurrent.FutureTask.run
+  [14] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [15] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [16] java.lang.Thread.run
+
+--- 4994 total (0.00%), 5 samples
+  [ 0] G1FromCardCache::clear(unsigned int)
+  [ 1] G1RemSetTrackingPolicy::update_at_allocate(HeapRegion*)
+  [ 2] G1CollectedHeap::humongous_obj_allocate_initialize_regions(HeapRegion*, unsigned int, unsigned long)
+  [ 3] G1CollectedHeap::humongous_obj_allocate(unsigned long)
+  [ 4] G1CollectedHeap::attempt_allocation_humongous(unsigned long)
+  [ 5] G1CollectedHeap::mem_allocate(unsigned long, bool*)
+  [ 6] MemAllocator::mem_allocate(MemAllocator::Allocation&) const
+  [ 7] MemAllocator::allocate() const
+  [ 8] TypeArrayKlass::allocate_common(int, bool, JavaThread*)
+  [ 9] InterpreterRuntime::newarray(JavaThread*, BasicType, int)
+  [10] com.lstec.jvm.hash.jug.CountAggregation_06.<init>
+  [11] com.lstec.jvm.hash.jug.CountAggregation_06.<init>
+  [12] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [13] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [14] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [15] jdk.internal.reflect.GeneratedMethodAccessor3.invoke
+  [16] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [17] java.lang.reflect.Method.invoke
+  [18] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [19] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [20] java.util.concurrent.FutureTask.run
+  [21] java.util.concurrent.Executors$RunnableAdapter.call
+  [22] java.util.concurrent.FutureTask.run
+  [23] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [24] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [25] java.lang.Thread.run
+
+--- 4991 total (0.00%), 5 samples
+  [ 0] G1ParScanThreadState::steal_and_trim_queue(GenericTaskQueueSet<OverflowTaskQueue<ScannerTask, (MEMFLAGS)5, 131072u>, (MEMFLAGS)5>*)
+  [ 1] G1ParEvacuateFollowersClosure::do_void()
+  [ 2] G1EvacuateRegionsTask::evacuate_live_objects(G1ParScanThreadState*, unsigned int)
+  [ 3] G1EvacuateRegionsBaseTask::work(unsigned int)
+  [ 4] GangWorker::loop()
+  [ 5] GangWorker::run()
+  [ 6] Thread::call_run()
+  [ 7] thread_native_entry(Thread*)
+  [ 8] start_thread
+
+--- 4989 total (0.00%), 5 samples
+  [ 0] G1CodeRootSet::clear()
+  [ 1] HeapRegionRemSet::clear_locked(bool)
+  [ 2] HeapRegion::hr_clear(bool)
+  [ 3] G1CollectedHeap::free_humongous_region(HeapRegion*, FreeRegionList*)
+  [ 4] G1FreeHumongousRegionClosure::do_heap_region(HeapRegion*)
+  [ 5] HeapRegionManager::iterate(HeapRegionClosure*) const
+  [ 6] G1PostEvacuateCollectionSetCleanupTask2::EagerlyReclaimHumongousObjectsTask::do_work(unsigned int)
+  [ 7] G1BatchedGangTask::work(unsigned int)
+  [ 8] GangWorker::loop()
+  [ 9] GangWorker::run()
+  [10] Thread::call_run()
+  [11] thread_native_entry(Thread*)
+  [12] start_thread
+
+--- 4988 total (0.00%), 5 samples
+  [ 0] MemRegion::intersection(MemRegion) const
+  [ 1] G1ClearBitMapTask::G1ClearBitmapHRClosure::do_heap_region(HeapRegion*)
+  [ 2] HeapRegionManager::par_iterate(HeapRegionClosure*, HeapRegionClaimer*, unsigned int) const
+  [ 3] G1ClearBitMapTask::work(unsigned int)
+  [ 4] GangWorker::loop()
+  [ 5] GangWorker::run()
+  [ 6] Thread::call_run()
+  [ 7] thread_native_entry(Thread*)
+  [ 8] start_thread
+
+--- 4984 total (0.00%), 5 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 2] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 3] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 4] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 5] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [ 6] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [ 7] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [ 8] java.lang.reflect.Method.invoke
+  [ 9] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [10] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [11] java.util.concurrent.FutureTask.run
+  [12] java.util.concurrent.Executors$RunnableAdapter.call
+  [13] java.util.concurrent.FutureTask.run
+  [14] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [15] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [16] java.lang.Thread.run
+
+--- 4059 total (0.00%), 4 samples
+  [ 0] rcu_sched_clock_irq_[k]
+  [ 1] update_process_times_[k]
+  [ 2] tick_sched_handle_[k]
+  [ 3] tick_sched_timer_[k]
+  [ 4] __hrtimer_run_queues_[k]
+  [ 5] hrtimer_interrupt_[k]
+  [ 6] smp_apic_timer_interrupt_[k]
+  [ 7] apic_timer_interrupt_[k]
+  [ 8] com.lstec.jvm.hash.jug.CountAggregation_06.getCurrentValues
+  [ 9] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [10] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [11] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [12] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [13] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [14] jdk.internal.reflect.GeneratedMethodAccessor3.invoke
+  [15] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [16] java.lang.reflect.Method.invoke
+  [17] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [18] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [19] java.util.concurrent.FutureTask.run
+  [20] java.util.concurrent.Executors$RunnableAdapter.call
+  [21] java.util.concurrent.FutureTask.run
+  [22] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [23] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [24] java.lang.Thread.run
+
+--- 4049 total (0.00%), 4 samples
+  [ 0] timekeeping_advance_[k]
+  [ 1] update_wall_time_[k]
+  [ 2] tick_do_update_jiffies64.part.0_[k]
+  [ 3] tick_sched_do_timer_[k]
+  [ 4] tick_sched_timer_[k]
+  [ 5] __hrtimer_run_queues_[k]
+  [ 6] hrtimer_interrupt_[k]
+  [ 7] smp_apic_timer_interrupt_[k]
+  [ 8] apic_timer_interrupt_[k]
+  [ 9] com.lstec.jvm.hash.jug.CountAggregation_06.getCurrentValues
+  [10] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [11] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [12] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [13] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [14] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [15] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [16] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [17] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [18] java.lang.reflect.Method.invoke
+  [19] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [20] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [21] java.util.concurrent.FutureTask.run
+  [22] java.util.concurrent.Executors$RunnableAdapter.call
+  [23] java.util.concurrent.FutureTask.run
+  [24] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [25] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [26] java.lang.Thread.run
+
+--- 4044 total (0.00%), 4 samples
+  [ 0] switch_fpu_return_[k]
+  [ 1] do_syscall_64_[k]
+  [ 2] entry_SYSCALL_64_after_hwframe_[k]
+  [ 3] pthread_cond_timedwait@@GLIBC_2.3.2
+  [ 4] [unknown]
+
+--- 4042 total (0.00%), 4 samples
+  [ 0] Mutex::lock_without_safepoint_check()
+  [ 1] PeriodicTask::real_time_tick(int)
+  [ 2] WatcherThread::run()
+  [ 3] Thread::call_run()
+  [ 4] thread_native_entry(Thread*)
+  [ 5] start_thread
+
+--- 4040 total (0.00%), 4 samples
+  [ 0] update_curr_[k]
+  [ 1] task_tick_fair_[k]
+  [ 2] scheduler_tick_[k]
+  [ 3] update_process_times_[k]
+  [ 4] tick_sched_handle_[k]
+  [ 5] tick_sched_timer_[k]
+  [ 6] __hrtimer_run_queues_[k]
+  [ 7] hrtimer_interrupt_[k]
+  [ 8] smp_apic_timer_interrupt_[k]
+  [ 9] apic_timer_interrupt_[k]
+  [10] com.lstec.jvm.hash.jug.CountAggregation_06.getCurrentValues
+  [11] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [12] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [13] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [14] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [15] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [16] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [17] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [18] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [19] java.lang.reflect.Method.invoke
+  [20] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [21] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [22] java.util.concurrent.FutureTask.run
+  [23] java.util.concurrent.Executors$RunnableAdapter.call
+  [24] java.util.concurrent.FutureTask.run
+  [25] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [26] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [27] java.lang.Thread.run
+
+--- 4038 total (0.00%), 4 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.<init>
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.<init>
+  [ 2] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 3] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 4] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 5] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [ 6] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [ 7] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [ 8] java.lang.reflect.Method.invoke
+  [ 9] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [10] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [11] java.util.concurrent.FutureTask.run
+  [12] java.util.concurrent.Executors$RunnableAdapter.call
+  [13] java.util.concurrent.FutureTask.run
+  [14] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [15] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [16] java.lang.Thread.run
+
+--- 4036 total (0.00%), 4 samples
+  [ 0] pvclock_gtod_notify?[kvm]_[k]
+  [ 1] raw_notifier_call_chain_[k]
+  [ 2] timekeeping_update_[k]
+  [ 3] timekeeping_advance_[k]
+  [ 4] update_wall_time_[k]
+  [ 5] tick_do_update_jiffies64.part.0_[k]
+  [ 6] tick_sched_do_timer_[k]
+  [ 7] tick_sched_timer_[k]
+  [ 8] __hrtimer_run_queues_[k]
+  [ 9] hrtimer_interrupt_[k]
+  [10] smp_apic_timer_interrupt_[k]
+  [11] apic_timer_interrupt_[k]
+  [12] com.lstec.jvm.hash.jug.CountAggregation_06.getCurrentValues
+  [13] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [14] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [15] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [16] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [17] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [18] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [19] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [20] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [21] java.lang.reflect.Method.invoke
+  [22] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [23] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [24] java.util.concurrent.FutureTask.run
+  [25] java.util.concurrent.Executors$RunnableAdapter.call
+  [26] java.util.concurrent.FutureTask.run
+  [27] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [28] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [29] java.lang.Thread.run
+
+--- 4029 total (0.00%), 4 samples
+  [ 0] Method::bcp_from(unsigned char*) const
+  [ 1] JavaThread::oops_do_frames(OopClosure*, CodeBlobClosure*) [clone .part.94]
+  [ 2] Thread::oops_do(OopClosure*, CodeBlobClosure*)
+  [ 3] Threads::possibly_parallel_oops_do(bool, OopClosure*, CodeBlobClosure*)
+  [ 4] G1RootProcessor::process_java_roots(G1RootClosures*, G1GCPhaseTimes*, unsigned int)
+  [ 5] G1RootProcessor::evacuate_roots(G1ParScanThreadState*, unsigned int)
+  [ 6] G1EvacuateRegionsTask::scan_roots(G1ParScanThreadState*, unsigned int)
+  [ 7] G1EvacuateRegionsBaseTask::work(unsigned int)
+  [ 8] GangWorker::loop()
+  [ 9] GangWorker::run()
+  [10] Thread::call_run()
+  [11] thread_native_entry(Thread*)
+  [12] start_thread
+
+--- 4017 total (0.00%), 4 samples
+  [ 0] HeapRegionManager::iterate(HeapRegionClosure*) const
+  [ 1] G1ConcurrentMark::pre_concurrent_start(GCCause::Cause)
+  [ 2] G1CollectedHeap::do_collection_pause_at_safepoint_helper(double)
+  [ 3] G1CollectedHeap::do_collection_pause_at_safepoint(double)
+  [ 4] VM_G1TryInitiateConcMark::doit()
+  [ 5] VM_Operation::evaluate()
+  [ 6] VMThread::inner_execute(VM_Operation*)
+  [ 7] VMThread::loop()
+  [ 8] VMThread::run()
+  [ 9] Thread::call_run()
+  [10] thread_native_entry(Thread*)
+  [11] start_thread
+
+--- 4016 total (0.00%), 4 samples
+  [ 0] apic_timer_interrupt_[k]
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.getCurrentValues
+  [ 2] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 3] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 4] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 5] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 6] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 7] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [ 8] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [ 9] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [10] java.lang.reflect.Method.invoke
+  [11] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [12] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [13] java.util.concurrent.FutureTask.run
+  [14] java.util.concurrent.Executors$RunnableAdapter.call
+  [15] java.util.concurrent.FutureTask.run
+  [16] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [17] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [18] java.lang.Thread.run
+
+--- 4014 total (0.00%), 4 samples
+  [ 0] __update_load_avg_se_[k]
+  [ 1] update_load_avg_[k]
+  [ 2] task_tick_fair_[k]
+  [ 3] scheduler_tick_[k]
+  [ 4] update_process_times_[k]
+  [ 5] tick_sched_handle_[k]
+  [ 6] tick_sched_timer_[k]
+  [ 7] __hrtimer_run_queues_[k]
+  [ 8] hrtimer_interrupt_[k]
+  [ 9] smp_apic_timer_interrupt_[k]
+  [10] apic_timer_interrupt_[k]
+  [11] com.lstec.jvm.hash.jug.CountAggregation_06.getCurrentValues
+  [12] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [13] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [14] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [15] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [16] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [17] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [18] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [19] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [20] java.lang.reflect.Method.invoke
+  [21] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [22] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [23] java.util.concurrent.FutureTask.run
+  [24] java.util.concurrent.Executors$RunnableAdapter.call
+  [25] java.util.concurrent.FutureTask.run
+  [26] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [27] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [28] java.lang.Thread.run
+
+--- 4012 total (0.00%), 4 samples
+  [ 0] InstanceKlass::find_method_index(Array<Method*> const*, Symbol const*, Symbol const*, Klass::OverpassLookupMode, Klass::StaticLookupMode, Klass::PrivateLookupMode) [clone .constprop.437]
+  [ 1] InstanceKlass::uncached_lookup_method(Symbol const*, Symbol const*, Klass::OverpassLookupMode, Klass::PrivateLookupMode) const
+  [ 2] LinkResolver::lookup_method_in_klasses(LinkInfo const&, bool, bool)
+  [ 3] LinkResolver::resolve_method(LinkInfo const&, Bytecodes::Code, JavaThread*)
+  [ 4] LinkResolver::linktime_resolve_virtual_method(LinkInfo const&, JavaThread*)
+  [ 5] LinkResolver::linktime_resolve_virtual_method_or_null(LinkInfo const&)
+  [ 6] ciEnv::get_method_by_index_impl(constantPoolHandle const&, int, Bytecodes::Code, ciInstanceKlass*)
+  [ 7] ciBytecodeStream::get_method(bool&, ciSignature**)
+  [ 8] GraphBuilder::invoke(Bytecodes::Code)
+  [ 9] GraphBuilder::iterate_bytecodes_for_block(int)
+  [10] GraphBuilder::iterate_all_blocks(bool)
+  [11] GraphBuilder::GraphBuilder(Compilation*, IRScope*)
+  [12] IR::IR(Compilation*, ciMethod*, int)
+  [13] Compilation::build_hir() [clone .part.97]
+  [14] Compilation::compile_java_method()
+  [15] Compilation::compile_method()
+  [16] Compilation::Compilation(AbstractCompiler*, ciEnv*, ciMethod*, int, BufferBlob*, bool, DirectiveSet*)
+  [17] Compiler::compile_method(ciEnv*, ciMethod*, int, bool, DirectiveSet*)
+  [18] CompileBroker::invoke_compiler_on_method(CompileTask*)
+  [19] CompileBroker::compiler_thread_loop()
+  [20] JavaThread::thread_main_inner()
+  [21] Thread::call_run()
+  [22] thread_native_entry(Thread*)
+  [23] start_thread
+
+--- 4000 total (0.00%), 4 samples
+  [ 0] HeapRegionManager::par_iterate(HeapRegionClosure*, HeapRegionClaimer*, unsigned int) const
+  [ 1] G1ClearBitMapTask::work(unsigned int)
+  [ 2] GangWorker::loop()
+  [ 3] GangWorker::run()
+  [ 4] Thread::call_run()
+  [ 5] thread_native_entry(Thread*)
+  [ 6] start_thread
+
+--- 3989 total (0.00%), 4 samples
+  [ 0] void OopOopIterateDispatch<G1ScanCardClosure>::Table::oop_oop_iterate<InstanceKlass, narrowOop>(G1ScanCardClosure*, oopDesc*, Klass*)
+  [ 1] G1ScanHRForRegionClosure::scan_heap_roots(HeapRegion*)
+  [ 2] G1RemSet::scan_heap_roots(G1ParScanThreadState*, unsigned int, G1GCPhaseTimes::GCParPhases, G1GCPhaseTimes::GCParPhases, bool)
+  [ 3] G1EvacuateRegionsTask::scan_roots(G1ParScanThreadState*, unsigned int)
+  [ 4] G1EvacuateRegionsBaseTask::work(unsigned int)
+  [ 5] GangWorker::loop()
+  [ 6] GangWorker::run()
+  [ 7] Thread::call_run()
+  [ 8] thread_native_entry(Thread*)
+  [ 9] start_thread
+
+--- 3978 total (0.00%), 4 samples
+  [ 0] StatSamplerTask::task()
+  [ 1] PeriodicTask::real_time_tick(int)
+  [ 2] WatcherThread::run()
+  [ 3] Thread::call_run()
+  [ 4] thread_native_entry(Thread*)
+  [ 5] start_thread
+
+--- 3978 total (0.00%), 4 samples
+  [ 0] __GI___clock_gettime
+
+--- 3975 total (0.00%), 4 samples
+  [ 0] G1ParCopyClosure<(G1Barrier)0, true>::do_oop(oopDesc**)
+  [ 1] frame::oops_interpreted_do(OopClosure*, RegisterMap const*, bool) const
+  [ 2] JavaThread::oops_do_frames(OopClosure*, CodeBlobClosure*) [clone .part.94]
+  [ 3] Thread::oops_do(OopClosure*, CodeBlobClosure*)
+  [ 4] Threads::possibly_parallel_oops_do(bool, OopClosure*, CodeBlobClosure*)
+  [ 5] G1RootProcessor::process_java_roots(G1RootClosures*, G1GCPhaseTimes*, unsigned int)
+  [ 6] G1RootProcessor::evacuate_roots(G1ParScanThreadState*, unsigned int)
+  [ 7] G1EvacuateRegionsTask::scan_roots(G1ParScanThreadState*, unsigned int)
+  [ 8] G1EvacuateRegionsBaseTask::work(unsigned int)
+  [ 9] GangWorker::loop()
+  [10] GangWorker::run()
+  [11] Thread::call_run()
+  [12] thread_native_entry(Thread*)
+  [13] start_thread
+
+--- 3061 total (0.00%), 3 samples
+  [ 0] __vfprintf_internal
+  [ 1] __vsnprintf_internal
+  [ 2] [unknown]
+
+--- 3054 total (0.00%), 3 samples
+  [ 0] newidle_balance_[k]
+  [ 1] pick_next_task_fair_[k]
+  [ 2] __schedule_[k]
+  [ 3] schedule_[k]
+  [ 4] futex_wait_queue_me_[k]
+  [ 5] futex_wait_[k]
+  [ 6] do_futex_[k]
+  [ 7] __x64_sys_futex_[k]
+  [ 8] do_syscall_64_[k]
+  [ 9] entry_SYSCALL_64_after_hwframe_[k]
+  [10] pthread_cond_timedwait@@GLIBC_2.3.2
+  [11] [unknown]
+
+--- 3054 total (0.00%), 3 samples
+  [ 0] cpuacct_account_field_[k]
+  [ 1] account_user_time_[k]
+  [ 2] account_process_tick_[k]
+  [ 3] update_process_times_[k]
+  [ 4] tick_sched_handle_[k]
+  [ 5] tick_sched_timer_[k]
+  [ 6] __hrtimer_run_queues_[k]
+  [ 7] hrtimer_interrupt_[k]
+  [ 8] smp_apic_timer_interrupt_[k]
+  [ 9] apic_timer_interrupt_[k]
+  [10] com.lstec.jvm.hash.jug.CountAggregation_06.getCurrentValues
+  [11] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [12] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [13] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [14] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [15] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [16] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [17] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [18] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [19] java.lang.reflect.Method.invoke
+  [20] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [21] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [22] java.util.concurrent.FutureTask.run
+  [23] java.util.concurrent.Executors$RunnableAdapter.call
+  [24] java.util.concurrent.FutureTask.run
+  [25] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [26] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [27] java.lang.Thread.run
+
+--- 3041 total (0.00%), 3 samples
+  [ 0] update_sd_lb_stats_[k]
+  [ 1] find_busiest_group_[k]
+  [ 2] load_balance_[k]
+  [ 3] newidle_balance_[k]
+  [ 4] pick_next_task_fair_[k]
+  [ 5] __schedule_[k]
+  [ 6] schedule_[k]
+  [ 7] futex_wait_queue_me_[k]
+  [ 8] futex_wait_[k]
+  [ 9] do_futex_[k]
+  [10] __x64_sys_futex_[k]
+  [11] do_syscall_64_[k]
+  [12] entry_SYSCALL_64_after_hwframe_[k]
+  [13] do_futex_wait.constprop.0
+  [14] [unknown]
+  [15] [unknown]
+
+--- 3035 total (0.00%), 3 samples
+  [ 0] __cgroup_account_cputime_field_[k]
+  [ 1] account_user_time_[k]
+  [ 2] account_process_tick_[k]
+  [ 3] update_process_times_[k]
+  [ 4] tick_sched_handle_[k]
+  [ 5] tick_sched_timer_[k]
+  [ 6] __hrtimer_run_queues_[k]
+  [ 7] hrtimer_interrupt_[k]
+  [ 8] smp_apic_timer_interrupt_[k]
+  [ 9] apic_timer_interrupt_[k]
+  [10] com.lstec.jvm.hash.jug.CountAggregation_06.getCurrentValues
+  [11] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [12] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [13] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [14] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [15] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [16] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [17] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [18] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [19] java.lang.reflect.Method.invoke
+  [20] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [21] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [22] java.util.concurrent.FutureTask.run
+  [23] java.util.concurrent.Executors$RunnableAdapter.call
+  [24] java.util.concurrent.FutureTask.run
+  [25] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [26] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [27] java.lang.Thread.run
+
+--- 3032 total (0.00%), 3 samples
+  [ 0] update_blocked_averages_[k]
+  [ 1] newidle_balance_[k]
+  [ 2] pick_next_task_fair_[k]
+  [ 3] __schedule_[k]
+  [ 4] schedule_[k]
+  [ 5] futex_wait_queue_me_[k]
+  [ 6] futex_wait_[k]
+  [ 7] do_futex_[k]
+  [ 8] __x64_sys_futex_[k]
+  [ 9] do_syscall_64_[k]
+  [10] entry_SYSCALL_64_after_hwframe_[k]
+  [11] do_futex_wait.constprop.0
+  [12] [unknown]
+
+--- 3031 total (0.00%), 3 samples
+  [ 0] _raw_spin_lock_[k]
+  [ 1] do_futex_[k]
+  [ 2] __x64_sys_futex_[k]
+  [ 3] do_syscall_64_[k]
+  [ 4] entry_SYSCALL_64_after_hwframe_[k]
+  [ 5] pthread_cond_timedwait@@GLIBC_2.3.2
+  [ 6] [unknown]
+
+--- 3031 total (0.00%), 3 samples
+  [ 0] update_vsyscall_[k]
+  [ 1] timekeeping_advance_[k]
+  [ 2] update_wall_time_[k]
+  [ 3] tick_do_update_jiffies64.part.0_[k]
+  [ 4] tick_sched_do_timer_[k]
+  [ 5] tick_sched_timer_[k]
+  [ 6] __hrtimer_run_queues_[k]
+  [ 7] hrtimer_interrupt_[k]
+  [ 8] smp_apic_timer_interrupt_[k]
+  [ 9] apic_timer_interrupt_[k]
+  [10] com.lstec.jvm.hash.jug.CountAggregation_06.getCurrentValues
+  [11] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [12] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [13] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [14] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [15] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [16] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [17] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [18] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [19] java.lang.reflect.Method.invoke
+  [20] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [21] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [22] java.util.concurrent.FutureTask.run
+  [23] java.util.concurrent.Executors$RunnableAdapter.call
+  [24] java.util.concurrent.FutureTask.run
+  [25] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [26] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [27] java.lang.Thread.run
+
+--- 3030 total (0.00%), 3 samples
+  [ 0] get_futex_key_[k]
+  [ 1] futex_wake_[k]
+  [ 2] do_futex_[k]
+  [ 3] __x64_sys_futex_[k]
+  [ 4] do_syscall_64_[k]
+  [ 5] entry_SYSCALL_64_after_hwframe_[k]
+  [ 6] __pthread_mutex_unlock
+  [ 7] WatcherThread::run()
+  [ 8] Thread::call_run()
+  [ 9] thread_native_entry(Thread*)
+  [10] start_thread
+
+--- 3010 total (0.00%), 3 samples
+  [ 0] entry_SYSCALL_64_[k]
+  [ 1] pthread_cond_timedwait@@GLIBC_2.3.2
+  [ 2] [unknown]
+
+--- 3007 total (0.00%), 3 samples
+  [ 0] __GI___printf_fp_l
+  [ 1] __vfprintf_internal
+  [ 2] __vsnprintf_internal
+  [ 3] [unknown]
+
+--- 3005 total (0.00%), 3 samples
+  [ 0] G1ParScanThreadState::trim_queue_to_threshold(unsigned int)
+  [ 1] G1ParScanThreadState::steal_and_trim_queue(GenericTaskQueueSet<OverflowTaskQueue<ScannerTask, (MEMFLAGS)5, 131072u>, (MEMFLAGS)5>*)
+  [ 2] G1ParEvacuateFollowersClosure::do_void()
+  [ 3] G1EvacuateRegionsTask::evacuate_live_objects(G1ParScanThreadState*, unsigned int)
+  [ 4] G1EvacuateRegionsBaseTask::work(unsigned int)
+  [ 5] GangWorker::loop()
+  [ 6] GangWorker::run()
+  [ 7] Thread::call_run()
+  [ 8] thread_native_entry(Thread*)
+  [ 9] start_thread
+
+--- 3005 total (0.00%), 3 samples
+  [ 0] try_to_wake_up_[k]
+  [ 1] wake_up_q_[k]
+  [ 2] futex_wake_[k]
+  [ 3] do_futex_[k]
+  [ 4] __x64_sys_futex_[k]
+  [ 5] do_syscall_64_[k]
+  [ 6] entry_SYSCALL_64_after_hwframe_[k]
+  [ 7] sem_post@@GLIBC_2.2.5
+  [ 8] WorkGang::run_task(AbstractGangTask*, unsigned int, bool)
+  [ 9] SafepointSynchronize::do_cleanup_tasks()
+  [10] SafepointSynchronize::begin()
+  [11] VMThread::inner_execute(VM_Operation*)
+  [12] VMThread::loop()
+  [13] VMThread::run()
+  [14] Thread::call_run()
+  [15] thread_native_entry(Thread*)
+  [16] start_thread
+
+--- 3004 total (0.00%), 3 samples
+  [ 0] LinearScan::number_instructions()
+  [ 1] LinearScan::do_linear_scan()
+  [ 2] Compilation::emit_lir()
+  [ 3] Compilation::compile_java_method()
+  [ 4] Compilation::compile_method()
+  [ 5] Compilation::Compilation(AbstractCompiler*, ciEnv*, ciMethod*, int, BufferBlob*, bool, DirectiveSet*)
+  [ 6] Compiler::compile_method(ciEnv*, ciMethod*, int, bool, DirectiveSet*)
+  [ 7] CompileBroker::invoke_compiler_on_method(CompileTask*)
+  [ 8] CompileBroker::compiler_thread_loop()
+  [ 9] JavaThread::thread_main_inner()
+  [10] Thread::call_run()
+  [11] thread_native_entry(Thread*)
+  [12] start_thread
+
+--- 3001 total (0.00%), 3 samples
+  [ 0] MarkBitMap::do_clear(MemRegion, bool)
+  [ 1] G1ClearBitMapTask::G1ClearBitmapHRClosure::do_heap_region(HeapRegion*)
+  [ 2] HeapRegionManager::par_iterate(HeapRegionClosure*, HeapRegionClaimer*, unsigned int) const
+  [ 3] G1ClearBitMapTask::work(unsigned int)
+  [ 4] GangWorker::loop()
+  [ 5] GangWorker::run()
+  [ 6] Thread::call_run()
+  [ 7] thread_native_entry(Thread*)
+  [ 8] start_thread
+
+--- 2998 total (0.00%), 3 samples
+  [ 0] ClassLoaderData::ChunkedHandleList::oops_do(OopClosure*)
+  [ 1] G1CLDScanClosure::do_cld(ClassLoaderData*)
+  [ 2] ClassLoaderDataGraph::roots_cld_do(CLDClosure*, CLDClosure*)
+  [ 3] G1RootProcessor::process_java_roots(G1RootClosures*, G1GCPhaseTimes*, unsigned int)
+  [ 4] G1RootProcessor::evacuate_roots(G1ParScanThreadState*, unsigned int)
+  [ 5] G1EvacuateRegionsTask::scan_roots(G1ParScanThreadState*, unsigned int)
+  [ 6] G1EvacuateRegionsBaseTask::work(unsigned int)
+  [ 7] GangWorker::loop()
+  [ 8] GangWorker::run()
+  [ 9] Thread::call_run()
+  [10] thread_native_entry(Thread*)
+  [11] start_thread
+
+--- 2998 total (0.00%), 3 samples
+  [ 0] __memset_avx2_erms
+  [ 1] G1BlockOffsetTablePart::set_for_starts_humongous(HeapWordImpl**, unsigned long)
+  [ 2] G1CollectedHeap::humongous_obj_allocate_initialize_regions(HeapRegion*, unsigned int, unsigned long)
+  [ 3] G1CollectedHeap::humongous_obj_allocate(unsigned long)
+  [ 4] G1CollectedHeap::attempt_allocation_humongous(unsigned long)
+  [ 5] G1CollectedHeap::mem_allocate(unsigned long, bool*)
+  [ 6] MemAllocator::mem_allocate(MemAllocator::Allocation&) const
+  [ 7] MemAllocator::allocate() const
+  [ 8] TypeArrayKlass::allocate_common(int, bool, JavaThread*)
+  [ 9] InterpreterRuntime::newarray(JavaThread*, BasicType, int)
+  [10] com.lstec.jvm.hash.jug.CountAggregation_06.<init>
+  [11] com.lstec.jvm.hash.jug.CountAggregation_06.<init>
+  [12] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [13] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [14] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [15] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [16] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [17] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [18] java.lang.reflect.Method.invoke
+  [19] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [20] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [21] java.util.concurrent.FutureTask.run
+  [22] java.util.concurrent.Executors$RunnableAdapter.call
+  [23] java.util.concurrent.FutureTask.run
+  [24] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [25] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [26] java.lang.Thread.run
+
+--- 2997 total (0.00%), 3 samples
+  [ 0] ClassLoaderDataGraph::roots_cld_do(CLDClosure*, CLDClosure*)
+  [ 1] G1RootProcessor::process_java_roots(G1RootClosures*, G1GCPhaseTimes*, unsigned int)
+  [ 2] G1RootProcessor::evacuate_roots(G1ParScanThreadState*, unsigned int)
+  [ 3] G1EvacuateRegionsTask::scan_roots(G1ParScanThreadState*, unsigned int)
+  [ 4] G1EvacuateRegionsBaseTask::work(unsigned int)
+  [ 5] GangWorker::loop()
+  [ 6] GangWorker::run()
+  [ 7] Thread::call_run()
+  [ 8] thread_native_entry(Thread*)
+  [ 9] start_thread
+
+--- 2996 total (0.00%), 3 samples
+  [ 0] G1GCPhaseTimes::reset()
+  [ 1] G1CollectedHeap::do_collection_pause_at_safepoint_helper(double)
+  [ 2] G1CollectedHeap::do_collection_pause_at_safepoint(double)
+  [ 3] VM_G1TryInitiateConcMark::doit()
+  [ 4] VM_Operation::evaluate()
+  [ 5] VMThread::inner_execute(VM_Operation*)
+  [ 6] VMThread::loop()
+  [ 7] VMThread::run()
+  [ 8] Thread::call_run()
+  [ 9] thread_native_entry(Thread*)
+  [10] start_thread
+
+--- 2995 total (0.00%), 3 samples
+  [ 0] __x64_sys_futex_[k]
+  [ 1] do_syscall_64_[k]
+  [ 2] entry_SYSCALL_64_after_hwframe_[k]
+  [ 3] pthread_cond_timedwait@@GLIBC_2.3.2
+  [ 4] [unknown]
+
+--- 2992 total (0.00%), 3 samples
+  [ 0] G1ParCopyClosure<(G1Barrier)1, false>::do_oop(oopDesc**)
+  [ 1] ClassLoaderData::ChunkedHandleList::oops_do(OopClosure*)
+  [ 2] G1CLDScanClosure::do_cld(ClassLoaderData*)
+  [ 3] ClassLoaderDataGraph::roots_cld_do(CLDClosure*, CLDClosure*)
+  [ 4] G1RootProcessor::process_java_roots(G1RootClosures*, G1GCPhaseTimes*, unsigned int)
+  [ 5] G1RootProcessor::evacuate_roots(G1ParScanThreadState*, unsigned int)
+  [ 6] G1EvacuateRegionsTask::scan_roots(G1ParScanThreadState*, unsigned int)
+  [ 7] G1EvacuateRegionsBaseTask::work(unsigned int)
+  [ 8] GangWorker::loop()
+  [ 9] GangWorker::run()
+  [10] Thread::call_run()
+  [11] thread_native_entry(Thread*)
+  [12] start_thread
+
+--- 2989 total (0.00%), 3 samples
+  [ 0] void G1ScanCardClosure::do_oop_work<narrowOop>(narrowOop*)
+  [ 1] G1ScanHRForRegionClosure::scan_heap_roots(HeapRegion*)
+  [ 2] G1RemSet::scan_heap_roots(G1ParScanThreadState*, unsigned int, G1GCPhaseTimes::GCParPhases, G1GCPhaseTimes::GCParPhases, bool)
+  [ 3] G1EvacuateRegionsTask::scan_roots(G1ParScanThreadState*, unsigned int)
+  [ 4] G1EvacuateRegionsBaseTask::work(unsigned int)
+  [ 5] GangWorker::loop()
+  [ 6] GangWorker::run()
+  [ 7] Thread::call_run()
+  [ 8] thread_native_entry(Thread*)
+  [ 9] start_thread
+
+--- 2988 total (0.00%), 3 samples
+  [ 0] WatcherThread::sleep() const
+  [ 1] WatcherThread::run()
+  [ 2] Thread::call_run()
+  [ 3] thread_native_entry(Thread*)
+  [ 4] start_thread
+
+--- 2987 total (0.00%), 3 samples
+  [ 0] ThreadLocalAllocStats::publish()
+  [ 1] CollectedHeap::ensure_parsability(bool)
+  [ 2] G1CollectedHeap::gc_prologue(bool)
+  [ 3] G1CollectedHeap::do_collection_pause_at_safepoint_helper(double)
+  [ 4] G1CollectedHeap::do_collection_pause_at_safepoint(double)
+  [ 5] VM_G1TryInitiateConcMark::doit()
+  [ 6] VM_Operation::evaluate()
+  [ 7] VMThread::inner_execute(VM_Operation*)
+  [ 8] VMThread::loop()
+  [ 9] VMThread::run()
+  [10] Thread::call_run()
+  [11] thread_native_entry(Thread*)
+  [12] start_thread
+
+--- 2984 total (0.00%), 3 samples
+  [ 0] _int_malloc
+
+--- 2982 total (0.00%), 3 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.incrementCountForBatch
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 2] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 3] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 4] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 5] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 6] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [ 7] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [ 8] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [ 9] java.lang.reflect.Method.invoke
+  [10] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [11] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [12] java.util.concurrent.FutureTask.run
+  [13] java.util.concurrent.Executors$RunnableAdapter.call
+  [14] java.util.concurrent.FutureTask.run
+  [15] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [16] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [17] java.lang.Thread.run
+
+--- 2973 total (0.00%), 3 samples
+  [ 0] G1CollectedHeap::do_collection_pause_at_safepoint_helper(double)
+  [ 1] G1CollectedHeap::do_collection_pause_at_safepoint(double)
+  [ 2] VM_G1TryInitiateConcMark::doit()
+  [ 3] VM_Operation::evaluate()
+  [ 4] VMThread::inner_execute(VM_Operation*)
+  [ 5] VMThread::loop()
+  [ 6] VMThread::run()
+  [ 7] Thread::call_run()
+  [ 8] thread_native_entry(Thread*)
+  [ 9] start_thread
+
+--- 2970 total (0.00%), 3 samples
+  [ 0] os::PlatformMonitor::wait(long)
+  [ 1] Monitor::wait_without_safepoint_check(long)
+  [ 2] WatcherThread::sleep() const
+  [ 3] WatcherThread::run()
+  [ 4] Thread::call_run()
+  [ 5] thread_native_entry(Thread*)
+  [ 6] start_thread
+
+--- 2969 total (0.00%), 3 samples
+  [ 0] org.openjdk.jmh.runner.BenchmarkHandler.runIteration
+  [ 1] org.openjdk.jmh.runner.BaseRunner.runBenchmark
+  [ 2] org.openjdk.jmh.runner.BaseRunner.runBenchmark
+  [ 3] org.openjdk.jmh.runner.BaseRunner.doSingle
+  [ 4] org.openjdk.jmh.runner.BaseRunner.runBenchmarksForked
+  [ 5] org.openjdk.jmh.runner.ForkedRunner.run
+  [ 6] org.openjdk.jmh.runner.ForkedMain.main
+
+--- 2968 total (0.00%), 3 samples
+  [ 0] G1RebuildFreeListTask::work(unsigned int)
+  [ 1] GangWorker::loop()
+  [ 2] GangWorker::run()
+  [ 3] Thread::call_run()
+  [ 4] thread_native_entry(Thread*)
+  [ 5] start_thread
+
+--- 2956 total (0.00%), 3 samples
+  [ 0] __pthread_disable_asynccancel
+  [ 1] [unknown]
+
+--- 2049 total (0.00%), 2 samples
+  [ 0] java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos
+  [ 1] java.util.concurrent.LinkedBlockingQueue.poll
+  [ 2] java.util.concurrent.ExecutorCompletionService.poll
+  [ 3] org.openjdk.jmh.runner.BenchmarkHandler.runIteration
+  [ 4] org.openjdk.jmh.runner.BaseRunner.runBenchmark
+  [ 5] org.openjdk.jmh.runner.BaseRunner.runBenchmark
+  [ 6] org.openjdk.jmh.runner.BaseRunner.doSingle
+  [ 7] org.openjdk.jmh.runner.BaseRunner.runBenchmarksForked
+  [ 8] org.openjdk.jmh.runner.ForkedRunner.run
+  [ 9] org.openjdk.jmh.runner.ForkedMain.main
+
+--- 2046 total (0.00%), 2 samples
+  [ 0] java.util.concurrent.locks.LockSupport.setBlocker
+  [ 1] java.util.concurrent.locks.LockSupport.parkNanos
+  [ 2] java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos
+  [ 3] java.util.concurrent.LinkedBlockingQueue.poll
+  [ 4] java.util.concurrent.ExecutorCompletionService.poll
+  [ 5] org.openjdk.jmh.runner.BenchmarkHandler.runIteration
+  [ 6] org.openjdk.jmh.runner.BaseRunner.runBenchmark
+  [ 7] org.openjdk.jmh.runner.BaseRunner.runBenchmark
+  [ 8] org.openjdk.jmh.runner.BaseRunner.doSingle
+  [ 9] org.openjdk.jmh.runner.BaseRunner.runBenchmarksForked
+  [10] org.openjdk.jmh.runner.ForkedRunner.run
+  [11] org.openjdk.jmh.runner.ForkedMain.main
+
+--- 2035 total (0.00%), 2 samples
+  [ 0] __hrtimer_run_queues_[k]
+  [ 1] hrtimer_interrupt_[k]
+  [ 2] smp_apic_timer_interrupt_[k]
+  [ 3] apic_timer_interrupt_[k]
+  [ 4] com.lstec.jvm.hash.jug.CountAggregation_06.incrementCount
+  [ 5] com.lstec.jvm.hash.jug.CountAggregation_06.incrementCountForBatch
+  [ 6] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 7] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 8] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 9] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [10] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [11] jdk.internal.reflect.GeneratedMethodAccessor3.invoke
+  [12] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [13] java.lang.reflect.Method.invoke
+  [14] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [15] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [16] java.util.concurrent.FutureTask.run
+  [17] java.util.concurrent.Executors$RunnableAdapter.call
+  [18] java.util.concurrent.FutureTask.run
+  [19] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [20] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [21] java.lang.Thread.run
+
+--- 2032 total (0.00%), 2 samples
+  [ 0] ThreadSafepointState::examine_state_of_thread(unsigned long)
+  [ 1] SafepointSynchronize::begin()
+  [ 2] VMThread::inner_execute(VM_Operation*)
+  [ 3] VMThread::loop()
+  [ 4] VMThread::run()
+  [ 5] Thread::call_run()
+  [ 6] thread_native_entry(Thread*)
+  [ 7] start_thread
+
+--- 2032 total (0.00%), 2 samples
+  [ 0] notifier_call_chain_[k]
+  [ 1] raw_notifier_call_chain_[k]
+  [ 2] timekeeping_update_[k]
+  [ 3] timekeeping_advance_[k]
+  [ 4] update_wall_time_[k]
+  [ 5] tick_do_update_jiffies64.part.0_[k]
+  [ 6] tick_sched_do_timer_[k]
+  [ 7] tick_sched_timer_[k]
+  [ 8] __hrtimer_run_queues_[k]
+  [ 9] hrtimer_interrupt_[k]
+  [10] smp_apic_timer_interrupt_[k]
+  [11] apic_timer_interrupt_[k]
+  [12] com.lstec.jvm.hash.jug.CountAggregation_06.getCurrentValues
+  [13] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [14] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [15] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [16] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [17] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [18] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [19] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [20] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [21] java.lang.reflect.Method.invoke
+  [22] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [23] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [24] java.util.concurrent.FutureTask.run
+  [25] java.util.concurrent.Executors$RunnableAdapter.call
+  [26] java.util.concurrent.FutureTask.run
+  [27] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [28] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [29] java.lang.Thread.run
+
+--- 2032 total (0.00%), 2 samples
+  [ 0] tick_sched_do_timer_[k]
+  [ 1] tick_sched_timer_[k]
+  [ 2] __hrtimer_run_queues_[k]
+  [ 3] hrtimer_interrupt_[k]
+  [ 4] smp_apic_timer_interrupt_[k]
+  [ 5] apic_timer_interrupt_[k]
+  [ 6] com.lstec.jvm.hash.jug.CountAggregation_06.getCurrentValues
+  [ 7] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 8] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 9] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [10] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [11] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [12] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [13] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [14] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [15] java.lang.reflect.Method.invoke
+  [16] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [17] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [18] java.util.concurrent.FutureTask.run
+  [19] java.util.concurrent.Executors$RunnableAdapter.call
+  [20] java.util.concurrent.FutureTask.run
+  [21] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [22] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [23] java.lang.Thread.run
+
+--- 2032 total (0.00%), 2 samples
+  [ 0] account_user_time_[k]
+  [ 1] account_process_tick_[k]
+  [ 2] update_process_times_[k]
+  [ 3] tick_sched_handle_[k]
+  [ 4] tick_sched_timer_[k]
+  [ 5] __hrtimer_run_queues_[k]
+  [ 6] hrtimer_interrupt_[k]
+  [ 7] smp_apic_timer_interrupt_[k]
+  [ 8] apic_timer_interrupt_[k]
+  [ 9] com.lstec.jvm.hash.jug.CountAggregation_06.incrementCount
+  [10] com.lstec.jvm.hash.jug.CountAggregation_06.incrementCountForBatch
+  [11] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [12] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [13] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [14] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [15] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [16] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [17] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [18] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [19] java.lang.reflect.Method.invoke
+  [20] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [21] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [22] java.util.concurrent.FutureTask.run
+  [23] java.util.concurrent.Executors$RunnableAdapter.call
+  [24] java.util.concurrent.FutureTask.run
+  [25] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [26] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [27] java.lang.Thread.run
+
+--- 2030 total (0.00%), 2 samples
+  [ 0] __strlen_avx2
+  [ 1] __vsnprintf_internal
+  [ 2] [unknown]
+
+--- 2028 total (0.00%), 2 samples
+  [ 0] update_curr_[k]
+  [ 1] task_tick_fair_[k]
+  [ 2] scheduler_tick_[k]
+  [ 3] update_process_times_[k]
+  [ 4] tick_sched_handle_[k]
+  [ 5] tick_sched_timer_[k]
+  [ 6] __hrtimer_run_queues_[k]
+  [ 7] hrtimer_interrupt_[k]
+  [ 8] smp_apic_timer_interrupt_[k]
+  [ 9] apic_timer_interrupt_[k]
+  [10] com.lstec.jvm.hash.jug.CountAggregation_06.getCurrentValues
+  [11] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [12] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [13] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [14] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [15] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [16] jdk.internal.reflect.GeneratedMethodAccessor3.invoke
+  [17] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [18] java.lang.reflect.Method.invoke
+  [19] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [20] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [21] java.util.concurrent.FutureTask.run
+  [22] java.util.concurrent.Executors$RunnableAdapter.call
+  [23] java.util.concurrent.FutureTask.run
+  [24] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [25] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [26] java.lang.Thread.run
+
+--- 2025 total (0.00%), 2 samples
+  [ 0] do_syscall_64_[k]
+  [ 1] entry_SYSCALL_64_after_hwframe_[k]
+  [ 2] pthread_cond_timedwait@@GLIBC_2.3.2
+  [ 3] [unknown]
+
+--- 2024 total (0.00%), 2 samples
+  [ 0] perf_event_task_tick_[k]
+  [ 1] scheduler_tick_[k]
+  [ 2] update_process_times_[k]
+  [ 3] tick_sched_handle_[k]
+  [ 4] tick_sched_timer_[k]
+  [ 5] __hrtimer_run_queues_[k]
+  [ 6] hrtimer_interrupt_[k]
+  [ 7] smp_apic_timer_interrupt_[k]
+  [ 8] apic_timer_interrupt_[k]
+  [ 9] com.lstec.jvm.hash.jug.CountAggregation_06.getCurrentValues
+  [10] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [11] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [12] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [13] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [14] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [15] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [16] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [17] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [18] java.lang.reflect.Method.invoke
+  [19] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [20] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [21] java.util.concurrent.FutureTask.run
+  [22] java.util.concurrent.Executors$RunnableAdapter.call
+  [23] java.util.concurrent.FutureTask.run
+  [24] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [25] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [26] java.lang.Thread.run
+
+--- 2022 total (0.00%), 2 samples
+  [ 0] org.openjdk.jmh.runner.InfraControlL2.announceWarmdownReady
+  [ 1] org.openjdk.jmh.runner.InfraControl.announceWarmdownReady
+  [ 2] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 3] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [ 4] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [ 5] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [ 6] java.lang.reflect.Method.invoke
+  [ 7] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [ 8] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [ 9] java.util.concurrent.FutureTask.run
+  [10] java.util.concurrent.Executors$RunnableAdapter.call
+  [11] java.util.concurrent.FutureTask.run
+  [12] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [13] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [14] java.lang.Thread.run
+
+--- 2021 total (0.00%), 2 samples
+  [ 0] _raw_spin_lock_irqsave_[k]
+  [ 1] hrtimer_interrupt_[k]
+  [ 2] smp_apic_timer_interrupt_[k]
+  [ 3] apic_timer_interrupt_[k]
+  [ 4] com.lstec.jvm.hash.jug.CountAggregation_06.getCurrentValues
+  [ 5] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 6] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 7] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 8] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 9] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [10] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [11] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [12] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [13] java.lang.reflect.Method.invoke
+  [14] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [15] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [16] java.util.concurrent.FutureTask.run
+  [17] java.util.concurrent.Executors$RunnableAdapter.call
+  [18] java.util.concurrent.FutureTask.run
+  [19] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [20] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [21] java.lang.Thread.run
+
+--- 2020 total (0.00%), 2 samples
+  [ 0] account_user_time_[k]
+  [ 1] account_process_tick_[k]
+  [ 2] update_process_times_[k]
+  [ 3] tick_sched_handle_[k]
+  [ 4] tick_sched_timer_[k]
+  [ 5] __hrtimer_run_queues_[k]
+  [ 6] hrtimer_interrupt_[k]
+  [ 7] smp_apic_timer_interrupt_[k]
+  [ 8] apic_timer_interrupt_[k]
+  [ 9] com.lstec.jvm.hash.jug.CountAggregation_06.getCurrentValues
+  [10] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [11] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [12] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [13] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [14] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [15] jdk.internal.reflect.GeneratedMethodAccessor3.invoke
+  [16] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [17] java.lang.reflect.Method.invoke
+  [18] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [19] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [20] java.util.concurrent.FutureTask.run
+  [21] java.util.concurrent.Executors$RunnableAdapter.call
+  [22] java.util.concurrent.FutureTask.run
+  [23] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [24] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [25] java.lang.Thread.run
+
+--- 2020 total (0.00%), 2 samples
+  [ 0] trigger_load_balance_[k]
+  [ 1] scheduler_tick_[k]
+  [ 2] update_process_times_[k]
+  [ 3] tick_sched_handle_[k]
+  [ 4] tick_sched_timer_[k]
+  [ 5] __hrtimer_run_queues_[k]
+  [ 6] hrtimer_interrupt_[k]
+  [ 7] smp_apic_timer_interrupt_[k]
+  [ 8] apic_timer_interrupt_[k]
+  [ 9] com.lstec.jvm.hash.jug.CountAggregation_06.incrementCount
+  [10] com.lstec.jvm.hash.jug.CountAggregation_06.incrementCountForBatch
+  [11] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [12] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [13] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [14] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [15] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [16] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [17] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [18] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [19] java.lang.reflect.Method.invoke
+  [20] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [21] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [22] java.util.concurrent.FutureTask.run
+  [23] java.util.concurrent.Executors$RunnableAdapter.call
+  [24] java.util.concurrent.FutureTask.run
+  [25] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [26] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [27] java.lang.Thread.run
+
+--- 2018 total (0.00%), 2 samples
+  [ 0] update_curr_[k]
+  [ 1] dequeue_entity_[k]
+  [ 2] dequeue_task_fair_[k]
+  [ 3] deactivate_task_[k]
+  [ 4] __schedule_[k]
+  [ 5] schedule_[k]
+  [ 6] futex_wait_queue_me_[k]
+  [ 7] futex_wait_[k]
+  [ 8] do_futex_[k]
+  [ 9] __x64_sys_futex_[k]
+  [10] do_syscall_64_[k]
+  [11] entry_SYSCALL_64_after_hwframe_[k]
+  [12] pthread_cond_timedwait@@GLIBC_2.3.2
+  [13] [unknown]
+
+--- 2018 total (0.00%), 2 samples
+  [ 0] ksoftirqd_running_[k]
+  [ 1] smp_apic_timer_interrupt_[k]
+  [ 2] apic_timer_interrupt_[k]
+  [ 3] com.lstec.jvm.hash.jug.CountAggregation_06.getCurrentValues
+  [ 4] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 5] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 6] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 7] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 8] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 9] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [10] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [11] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [12] java.lang.reflect.Method.invoke
+  [13] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [14] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [15] java.util.concurrent.FutureTask.run
+  [16] java.util.concurrent.Executors$RunnableAdapter.call
+  [17] java.util.concurrent.FutureTask.run
+  [18] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [19] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [20] java.lang.Thread.run
+
+--- 2018 total (0.00%), 2 samples
+  [ 0] futex_wait_[k]
+  [ 1] do_futex_[k]
+  [ 2] __x64_sys_futex_[k]
+  [ 3] do_syscall_64_[k]
+  [ 4] entry_SYSCALL_64_after_hwframe_[k]
+  [ 5] pthread_cond_timedwait@@GLIBC_2.3.2
+  [ 6] [unknown]
+
+--- 2017 total (0.00%), 2 samples
+  [ 0] intel_pstate_update_util_[k]
+  [ 1] update_load_avg_[k]
+  [ 2] task_tick_fair_[k]
+  [ 3] scheduler_tick_[k]
+  [ 4] update_process_times_[k]
+  [ 5] tick_sched_handle_[k]
+  [ 6] tick_sched_timer_[k]
+  [ 7] __hrtimer_run_queues_[k]
+  [ 8] hrtimer_interrupt_[k]
+  [ 9] smp_apic_timer_interrupt_[k]
+  [10] apic_timer_interrupt_[k]
+  [11] com.lstec.jvm.hash.jug.CountAggregation_06.getCurrentValues
+  [12] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [13] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [14] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [15] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [16] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [17] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [18] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [19] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [20] java.lang.reflect.Method.invoke
+  [21] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [22] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [23] java.util.concurrent.FutureTask.run
+  [24] java.util.concurrent.Executors$RunnableAdapter.call
+  [25] java.util.concurrent.FutureTask.run
+  [26] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [27] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [28] java.lang.Thread.run
+
+--- 2017 total (0.00%), 2 samples
+  [ 0] org.openjdk.jmh.infra.Blackhole.consume
+  [ 1] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 2] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 3] jdk.internal.reflect.GeneratedMethodAccessor3.invoke
+  [ 4] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [ 5] java.lang.reflect.Method.invoke
+  [ 6] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [ 7] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [ 8] java.util.concurrent.FutureTask.run
+  [ 9] java.util.concurrent.Executors$RunnableAdapter.call
+  [10] java.util.concurrent.FutureTask.run
+  [11] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [12] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [13] java.lang.Thread.run
+
+--- 2017 total (0.00%), 2 samples
+  [ 0] JNIHandleBlock::oops_do(OopClosure*)
+  [ 1] JavaThread::oops_do_no_frames(OopClosure*, CodeBlobClosure*)
+  [ 2] Thread::oops_do(OopClosure*, CodeBlobClosure*)
+  [ 3] Threads::possibly_parallel_oops_do(bool, OopClosure*, CodeBlobClosure*)
+  [ 4] G1RootProcessor::process_java_roots(G1RootClosures*, G1GCPhaseTimes*, unsigned int)
+  [ 5] G1RootProcessor::evacuate_roots(G1ParScanThreadState*, unsigned int)
+  [ 6] G1EvacuateRegionsTask::scan_roots(G1ParScanThreadState*, unsigned int)
+  [ 7] G1EvacuateRegionsBaseTask::work(unsigned int)
+  [ 8] GangWorker::loop()
+  [ 9] GangWorker::run()
+  [10] Thread::call_run()
+  [11] thread_native_entry(Thread*)
+  [12] start_thread
+
+--- 2016 total (0.00%), 2 samples
+  [ 0] WatcherThread::run()
+  [ 1] Thread::call_run()
+  [ 2] thread_native_entry(Thread*)
+  [ 3] start_thread
+
+--- 2015 total (0.00%), 2 samples
+  [ 0] apic_timer_interrupt_[k]
+  [ 1] com.lstec.jvm.hash.jug.CountAggregation_06.getCurrentValues
+  [ 2] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 3] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 4] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 5] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 6] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 7] jdk.internal.reflect.GeneratedMethodAccessor3.invoke
+  [ 8] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [ 9] java.lang.reflect.Method.invoke
+  [10] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [11] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [12] java.util.concurrent.FutureTask.run
+  [13] java.util.concurrent.Executors$RunnableAdapter.call
+  [14] java.util.concurrent.FutureTask.run
+  [15] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [16] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [17] java.lang.Thread.run
+
+--- 2015 total (0.00%), 2 samples
+  [ 0] __hrtimer_run_queues_[k]
+  [ 1] hrtimer_interrupt_[k]
+  [ 2] smp_apic_timer_interrupt_[k]
+  [ 3] apic_timer_interrupt_[k]
+  [ 4] __memset_avx2_erms
+  [ 5] MemAllocator::allocate() const
+  [ 6] TypeArrayKlass::allocate_common(int, bool, JavaThread*)
+  [ 7] InterpreterRuntime::newarray(JavaThread*, BasicType, int)
+  [ 8] com.lstec.jvm.hash.jug.CountAggregation_06.<init>
+  [ 9] com.lstec.jvm.hash.jug.CountAggregation_06.<init>
+  [10] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [11] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [12] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [13] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [14] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [15] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [16] java.lang.reflect.Method.invoke
+  [17] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [18] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [19] java.util.concurrent.FutureTask.run
+  [20] java.util.concurrent.Executors$RunnableAdapter.call
+  [21] java.util.concurrent.FutureTask.run
+  [22] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [23] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [24] java.lang.Thread.run
+
+--- 2015 total (0.00%), 2 samples
+  [ 0] cgroup_rstat_updated_[k]
+  [ 1] __cgroup_account_cputime_field_[k]
+  [ 2] account_user_time_[k]
+  [ 3] account_process_tick_[k]
+  [ 4] update_process_times_[k]
+  [ 5] tick_sched_handle_[k]
+  [ 6] tick_sched_timer_[k]
+  [ 7] __hrtimer_run_queues_[k]
+  [ 8] hrtimer_interrupt_[k]
+  [ 9] smp_apic_timer_interrupt_[k]
+  [10] apic_timer_interrupt_[k]
+  [11] com.lstec.jvm.hash.jug.CountAggregation_06.getCurrentValues
+  [12] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [13] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [14] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [15] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [16] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [17] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [18] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [19] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [20] java.lang.reflect.Method.invoke
+  [21] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [22] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [23] java.util.concurrent.FutureTask.run
+  [24] java.util.concurrent.Executors$RunnableAdapter.call
+  [25] java.util.concurrent.FutureTask.run
+  [26] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [27] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [28] java.lang.Thread.run
+
+--- 2013 total (0.00%), 2 samples
+  [ 0] os::elapsed_counter()
+  [ 1] StatSamplerTask::task()
+  [ 2] PeriodicTask::real_time_tick(int)
+  [ 3] WatcherThread::run()
+  [ 4] Thread::call_run()
+  [ 5] thread_native_entry(Thread*)
+  [ 6] start_thread
+
+--- 2012 total (0.00%), 2 samples
+  [ 0] __hrtimer_run_queues_[k]
+  [ 1] hrtimer_interrupt_[k]
+  [ 2] smp_apic_timer_interrupt_[k]
+  [ 3] apic_timer_interrupt_[k]
+  [ 4] com.lstec.jvm.hash.jug.CountAggregation_06.getCurrentValues
+  [ 5] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 6] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 7] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 8] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 9] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [10] jdk.internal.reflect.GeneratedMethodAccessor3.invoke
+  [11] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [12] java.lang.reflect.Method.invoke
+  [13] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [14] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [15] java.util.concurrent.FutureTask.run
+  [16] java.util.concurrent.Executors$RunnableAdapter.call
+  [17] java.util.concurrent.FutureTask.run
+  [18] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [19] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [20] java.lang.Thread.run
+
+--- 2011 total (0.00%), 2 samples
+  [ 0] G1DirtyCardQueueSet::take_all_completed_buffers()
+  [ 1] G1MergeHeapRootsTask::G1MergeHeapRootsTask(G1RemSetScanState*, unsigned int, bool)
+  [ 2] G1RemSet::merge_heap_roots(bool)
+  [ 3] G1CollectedHeap::evacuate_initial_collection_set(G1ParScanThreadStateSet*, bool)
+  [ 4] G1CollectedHeap::do_collection_pause_at_safepoint_helper(double)
+  [ 5] G1CollectedHeap::do_collection_pause_at_safepoint(double)
+  [ 6] VM_G1TryInitiateConcMark::doit()
+  [ 7] VM_Operation::evaluate()
+  [ 8] VMThread::inner_execute(VM_Operation*)
+  [ 9] VMThread::loop()
+  [10] VMThread::run()
+  [11] Thread::call_run()
+  [12] thread_native_entry(Thread*)
+  [13] start_thread
+
+--- 2011 total (0.00%), 2 samples
+  [ 0] account_user_time_[k]
+  [ 1] account_process_tick_[k]
+  [ 2] update_process_times_[k]
+  [ 3] tick_sched_handle_[k]
+  [ 4] tick_sched_timer_[k]
+  [ 5] __hrtimer_run_queues_[k]
+  [ 6] hrtimer_interrupt_[k]
+  [ 7] smp_apic_timer_interrupt_[k]
+  [ 8] apic_timer_interrupt_[k]
+  [ 9] com.lstec.jvm.hash.jug.CountAggregation_06.getCurrentValues
+  [10] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [11] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [12] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [13] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [14] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [15] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [16] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [17] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [18] java.lang.reflect.Method.invoke
+  [19] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [20] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [21] java.util.concurrent.FutureTask.run
+  [22] java.util.concurrent.Executors$RunnableAdapter.call
+  [23] java.util.concurrent.FutureTask.run
+  [24] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [25] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [26] java.lang.Thread.run
+
+--- 2009 total (0.00%), 2 samples
+  [ 0] getrusage_[k]
+  [ 1] __do_sys_getrusage_[k]
+  [ 2] __x64_sys_getrusage_[k]
+  [ 3] do_syscall_64_[k]
+  [ 4] entry_SYSCALL_64_after_hwframe_[k]
+  [ 5] __GI_getrusage
+  [ 6] G1ConcurrentMarkThread::run_service()
+  [ 7] ConcurrentGCThread::run()
+  [ 8] Thread::call_run()
+  [ 9] thread_native_entry(Thread*)
+  [10] start_thread
+
+--- 2008 total (0.00%), 2 samples
+  [ 0] rb_next_[k]
+  [ 1] __remove_hrtimer_[k]
+  [ 2] __hrtimer_run_queues_[k]
+  [ 3] hrtimer_interrupt_[k]
+  [ 4] smp_apic_timer_interrupt_[k]
+  [ 5] apic_timer_interrupt_[k]
+  [ 6] com.lstec.jvm.hash.jug.CountAggregation_06.getCurrentValues
+  [ 7] com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+  [ 8] com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+  [ 9] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [10] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [11] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [12] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [13] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [14] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [15] java.lang.reflect.Method.invoke
+  [16] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [17] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [18] java.util.concurrent.FutureTask.run
+  [19] java.util.concurrent.Executors$RunnableAdapter.call
+  [20] java.util.concurrent.FutureTask.run
+  [21] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [22] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [23] java.lang.Thread.run
+
+--- 2007 total (0.00%), 2 samples
+  [ 0] __pthread_mutex_unlock
+  [ 1] WatcherThread::run()
+  [ 2] Thread::call_run()
+  [ 3] thread_native_entry(Thread*)
+  [ 4] start_thread
+
+--- 2005 total (0.00%), 2 samples
+  [ 0] void OopOopIterateBackwardsDispatch<G1ScanEvacuatedObjClosure>::Table::oop_oop_iterate_backwards<InstanceKlass, narrowOop>(G1ScanEvacuatedObjClosure*, oopDesc*, Klass*)
+  [ 1] G1ParScanThreadState::trim_queue_to_threshold(unsigned int)
+  [ 2] G1ParScanThreadState::steal_and_trim_queue(GenericTaskQueueSet<OverflowTaskQueue<ScannerTask, (MEMFLAGS)5, 131072u>, (MEMFLAGS)5>*)
+  [ 3] G1ParEvacuateFollowersClosure::do_void()
+  [ 4] G1EvacuateRegionsTask::evacuate_live_objects(G1ParScanThreadState*, unsigned int)
+  [ 5] G1EvacuateRegionsBaseTask::work(unsigned int)
+  [ 6] GangWorker::loop()
+  [ 7] GangWorker::run()
+  [ 8] Thread::call_run()
+  [ 9] thread_native_entry(Thread*)
+  [10] start_thread
+
+--- 2005 total (0.00%), 2 samples
+  [ 0] update_load_avg_[k]
+  [ 1] dequeue_entity_[k]
+  [ 2] dequeue_task_fair_[k]
+  [ 3] deactivate_task_[k]
+  [ 4] __schedule_[k]
+  [ 5] schedule_[k]
+  [ 6] futex_wait_queue_me_[k]
+  [ 7] futex_wait_[k]
+  [ 8] do_futex_[k]
+  [ 9] __x64_sys_futex_[k]
+  [10] do_syscall_64_[k]
+  [11] entry_SYSCALL_64_after_hwframe_[k]
+  [12] pthread_cond_timedwait@@GLIBC_2.3.2
+  [13] [unknown]
+
+--- 2004 total (0.00%), 2 samples
+  [ 0] MutatorAllocRegion::retire(bool)
+  [ 1] MutatorAllocRegion::release()
+  [ 2] G1Allocator::release_mutator_alloc_regions()
+  [ 3] G1CollectedHeap::do_collection_pause_at_safepoint_helper(double)
+  [ 4] G1CollectedHeap::do_collection_pause_at_safepoint(double)
+  [ 5] VM_G1TryInitiateConcMark::doit()
+  [ 6] VM_Operation::evaluate()
+  [ 7] VMThread::inner_execute(VM_Operation*)
+  [ 8] VMThread::loop()
+  [ 9] VMThread::run()
+  [10] Thread::call_run()
+  [11] thread_native_entry(Thread*)
+  [12] start_thread
+
+--- 2004 total (0.00%), 2 samples
+  [ 0] CompileBroker::collect_statistics(CompilerThread*, elapsedTimer, CompileTask*)
+  [ 1] CompileBroker::invoke_compiler_on_method(CompileTask*)
+  [ 2] CompileBroker::compiler_thread_loop()
+  [ 3] JavaThread::thread_main_inner()
+  [ 4] Thread::call_run()
+  [ 5] thread_native_entry(Thread*)
+  [ 6] start_thread
+
+--- 2004 total (0.00%), 2 samples
+  [ 0] G1ParCopyClosure<(G1Barrier)0, true>::do_oop(oopDesc**)
+  [ 1] G1RootProcessor::process_vm_roots(G1RootClosures*, G1GCPhaseTimes*, unsigned int)
+  [ 2] G1RootProcessor::evacuate_roots(G1ParScanThreadState*, unsigned int)
+  [ 3] G1EvacuateRegionsTask::scan_roots(G1ParScanThreadState*, unsigned int)
+  [ 4] G1EvacuateRegionsBaseTask::work(unsigned int)
+  [ 5] GangWorker::loop()
+  [ 6] GangWorker::run()
+  [ 7] Thread::call_run()
+  [ 8] thread_native_entry(Thread*)
+  [ 9] start_thread
+
+--- 2004 total (0.00%), 2 samples
+  [ 0] CollectedHeap::fill_with_objects(HeapWordImpl**, unsigned long, bool)
+  [ 1] G1CollectedHeap::humongous_obj_allocate_initialize_regions(HeapRegion*, unsigned int, unsigned long)
+  [ 2] G1CollectedHeap::humongous_obj_allocate(unsigned long)
+  [ 3] G1CollectedHeap::attempt_allocation_humongous(unsigned long)
+  [ 4] G1CollectedHeap::mem_allocate(unsigned long, bool*)
+  [ 5] MemAllocator::mem_allocate(MemAllocator::Allocation&) const
+  [ 6] MemAllocator::allocate() const
+  [ 7] TypeArrayKlass::allocate_common(int, bool, JavaThread*)
+  [ 8] InterpreterRuntime::newarray(JavaThread*, BasicType, int)
+  [ 9] com.lstec.jvm.hash.jug.CountAggregation_06.<init>
+  [10] com.lstec.jvm.hash.jug.CountAggregation_06.<init>
+  [11] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [12] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [13] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [14] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [15] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [16] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [17] java.lang.reflect.Method.invoke
+  [18] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [19] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [20] java.util.concurrent.FutureTask.run
+  [21] java.util.concurrent.Executors$RunnableAdapter.call
+  [22] java.util.concurrent.FutureTask.run
+  [23] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [24] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [25] java.lang.Thread.run
+
+--- 2004 total (0.00%), 2 samples
+  [ 0] com.lstec.jvm.hash.jug.CountAggregation_06.getCollisions
+  [ 1] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 2] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 3] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 4] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [ 5] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [ 6] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [ 7] java.lang.reflect.Method.invoke
+  [ 8] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [ 9] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [10] java.util.concurrent.FutureTask.run
+  [11] java.util.concurrent.Executors$RunnableAdapter.call
+  [12] java.util.concurrent.FutureTask.run
+  [13] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [14] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [15] java.lang.Thread.run
+
+--- 2004 total (0.00%), 2 samples
+  [ 0] HeapRegionRemSet::clear_fcc()
+  [ 1] G1CollectedHeap::humongous_obj_allocate_initialize_regions(HeapRegion*, unsigned int, unsigned long)
+  [ 2] G1CollectedHeap::humongous_obj_allocate(unsigned long)
+  [ 3] G1CollectedHeap::attempt_allocation_humongous(unsigned long)
+  [ 4] G1CollectedHeap::mem_allocate(unsigned long, bool*)
+  [ 5] MemAllocator::mem_allocate(MemAllocator::Allocation&) const
+  [ 6] MemAllocator::allocate() const
+  [ 7] TypeArrayKlass::allocate_common(int, bool, JavaThread*)
+  [ 8] InterpreterRuntime::newarray(JavaThread*, BasicType, int)
+  [ 9] com.lstec.jvm.hash.jug.CountAggregation_06.<init>
+  [10] com.lstec.jvm.hash.jug.CountAggregation_06.<init>
+  [11] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [12] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [13] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [14] jdk.internal.reflect.GeneratedMethodAccessor3.invoke
+  [15] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [16] java.lang.reflect.Method.invoke
+  [17] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [18] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [19] java.util.concurrent.FutureTask.run
+  [20] java.util.concurrent.Executors$RunnableAdapter.call
+  [21] java.util.concurrent.FutureTask.run
+  [22] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [23] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [24] java.lang.Thread.run
+
+--- 2004 total (0.00%), 2 samples
+  [ 0] G1ParScanThreadState::copy_to_survivor_space(G1HeapRegionAttr, oopDesc*, markWord)
+  [ 1] G1ParCopyClosure<(G1Barrier)0, true>::do_oop(oopDesc**)
+  [ 2] InterpreterOopMap::iterate_oop(OffsetClosure*) const
+  [ 3] frame::oops_interpreted_do(OopClosure*, RegisterMap const*, bool) const
+  [ 4] JavaThread::oops_do_frames(OopClosure*, CodeBlobClosure*) [clone .part.94]
+  [ 5] Thread::oops_do(OopClosure*, CodeBlobClosure*)
+  [ 6] Threads::possibly_parallel_oops_do(bool, OopClosure*, CodeBlobClosure*)
+  [ 7] G1RootProcessor::process_java_roots(G1RootClosures*, G1GCPhaseTimes*, unsigned int)
+  [ 8] G1RootProcessor::evacuate_roots(G1ParScanThreadState*, unsigned int)
+  [ 9] G1EvacuateRegionsTask::scan_roots(G1ParScanThreadState*, unsigned int)
+  [10] G1EvacuateRegionsBaseTask::work(unsigned int)
+  [11] GangWorker::loop()
+  [12] GangWorker::run()
+  [13] Thread::call_run()
+  [14] thread_native_entry(Thread*)
+  [15] start_thread
+
+--- 2003 total (0.00%), 2 samples
+  [ 0] do_syscall_64_[k]
+  [ 1] entry_SYSCALL_64_after_hwframe_[k]
+  [ 2] do_futex_wait.constprop.0
+  [ 3] [unknown]
+
+--- 2003 total (0.00%), 2 samples
+  [ 0] ReferenceProcessor::process_soft_weak_final_refs(RefProcProxyTask&, ReferenceProcessorPhaseTimes&)
+  [ 1] ReferenceProcessor::process_discovered_references(RefProcProxyTask&, ReferenceProcessorPhaseTimes&)
+  [ 2] G1CollectedHeap::process_discovered_references(G1ParScanThreadStateSet*)
+  [ 3] G1CollectedHeap::post_evacuate_collection_set(G1EvacuationInfo&, G1RedirtyCardsQueueSet*, G1ParScanThreadStateSet*)
+  [ 4] G1CollectedHeap::do_collection_pause_at_safepoint_helper(double)
+  [ 5] G1CollectedHeap::do_collection_pause_at_safepoint(double)
+  [ 6] VM_G1TryInitiateConcMark::doit()
+  [ 7] VM_Operation::evaluate()
+  [ 8] VMThread::inner_execute(VM_Operation*)
+  [ 9] VMThread::loop()
+  [10] VMThread::run()
+  [11] Thread::call_run()
+  [12] thread_native_entry(Thread*)
+  [13] start_thread
+
+--- 2002 total (0.00%), 2 samples
+  [ 0] OopMapCache::lookup(methodHandle const&, int, InterpreterOopMap*)
+  [ 1] Method::mask_for(int, InterpreterOopMap*)
+  [ 2] frame::oops_interpreted_do(OopClosure*, RegisterMap const*, bool) const
+  [ 3] JavaThread::oops_do_frames(OopClosure*, CodeBlobClosure*) [clone .part.94]
+  [ 4] Thread::oops_do(OopClosure*, CodeBlobClosure*)
+  [ 5] Threads::possibly_parallel_oops_do(bool, OopClosure*, CodeBlobClosure*)
+  [ 6] G1RootProcessor::process_java_roots(G1RootClosures*, G1GCPhaseTimes*, unsigned int)
+  [ 7] G1RootProcessor::evacuate_roots(G1ParScanThreadState*, unsigned int)
+  [ 8] G1EvacuateRegionsTask::scan_roots(G1ParScanThreadState*, unsigned int)
+  [ 9] G1EvacuateRegionsBaseTask::work(unsigned int)
+  [10] GangWorker::loop()
+  [11] GangWorker::run()
+  [12] Thread::call_run()
+  [13] thread_native_entry(Thread*)
+  [14] start_thread
+
+--- 2002 total (0.00%), 2 samples
+  [ 0] G1CodeBlobClosure::MarkingOopClosure::MarkingOopClosure(unsigned int)
+  [ 1] G1ParScanThreadState::G1ParScanThreadState(G1CollectedHeap*, G1RedirtyCardsQueueSet*, unsigned int, unsigned int, unsigned long, unsigned long)
+  [ 2] G1ParScanThreadStateSet::state_for_worker(unsigned int)
+  [ 3] G1EvacuateRegionsBaseTask::work(unsigned int)
+  [ 4] GangWorker::loop()
+  [ 5] GangWorker::run()
+  [ 6] Thread::call_run()
+  [ 7] thread_native_entry(Thread*)
+  [ 8] start_thread
+
+--- 2002 total (0.00%), 2 samples
+  [ 0] GraphBuilder::invoke(Bytecodes::Code)
+  [ 1] GraphBuilder::iterate_bytecodes_for_block(int)
+  [ 2] GraphBuilder::iterate_all_blocks(bool)
+  [ 3] GraphBuilder::GraphBuilder(Compilation*, IRScope*)
+  [ 4] IR::IR(Compilation*, ciMethod*, int)
+  [ 5] Compilation::build_hir() [clone .part.97]
+  [ 6] Compilation::compile_java_method()
+  [ 7] Compilation::compile_method()
+  [ 8] Compilation::Compilation(AbstractCompiler*, ciEnv*, ciMethod*, int, BufferBlob*, bool, DirectiveSet*)
+  [ 9] Compiler::compile_method(ciEnv*, ciMethod*, int, bool, DirectiveSet*)
+  [10] CompileBroker::invoke_compiler_on_method(CompileTask*)
+  [11] CompileBroker::compiler_thread_loop()
+  [12] JavaThread::thread_main_inner()
+  [13] Thread::call_run()
+  [14] thread_native_entry(Thread*)
+  [15] start_thread
+
+--- 2001 total (0.00%), 2 samples
+  [ 0] VM_GC_Operation::doit_prologue()
+  [ 1] VMThread::execute(VM_Operation*)
+  [ 2] G1CollectedHeap::try_collect_concurrently(GCCause::Cause, unsigned int, unsigned int)
+  [ 3] G1CollectedHeap::try_collect(GCCause::Cause)
+  [ 4] G1CollectedHeap::attempt_allocation_humongous(unsigned long)
+  [ 5] G1CollectedHeap::mem_allocate(unsigned long, bool*)
+  [ 6] MemAllocator::mem_allocate(MemAllocator::Allocation&) const
+  [ 7] MemAllocator::allocate() const
+  [ 8] TypeArrayKlass::allocate_common(int, bool, JavaThread*)
+  [ 9] InterpreterRuntime::newarray(JavaThread*, BasicType, int)
+  [10] com.lstec.jvm.hash.jug.CountAggregation_06.<init>
+  [11] com.lstec.jvm.hash.jug.CountAggregation_06.<init>
+  [12] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [13] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [14] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [15] jdk.internal.reflect.GeneratedMethodAccessor3.invoke
+  [16] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [17] java.lang.reflect.Method.invoke
+  [18] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [19] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [20] java.util.concurrent.FutureTask.run
+  [21] java.util.concurrent.Executors$RunnableAdapter.call
+  [22] java.util.concurrent.FutureTask.run
+  [23] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [24] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [25] java.lang.Thread.run
+
+--- 2000 total (0.00%), 2 samples
+  [ 0] __cgroup_account_cputime_[k]
+  [ 1] update_curr_[k]
+  [ 2] dequeue_entity_[k]
+  [ 3] dequeue_task_fair_[k]
+  [ 4] deactivate_task_[k]
+  [ 5] __schedule_[k]
+  [ 6] schedule_[k]
+  [ 7] futex_wait_queue_me_[k]
+  [ 8] futex_wait_[k]
+  [ 9] do_futex_[k]
+  [10] __x64_sys_futex_[k]
+  [11] do_syscall_64_[k]
+  [12] entry_SYSCALL_64_after_hwframe_[k]
+  [13] pthread_cond_timedwait@@GLIBC_2.3.2
+  [14] [unknown]
+
+--- 2000 total (0.00%), 2 samples
+  [ 0] G1ServiceThread::sleep_before_next_cycle() [clone .part.2]
+  [ 1] G1ServiceThread::run_service()
+  [ 2] ConcurrentGCThread::run()
+  [ 3] Thread::call_run()
+  [ 4] thread_native_entry(Thread*)
+  [ 5] start_thread
+
+--- 1999 total (0.00%), 2 samples
+  [ 0] getrusage_[k]
+  [ 1] __do_sys_getrusage_[k]
+  [ 2] __x64_sys_getrusage_[k]
+  [ 3] do_syscall_64_[k]
+  [ 4] entry_SYSCALL_64_after_hwframe_[k]
+  [ 5] __GI_getrusage
+  [ 6] G1ServiceThread::run_service()
+  [ 7] ConcurrentGCThread::run()
+  [ 8] Thread::call_run()
+  [ 9] thread_native_entry(Thread*)
+  [10] start_thread
+
+--- 1999 total (0.00%), 2 samples
+  [ 0] LinearScan::eliminate_spill_moves()
+  [ 1] LinearScan::do_linear_scan()
+  [ 2] Compilation::emit_lir()
+  [ 3] Compilation::compile_java_method()
+  [ 4] Compilation::compile_method()
+  [ 5] Compilation::Compilation(AbstractCompiler*, ciEnv*, ciMethod*, int, BufferBlob*, bool, DirectiveSet*)
+  [ 6] Compiler::compile_method(ciEnv*, ciMethod*, int, bool, DirectiveSet*)
+  [ 7] CompileBroker::invoke_compiler_on_method(CompileTask*)
+  [ 8] CompileBroker::compiler_thread_loop()
+  [ 9] JavaThread::thread_main_inner()
+  [10] Thread::call_run()
+  [11] thread_native_entry(Thread*)
+  [12] start_thread
+
+--- 1999 total (0.00%), 2 samples
+  [ 0] G1RemSet::merge_heap_roots(bool)
+  [ 1] G1CollectedHeap::evacuate_initial_collection_set(G1ParScanThreadStateSet*, bool)
+  [ 2] G1CollectedHeap::do_collection_pause_at_safepoint_helper(double)
+  [ 3] G1CollectedHeap::do_collection_pause_at_safepoint(double)
+  [ 4] VM_G1TryInitiateConcMark::doit()
+  [ 5] VM_Operation::evaluate()
+  [ 6] VMThread::inner_execute(VM_Operation*)
+  [ 7] VMThread::loop()
+  [ 8] VMThread::run()
+  [ 9] Thread::call_run()
+  [10] thread_native_entry(Thread*)
+  [11] start_thread
+
+--- 1998 total (0.00%), 2 samples
+  [ 0] G1BlockOffsetTablePart::forward_to_block_containing_addr_slow(HeapWordImpl**, HeapWordImpl**, void const*)
+  [ 1] G1ScanHRForRegionClosure::scan_heap_roots(HeapRegion*)
+  [ 2] G1RemSet::scan_heap_roots(G1ParScanThreadState*, unsigned int, G1GCPhaseTimes::GCParPhases, G1GCPhaseTimes::GCParPhases, bool)
+  [ 3] G1EvacuateRegionsTask::scan_roots(G1ParScanThreadState*, unsigned int)
+  [ 4] G1EvacuateRegionsBaseTask::work(unsigned int)
+  [ 5] GangWorker::loop()
+  [ 6] GangWorker::run()
+  [ 7] Thread::call_run()
+  [ 8] thread_native_entry(Thread*)
+  [ 9] start_thread
+
+--- 1997 total (0.00%), 2 samples
+  [ 0] G1CollectionSet::update_young_region_prediction(HeapRegion*, unsigned long)
+  [ 1] G1YoungRemSetSamplingClosure::do_heap_region(HeapRegion*)
+  [ 2] G1CollectionSet::iterate(HeapRegionClosure*) const
+  [ 3] G1RemSetSamplingTask::execute()
+  [ 4] G1ServiceThread::run_service()
+  [ 5] ConcurrentGCThread::run()
+  [ 6] Thread::call_run()
+  [ 7] thread_native_entry(Thread*)
+  [ 8] start_thread
+
+--- 1997 total (0.00%), 2 samples
+  [ 0] java.lang.StrictMath.floorOrCeil
+  [ 1] java.lang.StrictMath.ceil
+  [ 2] java.lang.Math.ceil
+  [ 3] it.unimi.dsi.fastutil.HashCommon.arraySize
+  [ 4] com.lstec.jvm.hash.jug.CountAggregation_06.<init>
+  [ 5] com.lstec.jvm.hash.jug.CountAggregation_06.<init>
+  [ 6] com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+  [ 7] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub
+  [ 8] com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+  [ 9] jdk.internal.reflect.NativeMethodAccessorImpl.invoke0
+  [10] jdk.internal.reflect.NativeMethodAccessorImpl.invoke
+  [11] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke
+  [12] java.lang.reflect.Method.invoke
+  [13] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [14] org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call
+  [15] java.util.concurrent.FutureTask.run
+  [16] java.util.concurrent.Executors$RunnableAdapter.call
+  [17] java.util.concurrent.FutureTask.run
+  [18] java.util.concurrent.ThreadPoolExecutor.runWorker
+  [19] java.util.concurrent.ThreadPoolExecutor$Worker.run
+  [20] java.lang.Thread.run
+
+--- 1997 total (0.00%), 2 samples
+  [ 0] G1MMUTracer::report_mmu(double, double, double)
+  [ 1] G1MMUTracker::add_pause(double, double)
+  [ 2] G1Policy::record_pause(G1GCPauseType, double, double)
+  [ 3] G1Policy::record_collection_pause_end(double, bool)
+  [ 4] G1CollectedHeap::do_collection_pause_at_safepoint_helper(double)
+  [ 5] G1CollectedHeap::do_collection_pause_at_safepoint(double)
+  [ 6] VM_G1TryInitiateConcMark::doit()
+  [ 7] VM_Operation::evaluate()
+  [ 8] VMThread::inner_execute(VM_Operation*)
+  [ 9] VMThread::loop()
+  [10] VMThread::run()
+  [11] Thread::call_run()
+  [12] thread_native_entry(Thread*)
+  [13] start_thread
+
+       total  percent  samples  top
+  ----------  -------  -------  ---
+   320182729   66.97%   320215  com.lstec.jvm.hash.jug.CountAggregation_06.getCurrentValues
+   112478784   23.52%   112379  com.lstec.jvm.hash.jug.CountAggregation_06.incrementCount
+    21216319    4.44%    21283  com.lstec.jvm.hash.jug.CountAggregation_06.calculatePositions
+    19126195    4.00%    19128  com.lstec.jvm.hash.jug.CountAggregation_06.incrementCountForBatch
+     3180807    0.67%     3182  com.lstec.jvm.hash.jug.CountAggregation_06.batchIncrementCount
+      366100    0.08%      366  __memset_avx2_erms
+      131712    0.03%      132  com.lstec.jvm.hash.jug.CountAggregation_06.calculatePosition
+       62792    0.01%       63  com.lstec.jvm.hash.jug.CountAggregation_06.processBatch
+       51899    0.01%       52  G1ParCopyClosure<(G1Barrier)1, true>::do_oop(oopDesc**)
+       34011    0.01%       34  HeapRegionManager::par_iterate(HeapRegionClosure*, HeapRegionClaimer*, unsigned int) const
+       25962    0.01%       26  G1FromCardCache::clear(unsigned int)
+       23044    0.00%       23  G1RemSet::prepare_region_for_scan(HeapRegion*)
+       22009    0.00%       22  G1RegionMarkStatsCache::reset()
+       21006    0.00%       21  G1PrepareEvacuationTask::G1PrepareRegionsClosure::do_heap_region(HeapRegion*)
+       17031    0.00%       17  Interpreter
+       16040    0.00%       16  _dl_update_slotinfo
+       15956    0.00%       16  NoteStartOfMarkHRClosure::do_heap_region(HeapRegion*)
+       12097    0.00%       12  update_curr_[k]
+       12009    0.00%       12  psi_task_change_[k]
+       11080    0.00%       11  __update_load_avg_se_[k]
+       11009    0.00%       11  G1FreeHumongousRegionClosure::do_heap_region(HeapRegion*)
+       11000    0.00%       11  G1ParScanThreadState::trim_queue_to_threshold(unsigned int)
+       10137    0.00%       10  account_user_time_[k]
+        9984    0.00%       10  void WeakProcessor::Task::work<G1STWIsAliveClosure, G1KeepAliveClosure>(unsigned int, G1STWIsAliveClosure*, G1KeepAliveClosure*)
+        9103    0.00%        9  timekeeping_advance_[k]
+        9084    0.00%        9  timerqueue_add_[k]
+        9033    0.00%        9  update_load_avg_[k]
+        8062    0.00%        8  pvclock_gtod_notify?[kvm]_[k]
+        8052    0.00%        8  apic_timer_interrupt_[k]
+        8006    0.00%        8  pthread_cond_timedwait@@GLIBC_2.3.2
+        7986    0.00%        8  G1ParCopyClosure<(G1Barrier)0, true>::do_oop(oopDesc**)
+        7948    0.00%        8  org.openjdk.jmh.runner.BenchmarkHandler.runIteration
+        7088    0.00%        7  update_blocked_averages_[k]
+        7074    0.00%        7  switch_fpu_return_[k]
+        7073    0.00%        7  update_vsyscall_[k]
+        7062    0.00%        7  _raw_spin_lock_irqsave_[k]
+        7020    0.00%        7  Mutex::lock_without_safepoint_check()
+        7012    0.00%        7  InstanceKlass::find_method_index(Array<Method*> const*, Symbol const*, Symbol const*, Klass::OverpassLookupMode, Klass::StaticLookupMode, Klass::PrivateLookupMode) [clone .constprop.437]
+        6999    0.00%        7  G1BlockOffsetTablePart::zero_bottom_entry_raw()
+        6992    0.00%        7  PeriodicTask::real_time_tick(int)
+        6113    0.00%        6  cpuacct_account_field_[k]
+        6087    0.00%        6  rcu_sched_clock_irq_[k]
+        6083    0.00%        6  __cgroup_account_cputime_field_[k]
+        6066    0.00%        6  __vfprintf_internal
+        6062    0.00%        6  __hrtimer_run_queues_[k]
+        6061    0.00%        6  _raw_spin_lock_[k]
+        6032    0.00%        6  try_to_wake_up_[k]
+        6014    0.00%        6  HeapRegionManager::iterate(HeapRegionClosure*) const
+        6005    0.00%        6  OtherRegionsTable::clear()
+        6003    0.00%        6  G1ScanHRForRegionClosure::scan_heap_roots(HeapRegion*)
+        5972    0.00%        6  I2C/C2I adapters
+        5957    0.00%        6  __GI___clock_gettime
+        5080    0.00%        5  newidle_balance_[k]
+        5047    0.00%        5  intel_pstate_update_util_[k]
+        5044    0.00%        5  update_sd_lb_stats_[k]
+        5034    0.00%        5  do_syscall_64_[k]
+        5019    0.00%        5  entry_SYSCALL_64_[k]
+        5017    0.00%        5  __tls_get_addr
+        4991    0.00%        5  G1ParScanThreadState::steal_and_trim_queue(GenericTaskQueueSet<OverflowTaskQueue<ScannerTask, (MEMFLAGS)5, 131072u>, (MEMFLAGS)5>*)
+        4989    0.00%        5  G1CodeRootSet::clear()
+        4988    0.00%        5  MemRegion::intersection(MemRegion) const
+        4980    0.00%        5  void G1ScanCardClosure::do_oop_work<narrowOop>(narrowOop*)
+        4079    0.00%        4  tick_sched_do_timer_[k]
+        4066    0.00%        4  notifier_call_chain_[k]
+        4056    0.00%        4  perf_event_task_tick_[k]
+        4056    0.00%        4  select_task_rq_fair_[k]
+        4044    0.00%        4  hrtimer_interrupt_[k]
+        4038    0.00%        4  com.lstec.jvm.hash.jug.CountAggregation_06.<init>
+        4029    0.00%        4  Method::bcp_from(unsigned char*) const
+        4025    0.00%        4  cgroup_rstat_updated_[k]
+        4023    0.00%        4  JNIHandleBlock::oops_do(OopClosure*)
+        4015    0.00%        4  rb_next_[k]
+        4008    0.00%        4  getrusage_[k]
+        3999    0.00%        4  java.util.concurrent.locks.AbstractQueuedSynchronizer.acquire
+        3992    0.00%        4  __x64_sys_futex_[k]
+        3991    0.00%        4  HeapRegionRemSet::clear_fcc()
+        3991    0.00%        4  __memset_avx2_unaligned_erms
+        3989    0.00%        4  void OopOopIterateDispatch<G1ScanCardClosure>::Table::oop_oop_iterate<InstanceKlass, narrowOop>(G1ScanCardClosure*, oopDesc*, Klass*)
+        3978    0.00%        4  __pthread_mutex_unlock
+        3978    0.00%        4  StatSamplerTask::task()
+        3959    0.00%        4  __update_load_avg_cfs_rq_[k]
+        3953    0.00%        4  os::PlatformMonitor::wait(long)
+        3054    0.00%        3  futex_wait_[k]
+        3052    0.00%        3  cpuacct_charge_[k]
+        3048    0.00%        3  osl_readl?[wl]_[k]
+        3044    0.00%        3  hrtimer_active_[k]
+        3039    0.00%        3  trigger_load_balance_[k]
+        3038    0.00%        3  org.openjdk.jmh.infra.Blackhole.consume
+        3030    0.00%        3  get_futex_key_[k]
+        3029    0.00%        3  prepare_exit_to_usermode_[k]
+        3029    0.00%        3  load_balance_[k]
+        3028    0.00%        3  update_cfs_group_[k]
+        3025    0.00%        3  __strlen_avx2
+        3023    0.00%        3  os::javaTimeNanos()
+        3019    0.00%        3  __cgroup_account_cputime_[k]
+        3012    0.00%        3  com.lstec.jvm.hash.jug.BenchmarkCountAggregation.incrementCount_v06
+        3010    0.00%        3  MutatorAllocRegion::retire(bool)
+        3007    0.00%        3  __GI___printf_fp_l
+        3004    0.00%        3  LinearScan::number_instructions()
+        3004    0.00%        3  java.io.ObjectStreamClass$FieldReflector.getObjFieldValues
+        3003    0.00%        3  __memmove_sse2_unaligned_erms
+        3003    0.00%        3  java.lang.StrictMath.floorOrCeil
+        3002    0.00%        3  CollectedHeap::fill_with_objects(HeapWordImpl**, unsigned long, bool)
+        3001    0.00%        3  MarkBitMap::do_clear(MemRegion, bool)
+        3000    0.00%        3  G1ParScanThreadState::copy_to_survivor_space(G1HeapRegionAttr, oopDesc*, markWord)
+        2998    0.00%        3  ClassLoaderData::ChunkedHandleList::oops_do(OopClosure*)
+        2998    0.00%        3  java.io.ObjectOutputStream.writeObject0
+        2997    0.00%        3  ClassLoaderDataGraph::roots_cld_do(CLDClosure*, CLDClosure*)
+        2996    0.00%        3  G1GCPhaseTimes::reset()
+        2992    0.00%        3  G1ParCopyClosure<(G1Barrier)1, false>::do_oop(oopDesc**)
+        2988    0.00%        3  clock_gettime
+        2988    0.00%        3  GrowableArrayWithAllocator<int, GrowableArray<int> >::grow(int)
+        2988    0.00%        3  WatcherThread::sleep() const
+        2987    0.00%        3  __schedule_[k]
+        2987    0.00%        3  ThreadLocalAllocStats::publish()
+        2984    0.00%        3  _int_malloc
+        2982    0.00%        3  AbsSeq::davg() const
+        2973    0.00%        3  G1CollectedHeap::do_collection_pause_at_safepoint_helper(double)
+        2968    0.00%        3  G1RebuildFreeListTask::work(unsigned int)
+        2956    0.00%        3  __pthread_disable_asynccancel
+        2946    0.00%        3  [vdso]
+        2054    0.00%        2  WorkGang::run_task(AbstractGangTask*, unsigned int, bool)
+        2049    0.00%        2  java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos
+        2046    0.00%        2  java.util.concurrent.locks.LockSupport.setBlocker
+        2040    0.00%        2  __queue_work_[k]
+        2033    0.00%        2  ThreadsListHandle::ThreadsListHandle(Thread*)
+        2033    0.00%        2  update_min_vruntime_[k]
+        2032    0.00%        2  rcu_note_context_switch_[k]
+        2032    0.00%        2  ThreadSafepointState::examine_state_of_thread(unsigned long)
+        2030    0.00%        2  x2apic_send_IPI_[k]
+        2030    0.00%        2  java.util.concurrent.locks.AbstractQueuedSynchronizer$Node.<init>
+        2029    0.00%        2  ktime_get_[k]
+        2028    0.00%        2  ktime_get_update_offsets_now_[k]
+        2026    0.00%        2  __accumulate_pelt_segments_[k]
+        2025    0.00%        2  G1Allocator::unsafe_max_tlab_alloc()
+        2023    0.00%        2  tcp_current_mss_[k]
+        2022    0.00%        2  org.openjdk.jmh.runner.InfraControlL2.announceWarmdownReady
+        2020    0.00%        2  __hrtimer_get_next_event_[k]
+        2018    0.00%        2  futex_wake_[k]
+        2018    0.00%        2  HeapRegionManager::allocate_free_region(HeapRegionType, unsigned int)
+        2018    0.00%        2  ksoftirqd_running_[k]
+        2017    0.00%        2  java.util.concurrent.LinkedBlockingQueue.poll
+        2016    0.00%        2  WatcherThread::run()
+        2016    0.00%        2  java.lang.invoke.VarHandleGuards.guard_LII_Z
+        2013    0.00%        2  os::elapsed_counter()
+        2012    0.00%        2  java.lang.System.nanoTime
+        2011    0.00%        2  G1DirtyCardQueueSet::take_all_completed_buffers()
+        2010    0.00%        2  native_read_msr_[k]
+        2010    0.00%        2  _raw_spin_lock_irq_[k]
+        2009    0.00%        2  nohz_balance_exit_idle_[k]
+        2009    0.00%        2  Unsafe_CompareAndSetInt
+        2009    0.00%        2  account_entity_enqueue_[k]
+        2008    0.00%        2  G1ServiceThread::schedule(G1ServiceTask*, long)
+        2007    0.00%        2  G1DirtyCardQueueSet::num_par_ids()
+        2006    0.00%        2  com.lstec.jvm.hash.jug.jmh_generated.BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime
+        2006    0.00%        2  pthread_mutex_lock
+        2005    0.00%        2  G1CollectedHeap::allocate_new_tlab(unsigned long, unsigned long, unsigned long*)
+        2005    0.00%        2  void OopOopIterateBackwardsDispatch<G1ScanEvacuatedObjClosure>::Table::oop_oop_iterate_backwards<InstanceKlass, narrowOop>(G1ScanEvacuatedObjClosure*, oopDesc*, Klass*)
+        2005    0.00%        2  com.lstec.jvm.hash.jug.BenchmarkCountAggregation$CollisionCounters.addCollisions
+        2005    0.00%        2  native_sched_clock_[k]
+        2004    0.00%        2  vmSymbols::find_sid(Symbol const*)
+        2004    0.00%        2  CompileBroker::collect_statistics(CompilerThread*, elapsedTimer, CompileTask*)
+        2004    0.00%        2  com.lstec.jvm.hash.jug.CountAggregation_06.getCollisions
+        2003    0.00%        2  java.io.ObjectOutputStream.defaultWriteFields
+        2003    0.00%        2  ReferenceProcessor::process_soft_weak_final_refs(RefProcProxyTask&, ReferenceProcessorPhaseTimes&)
+        2002    0.00%        2  OopMapCache::lookup(methodHandle const&, int, InterpreterOopMap*)
+        2002    0.00%        2  G1CodeBlobClosure::MarkingOopClosure::MarkingOopClosure(unsigned int)
+        2002    0.00%        2  GraphBuilder::invoke(Bytecodes::Code)
+        2002    0.00%        2  Threads::threads_do(ThreadClosure*)
+        2001    0.00%        2  InstanceKlass::uncached_lookup_method(Symbol const*, Symbol const*, Klass::OverpassLookupMode, Klass::PrivateLookupMode) const
+        2001    0.00%        2  VM_GC_Operation::doit_prologue()
+        2000    0.00%        2  java.lang.ClassLoader.<init>
+        2000    0.00%        2  G1ServiceThread::sleep_before_next_cycle() [clone .part.2]
+        1999    0.00%        2  LinearScan::eliminate_spill_moves()
+        1999    0.00%        2  G1RemSet::merge_heap_roots(bool)
+        1999    0.00%        2  ValueMap::find_insert(Instruction*)
+        1998    0.00%        2  java.lang.ClassValue.getCacheCarefully
+        1998    0.00%        2  G1BlockOffsetTablePart::forward_to_block_containing_addr_slow(HeapWordImpl**, HeapWordImpl**, void const*)
+        1997    0.00%        2  G1MMUTracer::report_mmu(double, double, double)
+        1997    0.00%        2  ConstantPool::klass_at_if_loaded(constantPoolHandle const&, int)
+        1997    0.00%        2  G1CollectionSet::update_young_region_prediction(HeapRegion*, unsigned long)
+        1997    0.00%        2  __GI___pthread_mutex_trylock
+        1997    0.00%        2  AccessInternal::PostRuntimeDispatch<G1BarrierSet::AccessBarrier<402470ul, G1BarrierSet>, (AccessInternal::BarrierType)1, 402470ul>::oop_access_barrier(oopDesc*, long, oopDesc*)
+        1997    0.00%        2  strcmp_[k]
+        1997    0.00%        2  MethodData::clean_extra_data(CleanExtraDataClosure*)
+        1996    0.00%        2  G1ConcurrentMark::reset()
+        1996    0.00%        2  InterpreterRuntime::newarray(JavaThread*, BasicType, int)
+        1996    0.00%        2  stringStream::write(char const*, unsigned long)
+        1996    0.00%        2  ClassLoaderMetaspace::allocate(unsigned long, Metaspace::MetadataType)
+        1995    0.00%        2  ClassFileParser::fill_instance_klass(InstanceKlass*, bool, ClassInstanceInfo const&, JavaThread*)
+        1995    0.00%        2  bool CompilerOracle::has_option_value<bool>(methodHandle const&, CompileCommand, bool&)
+        1994    0.00%        2  methodHandle::~methodHandle()
+        1994    0.00%        2  PtrQueueSet::flush_queue(PtrQueue&)
+        1994    0.00%        2  __d_lookup_[k]
+        1994    0.00%        2  set_task_cpu_[k]
+        1993    0.00%        2  Dictionary::find(unsigned int, Symbol*, Handle)
+        1993    0.00%        2  java.io.ObjectOutputStream.writeSerialData
+        1993    0.00%        2  MoveResolver::resolve_mappings()
+        1992    0.00%        2  it.unimi.dsi.fastutil.HashCommon.nextPowerOfTwo
+        1992    0.00%        2  LIRGenerator::new_register(BasicType)

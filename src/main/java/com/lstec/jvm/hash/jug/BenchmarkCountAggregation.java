@@ -16,6 +16,8 @@ import org.openjdk.jmh.annotations.Warmup;
 import org.openjdk.jmh.infra.Blackhole;
 import org.openjdk.jmh.profile.AsyncProfiler;
 import org.openjdk.jmh.profile.DTraceAsmProfiler;
+import org.openjdk.jmh.profile.LinuxPerfAsmProfiler;
+import org.openjdk.jmh.profile.LinuxPerfNormProfiler;
 import org.openjdk.jmh.runner.options.ChainedOptionsBuilder;
 
 import java.util.Random;
@@ -222,14 +224,15 @@ public class BenchmarkCountAggregation
                 .withOptions((ChainedOptionsBuilder optionsBuilder, String profilerOutputDir) ->
                                 optionsBuilder.forks(1)
                                         .warmupIterations(10)
-                                        .param("groupCount", "4000000")
+                                        .param("groupCount",  "4000000")
                                         .param("type", "long")
                                         .param("polluted", "false")
 //                                        .addProfiler(LinuxPerfNormProfiler.class)
-//                                        .addProfiler(LinuxPerfAsmProfiler.class, String.format("hotThreshold=0.1;tooBigThreshold=3000;saveLog=true;saveLogTo=%s", profilerOutputDir, profilerOutputDir))
-//                                        .addProfiler(AsyncProfiler.class, String.format("dir=%s;output=text;output=flamegraph;event=cache-misses;libPath=/home/ec2-user/async-profiler-2.8.3-linux-arm64/build/libasyncProfiler.so", profilerOutputDir))
-                                        .addProfiler(DTraceAsmProfiler.class, format("hotThreshold=0.1;tooBigThreshold=3000;saveLog=true;saveLogTo=%s", profilerOutputDir))
-                                        .addProfiler(AsyncProfiler.class, format("dir=%s;output=flamegraph;event=cpu", profilerOutputDir))
+//                                        .addProfiler(LinuxPerfAsmProfiler.class, format("hotThreshold=0.1;tooBigThreshold=3000;saveLog=true;saveLogTo=%s", profilerOutputDir, profilerOutputDir))
+//                                        .addProfiler(AsyncProfiler.class, String.format("dir=%s;output=text;output=flamegraph;event=cache-misses;libPath=/home/lysy/apps/async-profiler-2.8.3-linux-x64/build/libasyncProfiler.so", profilerOutputDir))
+                                        .addProfiler(AsyncProfiler.class, String.format("dir=%s;output=text;output=flamegraph;event=L1-dcache-load-misses;libPath=/home/lysy/apps/async-profiler-2.8.3-linux-x64/build/libasyncProfiler.so", profilerOutputDir))
+//                                        .addProfiler(DTraceAsmProfiler.class, format("hotThreshold=0.1;tooBigThreshold=3000;saveLog=true;saveLogTo=%s", profilerOutputDir))
+//                                        .addProfiler(AsyncProfiler.class, format("dir=%s;output=flamegraph;event=cpu", profilerOutputDir))
                 )
                 .run();
     }

@@ -27,6 +27,18 @@ import static com.lstec.jvm.Benchmarks.benchmark;
  * BenchmarkRandomRead.batchRandomRead            4  avgt   20   0.442 ± 0.007  ns/op
  * BenchmarkRandomRead.batchRandomRead       100000  avgt   20   1.656 ± 0.027  ns/op
  * BenchmarkRandomRead.batchRandomRead      8000000  avgt   20  11.235 ± 0.515  ns/op
+ *
+ * MBP Intel(R) Core(TM) i7-4770HQ CPU @ 2.20GHz
+ * Benchmark                                     (arraySize)  Mode  Cnt   Score   Error  Units
+ * BenchmarkRandomRead.batchRandomRead                     4  avgt   20   0.420 ± 0.022  ns/op
+ * BenchmarkRandomRead.batchRandomRead                100000  avgt   20   2.831 ± 0.032  ns/op
+ * BenchmarkRandomRead.batchRandomRead               8000000  avgt   20  12.442 ± 2.063  ns/op
+ * BenchmarkRandomRead.batchRandomReadUnRolled8            4  avgt   20   0.492 ± 0.028  ns/op
+ * BenchmarkRandomRead.batchRandomReadUnRolled8       100000  avgt   20   2.956 ± 0.054  ns/op
+ * BenchmarkRandomRead.batchRandomReadUnRolled8      8000000  avgt   20  11.794 ± 1.331  ns/op
+ *
+ * Benchmark                            (arraySize)  Mode  Cnt   Score   Error  Units
+ * BenchmarkRandomRead.batchRandomRead      4000000  avgt   10  10.292 ± 0.164  ns/op
  */
 @State(Scope.Thread)
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
@@ -113,12 +125,12 @@ public class BenchmarkRandomRead
             throws Exception
     {
         benchmark(BenchmarkRandomRead.class)
-//                .includeMethod("batchRandomReadUnRolled8")
+                .includeMethod("batchRandomRead")
                 .withProfilerOutputBaseDir("jmh/randomRead")
                 .withOptions((ChainedOptionsBuilder optionsBuilder, String profilerOutputDir) ->
-                                optionsBuilder.forks(2)
+                                optionsBuilder.forks(1)
                                         .warmupIterations(20)
-                                        .param("arraySize", "8000000")
+                                        .param("arraySize", "4000000")
 //                                        .addProfiler(LinuxPerfNormProfiler.class)
 //                                        .addProfiler(LinuxPerfAsmProfiler.class, String.format("hotThreshold=0.1;tooBigThreshold=3000;saveLog=true;saveLogTo=%s", profilerOutputDir, profilerOutputDir))
 //                                        .addProfiler(AsyncProfiler.class, String.format("dir=%s;output=text;output=flamegraph;event=cache-misses;libPath=/home/ec2-user/async-profiler-2.8.3-linux-arm64/build/libasyncProfiler.so", profilerOutputDir))

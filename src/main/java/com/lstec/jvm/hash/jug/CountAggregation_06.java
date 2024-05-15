@@ -17,7 +17,7 @@ public class CountAggregation_06
 
     public CountAggregation_06(int size)
     {
-        this(size, 256);
+        this(size, 16);
     }
 
     public CountAggregation_06(int size, int batchSize)
@@ -41,6 +41,7 @@ public class CountAggregation_06
         return ((int) CountAggregation.hash(row) & entryCountMask) * 2;
     }
 
+    @CompilerControl(CompilerControl.Mode.DONT_INLINE)
     public void batchIncrementCount(long[] rows)
     {
         int batchStart = 0;
@@ -55,7 +56,7 @@ public class CountAggregation_06
     private void processBatch(long[] rows, int batchStart)
     {
         calculatePositions(rows, batchStart, positions);
-        getCurrentValues(positions);
+//        getCurrentValues(positions);
         incrementCountForBatch(rows, batchStart, positions);
     }
 
@@ -70,10 +71,34 @@ public class CountAggregation_06
     @CompilerControl(CompilerControl.Mode.DONT_INLINE)
     private void incrementCountForBatch(long[] rows, int batchStart, int[] positions)
     {
+        long[] hashTable = this.hashTable;
+        long[] currentValues = this.currentValues;
+
         for (int i = 0; i < positions.length; i++) {
             long value = rows[batchStart + i];
             int position = positions[i];
-            incrementCount(value, position);
+            if (value == 0) {
+                zeroCount++;
+                continue;
+            }
+//            long currentValue = currentValues[i];
+            boolean found = false;
+            while (hashTable[position] != 0) {
+                if (hashTable[position] == value) {
+                    // found an existing group
+                    hashTable[position + 1]++;
+                    found = true;
+                    break;
+                }
+                collisions++;
+                // increment position
+                position = (position + 2) & tableSizeMask;
+            }
+            if (!found) {
+                // existing group not found
+                hashTable[position] = value;
+                hashTable[position + 1] = 1;
+            }
         }
     }
 

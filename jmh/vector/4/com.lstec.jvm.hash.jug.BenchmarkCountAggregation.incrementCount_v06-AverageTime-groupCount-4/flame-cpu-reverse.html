@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<style>
+	body {margin: 0; padding: 10px; background-color: #ffffff}
+	h1 {margin: 5px 0 0 0; font-size: 18px; font-weight: normal; text-align: center}
+	header {margin: -24px 0 5px 0; line-height: 24px}
+	button {font: 12px sans-serif; cursor: pointer}
+	p {margin: 5px 0 5px 0}
+	a {color: #0366d6}
+	#hl {position: absolute; display: none; overflow: hidden; white-space: nowrap; pointer-events: none; background-color: #ffffe0; outline: 1px solid #ffc000; height: 15px}
+	#hl span {padding: 0 3px 0 3px}
+	#status {overflow: hidden; white-space: nowrap}
+	#match {overflow: hidden; white-space: nowrap; display: none; float: right; text-align: right}
+	#reset {cursor: pointer}
+	#canvas {width: 100%; height: 320px}
+</style>
+</head>
+<body style='font: 12px Verdana, sans-serif'>
+<h1>CPU profile</h1>
+<header style='text-align: left'><button id='reverse' title='Reverse'>&#x1f53b;</button>&nbsp;&nbsp;<button id='search' title='Search'>&#x1f50d;</button></header>
+<header style='text-align: right'>Produced by <a href='https://github.com/jvm-profiling-tools/async-profiler'>async-profiler</a></header>
+<canvas id='canvas'></canvas>
+<div id='hl'><span></span></div>
+<p id='match'>Matched: <span id='matchval'></span> <span id='reset' title='Clear'>&#x274c;</span></p>
+<p id='status'>&nbsp;</p>
+<script>
+	// Copyright 2020 Andrei Pangin
+	// Licensed under the Apache License, Version 2.0.
+	'use strict';
+	var root, rootLevel, px, pattern;
+	var reverse = true;
+	const levels = Array(20);
+	for (let h = 0; h < levels.length; h++) {
+		levels[h] = [];
+	}
+
+	const canvas = document.getElementById('canvas');
+	const c = canvas.getContext('2d');
+	const hl = document.getElementById('hl');
+	const status = document.getElementById('status');
+
+	const canvasWidth = canvas.offsetWidth;
+	const canvasHeight = canvas.offsetHeight;
+	canvas.style.width = canvasWidth + 'px';
+	canvas.width = canvasWidth * (devicePixelRatio || 1);
+	canvas.height = canvasHeight * (devicePixelRatio || 1);
+	if (devicePixelRatio) c.scale(devicePixelRatio, devicePixelRatio);
+	c.font = document.body.style.font;
+
+	const palette = [
+		[0xb2e1b2, 20, 20, 20],
+		[0x50e150, 30, 30, 30],
+		[0x50cccc, 30, 30, 30],
+		[0xe15a5a, 30, 40, 40],
+		[0xc8c83c, 30, 30, 10],
+		[0xe17d00, 30, 30,  0],
+		[0xcce880, 20, 20, 20],
+	];
+
+	function getColor(p) {
+		const v = Math.random();
+		return '#' + (p[0] + ((p[1] * v) << 16 | (p[2] * v) << 8 | (p[3] * v))).toString(16);
+	}
+
+	function f(level, left, width, type, title, inln, c1, int) {
+		levels[level].push({left: left, width: width, color: getColor(palette[type]), title: title,
+			details: (int ? ', int=' + int : '') + (c1 ? ', c1=' + c1 : '') + (inln ? ', inln=' + inln : '')
+		});
+	}
+
+	function samples(n) {
+		return n === 1 ? '1 sample' : n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + ' samples';
+	}
+
+	function pct(a, b) {
+		return a >= b ? '100' : (100 * a / b).toFixed(2);
+	}
+
+	function findFrame(frames, x) {
+		let left = 0;
+		let right = frames.length - 1;
+
+		while (left <= right) {
+			const mid = (left + right) >>> 1;
+			const f = frames[mid];
+
+			if (f.left > x) {
+				right = mid - 1;
+			} else if (f.left + f.width <= x) {
+				left = mid + 1;
+			} else {
+				return f;
+			}
+		}
+
+		if (frames[left] && (frames[left].left - x) * px < 0.5) return frames[left];
+		if (frames[right] && (x - (frames[right].left + frames[right].width)) * px < 0.5) return frames[right];
+
+		return null;
+	}
+
+	function search(r) {
+		if (r === true && (r = prompt('Enter regexp to search:', '')) === null) {
+			return;
+		}
+
+		pattern = r ? RegExp(r) : undefined;
+		const matched = render(root, rootLevel);
+		document.getElementById('matchval').textContent = pct(matched, root.width) + '%';
+		document.getElementById('match').style.display = r ? 'inherit' : 'none';
+	}
+
+	function render(newRoot, newLevel) {
+		if (root) {
+			c.fillStyle = '#ffffff';
+			c.fillRect(0, 0, canvasWidth, canvasHeight);
+		}
+
+		root = newRoot || levels[0][0];
+		rootLevel = newLevel || 0;
+		px = canvasWidth / root.width;
+
+		const x0 = root.left;
+		const x1 = x0 + root.width;
+		const marked = [];
+
+		function mark(f) {
+			return marked[f.left] >= f.width || (marked[f.left] = f.width);
+		}
+
+		function totalMarked() {
+			let total = 0;
+			let left = 0;
+			Object.keys(marked).sort(function(a, b) { return a - b; }).forEach(function(x) {
+				if (+x >= left) {
+					total += marked[x];
+					left = +x + marked[x];
+				}
+			});
+			return total;
+		}
+
+		function drawFrame(f, y, alpha) {
+			if (f.left < x1 && f.left + f.width > x0) {
+				c.fillStyle = pattern && f.title.match(pattern) && mark(f) ? '#ee00ee' : f.color;
+				c.fillRect((f.left - x0) * px, y, f.width * px, 15);
+
+				if (f.width * px >= 21) {
+					const chars = Math.floor(f.width * px / 7);
+					const title = f.title.length <= chars ? f.title : f.title.substring(0, chars - 2) + '..';
+					c.fillStyle = '#000000';
+					c.fillText(title, Math.max(f.left - x0, 0) * px + 3, y + 12, f.width * px - 6);
+				}
+
+				if (alpha) {
+					c.fillStyle = 'rgba(255, 255, 255, 0.5)';
+					c.fillRect((f.left - x0) * px, y, f.width * px, 15);
+				}
+			}
+		}
+
+		for (let h = 0; h < levels.length; h++) {
+			const y = reverse ? h * 16 : canvasHeight - (h + 1) * 16;
+			const frames = levels[h];
+			for (let i = 0; i < frames.length; i++) {
+				drawFrame(frames[i], y, h < rootLevel);
+			}
+		}
+
+		return totalMarked();
+	}
+
+	canvas.onmousemove = function() {
+		const h = Math.floor((reverse ? event.offsetY : (canvasHeight - event.offsetY)) / 16);
+		if (h >= 0 && h < levels.length) {
+			const f = findFrame(levels[h], event.offsetX / px + root.left);
+			if (f) {
+				if (f != root) getSelection().removeAllRanges();
+				hl.style.left = (Math.max(f.left - root.left, 0) * px + canvas.offsetLeft) + 'px';
+				hl.style.width = (Math.min(f.width, root.width) * px) + 'px';
+				hl.style.top = ((reverse ? h * 16 : canvasHeight - (h + 1) * 16) + canvas.offsetTop) + 'px';
+				hl.firstChild.textContent = f.title;
+				hl.style.display = 'block';
+				canvas.title = f.title + '\n(' + samples(f.width) + f.details + ', ' + pct(f.width, levels[0][0].width) + '%)';
+				canvas.style.cursor = 'pointer';
+				canvas.onclick = function() {
+					if (f != root) {
+						render(f, h);
+						canvas.onmousemove();
+					}
+				};
+				status.textContent = 'Function: ' + canvas.title;
+				return;
+			}
+		}
+		canvas.onmouseout();
+	}
+
+	canvas.onmouseout = function() {
+		hl.style.display = 'none';
+		status.textContent = '\xa0';
+		canvas.title = '';
+		canvas.style.cursor = '';
+		canvas.onclick = '';
+	}
+
+	canvas.ondblclick = function() {
+		getSelection().selectAllChildren(hl);
+	}
+
+	document.getElementById('reverse').onclick = function() {
+		reverse = !reverse;
+		render();
+	}
+
+	document.getElementById('search').onclick = function() {
+		search(true);
+	}
+
+	document.getElementById('reset').onclick = function() {
+		search(false);
+	}
+
+	window.onkeydown = function() {
+		if (event.ctrlKey && event.keyCode === 70) {
+			event.preventDefault();
+			search(true);
+		} else if (event.keyCode === 27) {
+			search(false);
+		}
+	}
+
+f(0,0,1043,3,'all')
+f(1,0,1,4,'LinearScan::assign_reg_num(GrowableArray<LIR_Op*>*, IntervalWalker*)')
+f(2,0,1,4,'LinearScan::assign_reg_num()')
+f(3,0,1,4,'LinearScan::do_linear_scan()')
+f(4,0,1,4,'Compilation::emit_lir()')
+f(5,0,1,4,'Compilation::compile_java_method()')
+f(6,0,1,4,'Compilation::compile_method()')
+f(7,0,1,4,'Compilation::Compilation(AbstractCompiler*, ciEnv*, ciMethod*, int, BufferBlob*, bool, DirectiveSet*)')
+f(8,0,1,4,'Compiler::compile_method(ciEnv*, ciMethod*, int, bool, DirectiveSet*)')
+f(9,0,1,4,'CompileBroker::invoke_compiler_on_method(CompileTask*)')
+f(10,0,1,4,'CompileBroker::compiler_thread_loop()')
+f(11,0,1,4,'JavaThread::thread_main_inner()')
+f(12,0,1,4,'Thread::call_run()')
+f(13,0,1,3,'thread_native_entry(Thread*)')
+f(14,0,1,3,'start_thread')
+f(1,1,3,1,'com/lstec/jvm/hash/jug/CountAggregation_06.batchIncrementCount')
+f(2,1,3,1,'com/lstec/jvm/hash/jug/BenchmarkCountAggregation.incrementCount_v06')
+f(3,1,3,1,'com/lstec/jvm/hash/jug/jmh_generated/BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub')
+f(4,1,3,1,'com/lstec/jvm/hash/jug/jmh_generated/BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime')
+f(5,1,3,1,'jdk/internal/reflect/NativeMethodAccessorImpl.invoke0')
+f(6,1,3,1,'jdk/internal/reflect/NativeMethodAccessorImpl.invoke')
+f(7,1,3,1,'jdk/internal/reflect/DelegatingMethodAccessorImpl.invoke')
+f(8,1,3,1,'java/lang/reflect/Method.invoke')
+f(9,1,3,1,'org/openjdk/jmh/runner/BenchmarkHandler$BenchmarkTask.call')
+f(10,1,3,1,'org/openjdk/jmh/runner/BenchmarkHandler$BenchmarkTask.call')
+f(11,1,3,1,'java/util/concurrent/FutureTask.run')
+f(12,1,3,1,'java/util/concurrent/Executors$RunnableAdapter.call')
+f(13,1,3,1,'java/util/concurrent/FutureTask.run')
+f(14,1,3,1,'java/util/concurrent/ThreadPoolExecutor.runWorker')
+f(15,1,3,1,'java/util/concurrent/ThreadPoolExecutor$Worker.run')
+f(16,1,3,1,'java/lang/Thread.run')
+f(1,4,1,2,'com/lstec/jvm/hash/jug/CountAggregation_06.calculatePosition',1,0,0)
+f(2,4,1,1,'com/lstec/jvm/hash/jug/CountAggregation_06.calculatePositions')
+f(3,4,1,1,'com/lstec/jvm/hash/jug/CountAggregation_06.processBatch')
+f(4,4,1,1,'com/lstec/jvm/hash/jug/CountAggregation_06.batchIncrementCount')
+f(5,4,1,1,'com/lstec/jvm/hash/jug/BenchmarkCountAggregation.incrementCount_v06')
+f(6,4,1,1,'com/lstec/jvm/hash/jug/jmh_generated/BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub')
+f(7,4,1,1,'com/lstec/jvm/hash/jug/jmh_generated/BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime')
+f(8,4,1,1,'jdk/internal/reflect/NativeMethodAccessorImpl.invoke0')
+f(9,4,1,1,'jdk/internal/reflect/NativeMethodAccessorImpl.invoke')
+f(10,4,1,1,'jdk/internal/reflect/DelegatingMethodAccessorImpl.invoke')
+f(11,4,1,1,'java/lang/reflect/Method.invoke')
+f(12,4,1,1,'org/openjdk/jmh/runner/BenchmarkHandler$BenchmarkTask.call')
+f(13,4,1,1,'org/openjdk/jmh/runner/BenchmarkHandler$BenchmarkTask.call')
+f(14,4,1,1,'java/util/concurrent/FutureTask.run')
+f(15,4,1,1,'java/util/concurrent/Executors$RunnableAdapter.call')
+f(16,4,1,1,'java/util/concurrent/FutureTask.run')
+f(17,4,1,1,'java/util/concurrent/ThreadPoolExecutor.runWorker')
+f(18,4,1,1,'java/util/concurrent/ThreadPoolExecutor$Worker.run')
+f(19,4,1,1,'java/lang/Thread.run')
+f(1,5,191,1,'com/lstec/jvm/hash/jug/CountAggregation_06.calculatePositions')
+f(2,5,1,1,'com/lstec/jvm/hash/jug/CountAggregation_06.batchIncrementCount')
+f(3,5,1,1,'com/lstec/jvm/hash/jug/BenchmarkCountAggregation.incrementCount_v06')
+f(4,5,1,1,'com/lstec/jvm/hash/jug/jmh_generated/BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub')
+f(5,5,1,1,'com/lstec/jvm/hash/jug/jmh_generated/BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime')
+f(6,5,1,1,'jdk/internal/reflect/NativeMethodAccessorImpl.invoke0')
+f(7,5,1,1,'jdk/internal/reflect/NativeMethodAccessorImpl.invoke')
+f(8,5,1,1,'jdk/internal/reflect/DelegatingMethodAccessorImpl.invoke')
+f(9,5,1,1,'java/lang/reflect/Method.invoke')
+f(10,5,1,1,'org/openjdk/jmh/runner/BenchmarkHandler$BenchmarkTask.call')
+f(11,5,1,1,'org/openjdk/jmh/runner/BenchmarkHandler$BenchmarkTask.call')
+f(12,5,1,1,'java/util/concurrent/FutureTask.run')
+f(13,5,1,1,'java/util/concurrent/Executors$RunnableAdapter.call')
+f(14,5,1,1,'java/util/concurrent/FutureTask.run')
+f(15,5,1,1,'java/util/concurrent/ThreadPoolExecutor.runWorker')
+f(16,5,1,1,'java/util/concurrent/ThreadPoolExecutor$Worker.run')
+f(17,5,1,1,'java/lang/Thread.run')
+f(2,6,190,1,'com/lstec/jvm/hash/jug/CountAggregation_06.processBatch')
+f(3,6,190,1,'com/lstec/jvm/hash/jug/CountAggregation_06.batchIncrementCount')
+f(4,6,190,1,'com/lstec/jvm/hash/jug/BenchmarkCountAggregation.incrementCount_v06')
+f(5,6,190,1,'com/lstec/jvm/hash/jug/jmh_generated/BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub')
+f(6,6,190,1,'com/lstec/jvm/hash/jug/jmh_generated/BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime')
+f(7,6,76,1,'jdk/internal/reflect/GeneratedMethodAccessor3.invoke')
+f(8,6,76,1,'jdk/internal/reflect/DelegatingMethodAccessorImpl.invoke')
+f(9,6,76,1,'java/lang/reflect/Method.invoke')
+f(10,6,76,1,'org/openjdk/jmh/runner/BenchmarkHandler$BenchmarkTask.call')
+f(11,6,76,1,'org/openjdk/jmh/runner/BenchmarkHandler$BenchmarkTask.call')
+f(12,6,76,1,'java/util/concurrent/FutureTask.run')
+f(13,6,76,1,'java/util/concurrent/Executors$RunnableAdapter.call')
+f(14,6,76,1,'java/util/concurrent/FutureTask.run')
+f(15,6,76,1,'java/util/concurrent/ThreadPoolExecutor.runWorker')
+f(16,6,76,1,'java/util/concurrent/ThreadPoolExecutor$Worker.run')
+f(17,6,76,1,'java/lang/Thread.run')
+f(7,82,114,1,'jdk/internal/reflect/NativeMethodAccessorImpl.invoke0')
+f(8,82,114,1,'jdk/internal/reflect/NativeMethodAccessorImpl.invoke')
+f(9,82,114,1,'jdk/internal/reflect/DelegatingMethodAccessorImpl.invoke')
+f(10,82,114,1,'java/lang/reflect/Method.invoke')
+f(11,82,114,1,'org/openjdk/jmh/runner/BenchmarkHandler$BenchmarkTask.call')
+f(12,82,114,1,'org/openjdk/jmh/runner/BenchmarkHandler$BenchmarkTask.call')
+f(13,82,114,1,'java/util/concurrent/FutureTask.run')
+f(14,82,114,1,'java/util/concurrent/Executors$RunnableAdapter.call')
+f(15,82,114,1,'java/util/concurrent/FutureTask.run')
+f(16,82,114,1,'java/util/concurrent/ThreadPoolExecutor.runWorker')
+f(17,82,114,1,'java/util/concurrent/ThreadPoolExecutor$Worker.run')
+f(18,82,114,1,'java/lang/Thread.run')
+f(1,196,90,1,'com/lstec/jvm/hash/jug/CountAggregation_06.getCurrentValues')
+f(2,196,90,1,'com/lstec/jvm/hash/jug/CountAggregation_06.processBatch')
+f(3,196,90,1,'com/lstec/jvm/hash/jug/CountAggregation_06.batchIncrementCount')
+f(4,196,90,1,'com/lstec/jvm/hash/jug/BenchmarkCountAggregation.incrementCount_v06')
+f(5,196,90,1,'com/lstec/jvm/hash/jug/jmh_generated/BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub')
+f(6,196,90,1,'com/lstec/jvm/hash/jug/jmh_generated/BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime')
+f(7,196,39,1,'jdk/internal/reflect/GeneratedMethodAccessor3.invoke')
+f(8,196,39,1,'jdk/internal/reflect/DelegatingMethodAccessorImpl.invoke')
+f(9,196,39,1,'java/lang/reflect/Method.invoke')
+f(10,196,39,1,'org/openjdk/jmh/runner/BenchmarkHandler$BenchmarkTask.call')
+f(11,196,39,1,'org/openjdk/jmh/runner/BenchmarkHandler$BenchmarkTask.call')
+f(12,196,39,1,'java/util/concurrent/FutureTask.run')
+f(13,196,39,1,'java/util/concurrent/Executors$RunnableAdapter.call')
+f(14,196,39,1,'java/util/concurrent/FutureTask.run')
+f(15,196,39,1,'java/util/concurrent/ThreadPoolExecutor.runWorker')
+f(16,196,39,1,'java/util/concurrent/ThreadPoolExecutor$Worker.run')
+f(17,196,39,1,'java/lang/Thread.run')
+f(7,235,51,1,'jdk/internal/reflect/NativeMethodAccessorImpl.invoke0')
+f(8,235,51,1,'jdk/internal/reflect/NativeMethodAccessorImpl.invoke')
+f(9,235,51,1,'jdk/internal/reflect/DelegatingMethodAccessorImpl.invoke')
+f(10,235,51,1,'java/lang/reflect/Method.invoke')
+f(11,235,51,1,'org/openjdk/jmh/runner/BenchmarkHandler$BenchmarkTask.call')
+f(12,235,51,1,'org/openjdk/jmh/runner/BenchmarkHandler$BenchmarkTask.call')
+f(13,235,51,1,'java/util/concurrent/FutureTask.run')
+f(14,235,51,1,'java/util/concurrent/Executors$RunnableAdapter.call')
+f(15,235,51,1,'java/util/concurrent/FutureTask.run')
+f(16,235,51,1,'java/util/concurrent/ThreadPoolExecutor.runWorker')
+f(17,235,51,1,'java/util/concurrent/ThreadPoolExecutor$Worker.run')
+f(18,235,51,1,'java/lang/Thread.run')
+f(1,286,755,1,'com/lstec/jvm/hash/jug/CountAggregation_06.incrementCountForBatch')
+f(2,286,755,1,'com/lstec/jvm/hash/jug/CountAggregation_06.processBatch')
+f(3,286,755,1,'com/lstec/jvm/hash/jug/CountAggregation_06.batchIncrementCount')
+f(4,286,755,1,'com/lstec/jvm/hash/jug/BenchmarkCountAggregation.incrementCount_v06')
+f(5,286,755,1,'com/lstec/jvm/hash/jug/jmh_generated/BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub')
+f(6,286,755,1,'com/lstec/jvm/hash/jug/jmh_generated/BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime')
+f(7,286,301,1,'jdk/internal/reflect/GeneratedMethodAccessor3.invoke')
+f(8,286,301,1,'jdk/internal/reflect/DelegatingMethodAccessorImpl.invoke')
+f(9,286,301,1,'java/lang/reflect/Method.invoke')
+f(10,286,301,1,'org/openjdk/jmh/runner/BenchmarkHandler$BenchmarkTask.call')
+f(11,286,301,1,'org/openjdk/jmh/runner/BenchmarkHandler$BenchmarkTask.call')
+f(12,286,301,1,'java/util/concurrent/FutureTask.run')
+f(13,286,301,1,'java/util/concurrent/Executors$RunnableAdapter.call')
+f(14,286,301,1,'java/util/concurrent/FutureTask.run')
+f(15,286,301,1,'java/util/concurrent/ThreadPoolExecutor.runWorker')
+f(16,286,301,1,'java/util/concurrent/ThreadPoolExecutor$Worker.run')
+f(17,286,301,1,'java/lang/Thread.run')
+f(7,587,454,1,'jdk/internal/reflect/NativeMethodAccessorImpl.invoke0')
+f(8,587,454,1,'jdk/internal/reflect/NativeMethodAccessorImpl.invoke')
+f(9,587,454,1,'jdk/internal/reflect/DelegatingMethodAccessorImpl.invoke')
+f(10,587,454,1,'java/lang/reflect/Method.invoke')
+f(11,587,454,1,'org/openjdk/jmh/runner/BenchmarkHandler$BenchmarkTask.call')
+f(12,587,454,1,'org/openjdk/jmh/runner/BenchmarkHandler$BenchmarkTask.call')
+f(13,587,454,1,'java/util/concurrent/FutureTask.run')
+f(14,587,454,1,'java/util/concurrent/Executors$RunnableAdapter.call')
+f(15,587,454,1,'java/util/concurrent/FutureTask.run')
+f(16,587,454,1,'java/util/concurrent/ThreadPoolExecutor.runWorker')
+f(17,587,454,1,'java/util/concurrent/ThreadPoolExecutor$Worker.run')
+f(18,587,454,1,'java/lang/Thread.run')
+f(1,1041,2,1,'com/lstec/jvm/hash/jug/CountAggregation_06.processBatch')
+f(2,1041,2,1,'com/lstec/jvm/hash/jug/CountAggregation_06.batchIncrementCount')
+f(3,1041,2,1,'com/lstec/jvm/hash/jug/BenchmarkCountAggregation.incrementCount_v06')
+f(4,1041,2,1,'com/lstec/jvm/hash/jug/jmh_generated/BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_avgt_jmhStub')
+f(5,1041,2,1,'com/lstec/jvm/hash/jug/jmh_generated/BenchmarkCountAggregation_incrementCount_v06_jmhTest.incrementCount_v06_AverageTime')
+f(6,1041,1,1,'jdk/internal/reflect/GeneratedMethodAccessor3.invoke')
+f(7,1041,1,1,'jdk/internal/reflect/DelegatingMethodAccessorImpl.invoke')
+f(8,1041,1,1,'java/lang/reflect/Method.invoke')
+f(9,1041,1,1,'org/openjdk/jmh/runner/BenchmarkHandler$BenchmarkTask.call')
+f(10,1041,1,1,'org/openjdk/jmh/runner/BenchmarkHandler$BenchmarkTask.call')
+f(11,1041,1,1,'java/util/concurrent/FutureTask.run')
+f(12,1041,1,1,'java/util/concurrent/Executors$RunnableAdapter.call')
+f(13,1041,1,1,'java/util/concurrent/FutureTask.run')
+f(14,1041,1,1,'java/util/concurrent/ThreadPoolExecutor.runWorker')
+f(15,1041,1,1,'java/util/concurrent/ThreadPoolExecutor$Worker.run')
+f(16,1041,1,1,'java/lang/Thread.run')
+f(6,1042,1,1,'jdk/internal/reflect/NativeMethodAccessorImpl.invoke0')
+f(7,1042,1,1,'jdk/internal/reflect/NativeMethodAccessorImpl.invoke')
+f(8,1042,1,1,'jdk/internal/reflect/DelegatingMethodAccessorImpl.invoke')
+f(9,1042,1,1,'java/lang/reflect/Method.invoke')
+f(10,1042,1,1,'org/openjdk/jmh/runner/BenchmarkHandler$BenchmarkTask.call')
+f(11,1042,1,1,'org/openjdk/jmh/runner/BenchmarkHandler$BenchmarkTask.call')
+f(12,1042,1,1,'java/util/concurrent/FutureTask.run')
+f(13,1042,1,1,'java/util/concurrent/Executors$RunnableAdapter.call')
+f(14,1042,1,1,'java/util/concurrent/FutureTask.run')
+f(15,1042,1,1,'java/util/concurrent/ThreadPoolExecutor.runWorker')
+f(16,1042,1,1,'java/util/concurrent/ThreadPoolExecutor$Worker.run')
+f(17,1042,1,1,'java/lang/Thread.run')
+
+search();
+</script></body></html>
