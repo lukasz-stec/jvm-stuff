@@ -19,6 +19,30 @@ public class TestLongCountHashTable
         }
     }
 
+    @Test
+    public void testPipelined()
+    {
+        for (int groupCount : new int[] {4, 1000, 100_000}) {
+            assertCounts(PipelinedLongCountHashTable::new, groupCount);
+        }
+    }
+
+    @Test
+    public void testPipelinedBatchSize()
+    {
+        for (int batchSize : new int[] {1, 3, 8, 64, 1024}) {
+            assertCounts(expectedSize -> new PipelinedLongCountHashTable(expectedSize, batchSize), 1000);
+        }
+    }
+
+    @Test
+    public void testPipelinedZeroValue()
+    {
+        PipelinedLongCountHashTable hashTable = new PipelinedLongCountHashTable(4);
+        hashTable.putBlock(new LongAraayBlock(new long[] {0, 1, 0, 1, 0}, 5));
+        assertThat(toMap(hashTable.getCounts())).isEqualTo(new Long2LongOpenHashMap(new long[] {0, 1}, new long[] {3, 2}));
+    }
+
     private static void assertCounts(IntFunction<LongCountHashTable> factory, int groupCount)
     {
         // blocks whose size is neither a multiple nor a divisor of the batch size
