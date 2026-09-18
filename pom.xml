@@ -1,61 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
         <groupId>io.airlift</groupId>
         <artifactId>airbase</artifactId>
-        <version>113</version>
+        <version>412</version>
     </parent>
-    
+
     <groupId>com.lstec</groupId>
     <artifactId>jvm-stuff</artifactId>
     <version>1.0-SNAPSHOT</version>
-    
+    <description>JMH microbenchmarks for JVM behavior experiments</description>
+
     <properties>
-        <project.build.targetJdk>17</project.build.targetJdk>
+        <project.build.targetJdk>27</project.build.targetJdk>
         <air.check.skip-extended>true</air.check.skip-extended>
-        <dep.jmh.version>1.35</dep.jmh.version>
     </properties>
-    
+
     <dependencies>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+        </dependency>
         <dependency>
             <groupId>it.unimi.dsi</groupId>
             <artifactId>fastutil</artifactId>
             <version>8.3.0</version>
         </dependency>
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-        </dependency>
-        
+
         <!-- jmh -->
         <dependency>
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-core</artifactId>
-            <version>${dep.jmh.version}</version>
             <scope>compile</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.openjdk.jmh</groupId>
-            <artifactId>jmh-generator-annprocess</artifactId>
-            <version>${dep.jmh.version}</version>
-            <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations</artifactId>
-            <version>19.0.0</version>
+            <version>26.1.0</version>
             <scope>provided</scope>
         </dependency>
-        
+
         <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-generator-annprocess</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -69,31 +77,34 @@
                     <failIfNoTests>false</failIfNoTests>
                 </configuration>
             </plugin>
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-compiler-plugin</artifactId>-->
-<!--                <configuration>-->
-<!--                    <compilerArgs>-->
-<!--                        <arg>&#45;&#45;add-modules jdk.incubator.vector</arg>-->
-<!--                    </compilerArgs>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
+            <!--            <plugin>-->
+            <!--                <groupId>org.apache.maven.plugins</groupId>-->
+            <!--                <artifactId>maven-compiler-plugin</artifactId>-->
+            <!--                <configuration>-->
+            <!--                    <compilerArgs>-->
+            <!--                        <arg>&#45;&#45;add-modules jdk.incubator.vector</arg>-->
+            <!--                    </compilerArgs>-->
+            <!--                </configuration>-->
+            <!--            </plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
                 <configuration>
-                    <source>${project.build.targetJdk}</source>
-                    <release>${project.build.targetJdk}</release>
-                    <encoding>${project.build.sourceEncoding}</encoding>
-                    <maxmem>${air.build.jvmsize}</maxmem>
-                    <failOnWarning>${air.compiler.fail-warnings}</failOnWarning>
-                    <showWarnings>true</showWarnings>
-                    <fork>true</fork>
-                    <parameters>true</parameters>
+                    <!-- JDK 22+ no longer runs classpath-discovered processors implicitly; jmh-generator-annprocess needs this -->
+                    <proc>full</proc>
                     <compilerArgs>
                         <arg>--add-modules=jdk.incubator.vector</arg>
                     </compilerArgs>
+                </configuration>
+            </plugin>
+            <plugin>
+                <!-- src/main/java holds a patched copy of this JMH class, shadowing the one in jmh-core -->
+                <groupId>org.basepom.maven</groupId>
+                <artifactId>duplicate-finder-maven-plugin</artifactId>
+                <configuration>
+                    <ignoredClassPatterns>
+                        <ignoredClassPattern>org\.openjdk\.jmh\.infra\.BenchmarkParams.*</ignoredClassPattern>
+                    </ignoredClassPatterns>
                 </configuration>
             </plugin>
             <plugin>

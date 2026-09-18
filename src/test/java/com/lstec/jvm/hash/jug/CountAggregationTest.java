@@ -2,12 +2,12 @@ package com.lstec.jvm.hash.jug;
 
 import it.unimi.dsi.fastutil.longs.Long2IntMap;
 import it.unimi.dsi.fastutil.longs.Long2IntOpenHashMap;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Random;
 import java.util.stream.LongStream;
 
-import static org.testng.Assert.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class CountAggregationTest
 {
@@ -70,7 +70,9 @@ public class CountAggregationTest
             otherMap.compute(value, (key, count) -> count == null ? 1 : count + 1);
         }
         for (Long2IntMap.Entry entry : otherMap.long2IntEntrySet()) {
-            assertEquals(map.getCount(entry.getLongKey()), entry.getIntValue(), "expected count equals for " + entry.getLongKey());
+            assertThat(map.getCount(entry.getLongKey()))
+                    .as("expected count equals for " + entry.getLongKey())
+                    .isEqualTo(entry.getIntValue());
         }
     }
 
@@ -81,18 +83,18 @@ public class CountAggregationTest
         map.incrementCount(2);
         map.incrementCount(2);
         map.incrementCount(2);
-        assertEquals(map.getCount(1), 2);
-        assertEquals(map.getCount(2), 3);
-        assertEquals(map.getCount(3), -1);
+        assertThat(map.getCount(1)).isEqualTo(2);
+        assertThat(map.getCount(2)).isEqualTo(3);
+        assertThat(map.getCount(3)).isEqualTo(-1);
     }
 
     private static void testMap(LongCountAggregation map)
     {
         map.batchIncrementCount(new long[] {0, 1, 1, 2, 2, 2, 4, 4, 4, 4, 4});
-        assertEquals(map.getCount(0), 1);
-        assertEquals(map.getCount(1), 2);
-        assertEquals(map.getCount(2), 3);
-        assertEquals(map.getCount(3), -1);
-        assertEquals(map.getCount(4), 5);
+        assertThat(map.getCount(0)).isEqualTo(1);
+        assertThat(map.getCount(1)).isEqualTo(2);
+        assertThat(map.getCount(2)).isEqualTo(3);
+        assertThat(map.getCount(3)).isEqualTo(-1);
+        assertThat(map.getCount(4)).isEqualTo(5);
     }
 }
