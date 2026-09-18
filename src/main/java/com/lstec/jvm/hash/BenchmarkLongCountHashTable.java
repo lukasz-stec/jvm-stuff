@@ -36,21 +36,46 @@ import java.util.concurrent.TimeUnit;
 @BenchmarkMode(Mode.AverageTime)
 public class BenchmarkLongCountHashTable
 {
-    private static final int POSITIONS = 1024 * 1024 * 8;
+    /**
+     * Rows every invocation processes, whatever the {@code rows} parameter is: a cell that
+     * aggregates fewer rows per table just builds more tables. That keeps the score comparable
+     * as ns per row across the whole matrix. Every {@code rows} value must divide it.
+     */
+    private static final int ROWS_PER_INVOCATION = 1024 * 1024 * 32;
 
     @SuppressWarnings("FieldMayBeFinal")
     @State(Scope.Thread)
     public static class BenchmarkData
     {
-        @Param({"4", "100000", "3000000"})
+        // 4 -> table fits L1, 65536 -> 1MB fits L2, 1M -> 32MB fits L3, 8M -> 256MB out of cache
+        @Param({"4", "1024", "65536", "1000000", "8000000"})
         private int groupCount = 4;
 
+        // rows aggregated into a single table
+        @Param({"32768", "262144", "2097152", "8388608", "33554432"})
+        private int rows = ROWS_PER_INVOCATION;
+
         private List<LongAraayBlock> pages;
+        private int expectedSize;
+        private int tablesPerInvocation;
 
         @Setup
         public void setup()
         {
-            pages = createBigintPages(POSITIONS, groupCount);
+            // a table can never hold more distinct values than it is given rows
+            expectedSize = Math.min(groupCount, rows);
+            tablesPerInvocation = ROWS_PER_INVOCATION / rows;
+            pages = createBigintPages(rows, groupCount);
+        }
+
+        public int getExpectedSize()
+        {
+            return expectedSize;
+        }
+
+        public int getTablesPerInvocation()
+        {
+            return tablesPerInvocation;
         }
 
         private static List<LongAraayBlock> createBigintPages(int positionCount, int groupCount)
@@ -80,26 +105,41 @@ public class BenchmarkLongCountHashTable
         }
     }
 
-    @Benchmark
-    @OperationsPerInvocation(POSITIONS)
-    @CompilerControl(CompilerControl.Mode.DONT_INLINE)
-    public Object longCountHashTable(BenchmarkData data)
+    @SuppressWarnings("FieldMayBeFinal")
+    @State(Scope.Thread)
+    public static class PipelineData
     {
-        LongCountHashTable hashTable = new ScalarLongCountHashTable(data.groupCount);
+        @Param({"128"})
+        private int batchSize = PipelinedLongCountHashTable.DEFAULT_BATCH_SIZE;
 
-        for (LongAraayBlock page : data.getPages()) {
-            hashTable.putBlock(page);
+        public int getBatchSize()
+        {
+            return batchSize;
         }
-
-        return hashTable.getCounts();
     }
 
     @Benchmark
-    @OperationsPerInvocation(POSITIONS)
+    @OperationsPerInvocation(ROWS_PER_INVOCATION)
+    @CompilerControl(CompilerControl.Mode.DONT_INLINE)
+    public long longCountHashTable(BenchmarkData data)
+    {
+        long checksum = 0;
+        for (int table = 0; table < data.getTablesPerInvocation(); table++) {
+            LongCountHashTable hashTable = new ScalarLongCountHashTable(data.getExpectedSize());
+            for (LongAraayBlock page : data.getPages()) {
+                hashTable.putBlock(page);
+            }
+            checksum += hashTable.getCounts().length;
+        }
+        return checksum;
+    }
+
+    @Benchmark
+    @OperationsPerInvocation(ROWS_PER_INVOCATION)
     @CompilerControl(CompilerControl.Mode.DONT_INLINE)
     public Object vectorLongCountHashTable(BenchmarkData data)
     {
-        LongCountHashTable hashTable = new VectorizedLongCountHashTable(data.groupCount);
+        LongCountHashTable hashTable = new VectorizedLongCountHashTable(data.getExpectedSize());
 
         for (LongAraayBlock page : data.getPages()) {
             hashTable.putBlock(page);
@@ -109,27 +149,58 @@ public class BenchmarkLongCountHashTable
         return hashTable.getCounts();
     }
 
+    @Benchmark
+    @OperationsPerInvocation(ROWS_PER_INVOCATION)
+    @CompilerControl(CompilerControl.Mode.DONT_INLINE)
+    public long pipelinedLongCountHashTable(BenchmarkData data, PipelineData pipelineData)
+    {
+        long checksum = 0;
+        for (int table = 0; table < data.getTablesPerInvocation(); table++) {
+            LongCountHashTable hashTable = new PipelinedLongCountHashTable(data.getExpectedSize(), pipelineData.getBatchSize());
+            for (LongAraayBlock page : data.getPages()) {
+                hashTable.putBlock(page);
+            }
+            checksum += hashTable.getCounts().length;
+        }
+        return checksum;
+    }
+
+    @Benchmark
+    @OperationsPerInvocation(ROWS_PER_INVOCATION)
+    @CompilerControl(CompilerControl.Mode.DONT_INLINE)
+    public long radixLongCountHashTable(BenchmarkData data)
+    {
+        long checksum = 0;
+        for (int table = 0; table < data.getTablesPerInvocation(); table++) {
+            LongCountHashTable hashTable = new RadixLongCountHashTable(data.getExpectedSize());
+            for (LongAraayBlock page : data.getPages()) {
+                hashTable.putBlock(page);
+            }
+            checksum += hashTable.getCounts().length;
+        }
+        return checksum;
+    }
+
     public static void main(String[] args)
             throws RunnerException
     {
         BenchmarkData benchmarkData = new BenchmarkData();
         benchmarkData.setup();
-        new BenchmarkLongCountHashTable().vectorLongCountHashTable((benchmarkData));
+        new BenchmarkLongCountHashTable().pipelinedLongCountHashTable(benchmarkData, new PipelineData());
         String profilerOutputDir = profilerOutputDir();
         Benchmarks.benchmark(BenchmarkLongCountHashTable.class)
                 .withOptions(optionsBuilder -> optionsBuilder
-                                .param("groupCount", "4")
-                                .warmupIterations(30)
+                                .warmupIterations(10)
                                 .measurementIterations(10)
 //                        .addProfiler(AsyncProfiler.class, String.format("dir=%s;output=text;output=flamegraph", profilerOutputDir))
-                                .addProfiler(DTraceAsmProfiler.class, String.format("hotThreshold=0.05;tooBigThreshold=3000;saveLog=true;saveLogTo=%s", profilerOutputDir, profilerOutputDir))
+//                        .addProfiler(DTraceAsmProfiler.class, String.format("hotThreshold=0.05;tooBigThreshold=3000;saveLog=true;saveLogTo=%s", profilerOutputDir, profilerOutputDir))
                                 .jvmArgsPrepend("--enable-preview")
                                 .jvmArgs("-Xmx10g")
                                 .jvmArgsAppend("--add-modules=jdk.incubator.vector")
 //                        .forks(0)
                 )
-//                .includeMethod("vectorLongCountHashTable")
-//                .includeMethod("longCountHashTable")
+                // vectorLongCountHashTable overcounts and throws above 16 entries per sub table, so it is not comparable yet
+                .includeMethod("longCountHashTable|pipelinedLongCountHashTable|radixLongCountHashTable")
                 .run();
 
         File dir = new File(profilerOutputDir);
@@ -141,7 +212,7 @@ public class BenchmarkLongCountHashTable
     private static String profilerOutputDir()
     {
         try {
-            String jmhDir = "jmh";
+            String jmhDir = "jmh/long-count-hash-table";
             new File(jmhDir).mkdirs();
             String outDir = jmhDir + "/" + String.valueOf(Files.list(Paths.get(jmhDir))
                     .map(path -> Integer.parseInt(path.getFileName().toString()) + 1)
