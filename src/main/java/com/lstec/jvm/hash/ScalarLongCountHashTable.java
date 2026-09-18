@@ -12,6 +12,7 @@ public class ScalarLongCountHashTable
 
     private final long[] hashTable;
     private final int hashCapacity;
+    private final int hashPositionMask;
     private final int mask;
     private int zeroCount;
     private int hashCollisions;
@@ -21,6 +22,7 @@ public class ScalarLongCountHashTable
     {
         hashCapacity = arraySize(expectedSize, FILL_RATIO);
         hashTable = new long[hashCapacity * 2]; // value + count
+        hashPositionMask = hashCapacity - 1;
         mask = hashTable.length - 1;
     }
 
@@ -70,7 +72,8 @@ public class ScalarLongCountHashTable
 
     private int position(long value)
     {
-        return ((int) murmurHash3(value)) & mask;
+        // mask the entry index, not the array index: an odd start would put values into count slots
+        return (((int) murmurHash3(value)) & hashPositionMask) * 2;
     }
 
     @Override
