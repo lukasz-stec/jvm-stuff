@@ -36,6 +36,29 @@ public class TestLongCountHashTable
     }
 
     @Test
+    public void testRadix()
+    {
+        for (int groupCount : new int[] {4, 1000, 100_000, 300_000}) {
+            assertCounts(RadixLongCountHashTable::new, groupCount);
+        }
+    }
+
+    @Test
+    public void testRadixPartitionGrowth()
+    {
+        // sized for far fewer distinct values than it gets, so every partition has to grow
+        assertCounts(expectedSize -> new RadixLongCountHashTable(16), 200_000);
+    }
+
+    @Test
+    public void testRadixZeroValue()
+    {
+        RadixLongCountHashTable hashTable = new RadixLongCountHashTable(4);
+        hashTable.putBlock(new LongAraayBlock(new long[] {0, 1, 0, 1, 0}, 5));
+        assertThat(toMap(hashTable.getCounts())).isEqualTo(new Long2LongOpenHashMap(new long[] {0, 1}, new long[] {3, 2}));
+    }
+
+    @Test
     public void testPipelinedZeroValue()
     {
         PipelinedLongCountHashTable hashTable = new PipelinedLongCountHashTable(4);
