@@ -118,6 +118,19 @@ public class BenchmarkLongCountHashTable
         }
     }
 
+    @SuppressWarnings("FieldMayBeFinal")
+    @State(Scope.Thread)
+    public static class BucketData
+    {
+        @Param({"0.5"})
+        private float fillRatio = BucketedLongCountHashTable.DEFAULT_FILL_RATIO;
+
+        public float getFillRatio()
+        {
+            return fillRatio;
+        }
+    }
+
     @Benchmark
     @OperationsPerInvocation(ROWS_PER_INVOCATION)
     @CompilerControl(CompilerControl.Mode.DONT_INLINE)
@@ -181,6 +194,23 @@ public class BenchmarkLongCountHashTable
         return checksum;
     }
 
+    @Benchmark
+    @OperationsPerInvocation(ROWS_PER_INVOCATION)
+    @CompilerControl(CompilerControl.Mode.DONT_INLINE)
+    public long bucketedLongCountHashTable(BenchmarkData data, BucketData bucketData)
+    {
+        long checksum = 0;
+        for (int table = 0; table < data.getTablesPerInvocation(); table++) {
+            LongCountHashTable hashTable = new BucketedLongCountHashTable(
+                    data.getExpectedSize(), bucketData.getFillRatio(), BucketedLongCountHashTable.DEFAULT_BATCH_SIZE);
+            for (LongAraayBlock page : data.getPages()) {
+                hashTable.putBlock(page);
+            }
+            checksum += hashTable.getCounts().length;
+        }
+        return checksum;
+    }
+
     public static void main(String[] args)
             throws RunnerException
     {
@@ -200,7 +230,7 @@ public class BenchmarkLongCountHashTable
 //                        .forks(0)
                 )
                 // vectorLongCountHashTable overcounts and throws above 16 entries per sub table, so it is not comparable yet
-                .includeMethod("longCountHashTable|pipelinedLongCountHashTable|radixLongCountHashTable")
+                .includeMethod("longCountHashTable|pipelinedLongCountHashTable|radixLongCountHashTable|bucketedLongCountHashTable")
                 .run();
 
         File dir = new File(profilerOutputDir);

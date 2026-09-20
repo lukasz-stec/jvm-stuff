@@ -36,6 +36,33 @@ public class TestLongCountHashTable
     }
 
     @Test
+    public void testBucketed()
+    {
+        for (int groupCount : new int[] {4, 1000, 100_000}) {
+            assertCounts(BucketedLongCountHashTable::new, groupCount);
+        }
+    }
+
+    @Test
+    public void testBucketedFillRatio()
+    {
+        // 1.0 leaves no spare slots, so most values have to spill to a following bucket
+        for (float fillRatio : new float[] {1.0f, 0.75f, 0.5f, 0.25f}) {
+            for (int batchSize : new int[] {1, 7, 64}) {
+                assertCounts(expectedSize -> new BucketedLongCountHashTable(expectedSize, fillRatio, batchSize), 1000);
+            }
+        }
+    }
+
+    @Test
+    public void testBucketedZeroValue()
+    {
+        BucketedLongCountHashTable hashTable = new BucketedLongCountHashTable(4);
+        hashTable.putBlock(new LongAraayBlock(new long[] {0, 1, 0, 1, 0}, 5));
+        assertThat(toMap(hashTable.getCounts())).isEqualTo(new Long2LongOpenHashMap(new long[] {0, 1}, new long[] {3, 2}));
+    }
+
+    @Test
     public void testRadix()
     {
         for (int groupCount : new int[] {4, 1000, 100_000, 300_000}) {
