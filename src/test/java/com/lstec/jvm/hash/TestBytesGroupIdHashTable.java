@@ -8,11 +8,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.function.BiFunction;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class TestBytesGroupIdHashTable
 {
+    /** (expectedGroupCount, expectedKeyLength) -> table */
+    private static final List<BiFunction<Integer, Integer, BytesGroupIdHashTable>> FACTORIES = List.of(
+            SimpleBytesGroupIdHashTable::new,
+            InlineKeyBytesGroupIdHashTable::new);
+
     @Test
     public void testGroupIds()
     {
@@ -58,17 +64,60 @@ public class TestBytesGroupIdHashTable
     @Test
     public void testRepeatedAcrossBlocks()
     {
-        // the same key must keep its id when it reappears in a later block
-        BytesGroupIdHashTable hashTable = new SimpleBytesGroupIdHashTable(16, 8);
-        byte[] a = "alpha".getBytes(StandardCharsets.UTF_8);
-        byte[] b = "beta".getBytes(StandardCharsets.UTF_8);
+        for (BiFunction<Integer, Integer, BytesGroupIdHashTable> factory : FACTORIES) {
+            // the same key must keep its id when it reappears in a later block
+            BytesGroupIdHashTable hashTable = factory.apply(16, 8);
+            byte[] a = "alpha".getBytes(StandardCharsets.UTF_8);
+            byte[] b = "beta".getBytes(StandardCharsets.UTF_8);
 
-        int[] first = groupIds(hashTable, List.of(a, b, a));
-        int[] second = groupIds(hashTable, List.of(b, a, b));
+            int[] first = groupIds(hashTable, List.of(a, b, a));
+            int[] second = groupIds(hashTable, List.of(b, a, b));
 
-        assertThat(first).containsExactly(0, 1, 0);
-        assertThat(second).containsExactly(1, 0, 1);
-        assertThat(hashTable.getGroupCount()).isEqualTo(2);
+            assertThat(first).containsExactly(0, 1, 0);
+            assertThat(second).containsExactly(1, 0, 1);
+            assertThat(hashTable.getGroupCount()).isEqualTo(2);
+        }
+    }
+
+    @Test
+    public void testKeysAroundTheInlineBoundary()
+    {
+        // lengths either side of the 16 byte limit, where a key stops being covered by the
+        // head and tail words and has to fall back to the arena
+        List<byte[]> keys = new ArrayList<>();
+        for (int length = 0; length <= 40; length++) {
+            for (int variant = 0; variant < 3; variant++) {
+                byte[] key = new byte[length];
+                for (int i = 0; i < length; i++) {
+                    key[i] = (byte) (i * 7 + variant);
+                }
+                if (length > 0) {
+                    key[length - 1] = (byte) variant;
+                }
+                keys.add(key);
+            }
+        }
+        // length 0 has no room for a variant, so its three copies are one key
+        assertGroupIds(keys, new Random(11), 8000, keys.size() - 2, 16);
+    }
+
+    @Test
+    public void testLongKeysSharingHeadAndTail()
+    {
+        // longer than the inline limit and identical in the first and last 8 bytes, so only a
+        // full comparison of the middle can tell them apart
+        List<byte[]> keys = new ArrayList<>();
+        for (int i = 0; i < 500; i++) {
+            byte[] key = new byte[40];
+            for (int j = 0; j < 8; j++) {
+                key[j] = (byte) 'H';
+                key[key.length - 1 - j] = (byte) 'T';
+            }
+            key[20] = (byte) i;
+            key[21] = (byte) (i >>> 8);
+            keys.add(key);
+        }
+        assertGroupIds(keys, new Random(12), 5000, 500, 40);
     }
 
     private static void assertGroupIds(int groupCount, int minLength, int maxLength, int expectedGroupCount)
@@ -89,7 +138,9 @@ public class TestBytesGroupIdHashTable
 
     private static void assertGroupIds(List<byte[]> keys, Random random, int rows, int expectedGroupCount, int expectedKeyLength)
     {
-        assertGroupIds(new SimpleBytesGroupIdHashTable(expectedGroupCount, expectedKeyLength), keys, random, rows);
+        for (BiFunction<Integer, Integer, BytesGroupIdHashTable> factory : FACTORIES) {
+            assertGroupIds(factory.apply(expectedGroupCount, expectedKeyLength), keys, new Random(random.nextLong()), rows);
+        }
     }
 
     private static void assertGroupIds(BytesGroupIdHashTable hashTable, List<byte[]> keys, Random random, int rows)
