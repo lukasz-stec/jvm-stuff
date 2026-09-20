@@ -63,6 +63,33 @@ public class TestLongCountHashTable
     }
 
     @Test
+    public void testWindowedRadix()
+    {
+        for (int groupCount : new int[] {4, 1000, 100_000, 300_000}) {
+            assertCounts(WindowedRadixLongCountHashTable::new, groupCount);
+        }
+    }
+
+    @Test
+    public void testWindowedRadixDrains()
+    {
+        // tiny sub-tables and windows, so partitions drain constantly and sub-tables overflow
+        // into their neighbours; {sub-table entries, window rows per partition}
+        int[][] configurations = {{8, 1}, {8, 200}, {64, 1}, {64, 2000}, {1024, 100}, {1024, 5000}};
+        for (int[] configuration : configurations) {
+            assertCounts(expectedSize -> new WindowedRadixLongCountHashTable(expectedSize, configuration[0], configuration[1]), 20_000);
+        }
+    }
+
+    @Test
+    public void testWindowedRadixZeroValue()
+    {
+        WindowedRadixLongCountHashTable hashTable = new WindowedRadixLongCountHashTable(4);
+        hashTable.putBlock(new LongAraayBlock(new long[] {0, 1, 0, 1, 0}, 5));
+        assertThat(toMap(hashTable.getCounts())).isEqualTo(new Long2LongOpenHashMap(new long[] {0, 1}, new long[] {3, 2}));
+    }
+
+    @Test
     public void testRadix()
     {
         for (int groupCount : new int[] {4, 1000, 100_000, 300_000}) {

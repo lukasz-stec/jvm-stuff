@@ -194,6 +194,44 @@ public class BenchmarkLongCountHashTable
         return checksum;
     }
 
+    @SuppressWarnings("FieldMayBeFinal")
+    @State(Scope.Thread)
+    public static class WindowData
+    {
+        @Param({"16384"})
+        private int subTableEntries = WindowedRadixLongCountHashTable.DEFAULT_SUB_TABLE_ENTRIES;
+
+        @Param({"32768"})
+        private int windowRowsPerPartition = WindowedRadixLongCountHashTable.DEFAULT_WINDOW_ROWS_PER_PARTITION;
+
+        public int getSubTableEntries()
+        {
+            return subTableEntries;
+        }
+
+        public int getWindowRowsPerPartition()
+        {
+            return windowRowsPerPartition;
+        }
+    }
+
+    @Benchmark
+    @OperationsPerInvocation(ROWS_PER_INVOCATION)
+    @CompilerControl(CompilerControl.Mode.DONT_INLINE)
+    public long windowedRadixLongCountHashTable(BenchmarkData data, WindowData windowData)
+    {
+        long checksum = 0;
+        for (int table = 0; table < data.getTablesPerInvocation(); table++) {
+            LongCountHashTable hashTable = new WindowedRadixLongCountHashTable(
+                    data.getExpectedSize(), windowData.getSubTableEntries(), windowData.getWindowRowsPerPartition());
+            for (LongAraayBlock page : data.getPages()) {
+                hashTable.putBlock(page);
+            }
+            checksum += hashTable.getCounts().length;
+        }
+        return checksum;
+    }
+
     @Benchmark
     @OperationsPerInvocation(ROWS_PER_INVOCATION)
     @CompilerControl(CompilerControl.Mode.DONT_INLINE)
@@ -230,7 +268,7 @@ public class BenchmarkLongCountHashTable
 //                        .forks(0)
                 )
                 // vectorLongCountHashTable overcounts and throws above 16 entries per sub table, so it is not comparable yet
-                .includeMethod("longCountHashTable|pipelinedLongCountHashTable|radixLongCountHashTable|bucketedLongCountHashTable")
+                .includeMethod("longCountHashTable|pipelinedLongCountHashTable|radixLongCountHashTable|windowedRadixLongCountHashTable|bucketedLongCountHashTable")
                 .run();
 
         File dir = new File(profilerOutputDir);
