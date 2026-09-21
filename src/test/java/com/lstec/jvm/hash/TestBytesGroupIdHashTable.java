@@ -11,13 +11,43 @@ import java.util.Random;
 import java.util.function.BiFunction;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class TestBytesGroupIdHashTable
 {
     /** (expectedGroupCount, expectedKeyLength) -> table */
     private static final List<BiFunction<Integer, Integer, BytesGroupIdHashTable>> FACTORIES = List.of(
             SimpleBytesGroupIdHashTable::new,
-            InlineKeyBytesGroupIdHashTable::new);
+            InlineKeyBytesGroupIdHashTable::new,
+            // no tag at all: every occupied slot on the probe path is compared in full
+            (groups, keyLength) -> new TaggedBytesGroupIdHashTable(groups, keyLength, 0, groups),
+            (groups, keyLength) -> new TaggedBytesGroupIdHashTable(groups, keyLength, 8, groups),
+            (groups, keyLength) -> new TaggedBytesGroupIdHashTable(groups, keyLength, 32, groups),
+            // sized 64x too small, so the table rehashes repeatedly: with 32 bits from the slot,
+            // and with 8 bits, where every key has to be read back and rehashed
+            (groups, keyLength) -> new TaggedBytesGroupIdHashTable(groups, keyLength, 8, Math.max(1, groups / 64)),
+            (groups, keyLength) -> new TaggedBytesGroupIdHashTable(groups, keyLength, 32, Math.max(1, groups / 64)));
+
+    @Test
+    public void testRejectsImpossibleTagWidth()
+    {
+        for (int hashBits : new int[] {-1, 33}) {
+            assertThatThrownBy(() -> new TaggedBytesGroupIdHashTable(16, 8, hashBits, 16))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("hashBits");
+        }
+    }
+
+    @Test
+    public void testRehashPreservesGroupsWhateverTheTagWidth()
+    {
+        // one entry per tag width, all grown from a single slot
+        for (int hashBits : new int[] {0, 8, 16, 32}) {
+            TaggedBytesGroupIdHashTable hashTable = new TaggedBytesGroupIdHashTable(5000, 24, hashBits, 1);
+            assertGroupIds(hashTable, distinctKeys(5000, 4, 40), new Random(3), 20_000);
+            assertThat(hashTable.getRehashCount()).as("tag width %s should have grown", hashBits).isGreaterThan(5);
+        }
+    }
 
     @Test
     public void testGroupIds()
@@ -118,6 +148,20 @@ public class TestBytesGroupIdHashTable
             keys.add(key);
         }
         assertGroupIds(keys, new Random(12), 5000, 500, 40);
+    }
+
+    private static List<byte[]> distinctKeys(int count, int minLength, int maxLength)
+    {
+        Random random = new Random(count);
+        List<byte[]> keys = new ArrayList<>();
+        for (int i = 0; i < count; i++) {
+            byte[] key = new byte[Math.max(minLength, 4 + random.nextInt(maxLength - 3))];
+            for (int j = 0; j < key.length; j++) {
+                key[j] = (byte) (j < 4 ? i >>> (j * 8) : random.nextInt());
+            }
+            keys.add(key);
+        }
+        return keys;
     }
 
     private static void assertGroupIds(int groupCount, int minLength, int maxLength, int expectedGroupCount)

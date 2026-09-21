@@ -135,6 +135,36 @@ public class BenchmarkBytesGroupIdHashTable
         return hashTable;
     }
 
+    @SuppressWarnings("FieldMayBeFinal")
+    @State(Scope.Thread)
+    public static class TagData
+    {
+        /** Bits of hash kept in the slot; 0 means every colliding probe is compared in full. */
+        @Param({"0", "32"})
+        private int hashBits = 32;
+
+        public int getHashBits()
+        {
+            return hashBits;
+        }
+    }
+
+    @Benchmark
+    @OperationsPerInvocation(POSITIONS)
+    @CompilerControl(CompilerControl.Mode.DONT_INLINE)
+    public Object taggedBytesGroupIdHashTable(BenchmarkData data, TagData tagData)
+    {
+        BytesGroupIdHashTable hashTable = new TaggedBytesGroupIdHashTable(
+                data.getGroupCount(), data.getAverageKeyLength(), tagData.getHashBits(), data.getGroupCount());
+
+        int[] groupIds = data.getGroupIds();
+        for (VariableWidthBlock page : data.getPages()) {
+            hashTable.putBlock(page, groupIds);
+        }
+
+        return hashTable;
+    }
+
     @Benchmark
     @OperationsPerInvocation(POSITIONS)
     @CompilerControl(CompilerControl.Mode.DONT_INLINE)
