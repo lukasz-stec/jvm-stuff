@@ -42,8 +42,9 @@ public class BenchmarkBytesGroupIdHashTable
         private int groupCount = 1024;
 
         // key lengths are uniform in [4, maxKeyLength], so the average is about half of this
-        @Param({"16", "64"})
-        private int maxKeyLength = 16;
+        @Param({"32", "64", "128"})
+        private int maxKeyLength = 32;
+
 
         private List<VariableWidthBlock> pages;
         private int[] groupIds;
