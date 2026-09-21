@@ -45,6 +45,15 @@ public class BenchmarkBytesGroupIdHashTable
         @Param({"32", "64", "128"})
         private int maxKeyLength = 32;
 
+        /**
+         * When set, every key is exactly the mean length of the variable distribution above, so
+         * the two modes hash and compare the same number of bytes on average and the only
+         * difference is the variability itself. That matters because the key length is stored in
+         * the slot and acts as a filter: with variable lengths it rejects most colliding probes
+         * before the arena is touched, and with fixed lengths it rejects none.
+         */
+        @Param({"false", "true"})
+        private boolean fixedKeyLength;
 
         private List<VariableWidthBlock> pages;
         private int[] groupIds;
@@ -57,7 +66,9 @@ public class BenchmarkBytesGroupIdHashTable
             byte[][] keys = new byte[groupCount][];
             long totalKeyLength = 0;
             for (int group = 0; group < groupCount; group++) {
-                int length = MIN_KEY_LENGTH + random.nextInt(maxKeyLength - MIN_KEY_LENGTH + 1);
+                int length = fixedKeyLength
+                        ? (MIN_KEY_LENGTH + maxKeyLength) / 2
+                        : MIN_KEY_LENGTH + random.nextInt(maxKeyLength - MIN_KEY_LENGTH + 1);
                 byte[] key = new byte[length];
                 // the group index goes in the first four bytes so every key is distinct
                 for (int i = 0; i < length; i++) {
