@@ -179,6 +179,21 @@ public class BenchmarkBytesGroupIdHashTable
     @Benchmark
     @OperationsPerInvocation(POSITIONS)
     @CompilerControl(CompilerControl.Mode.DONT_INLINE)
+    public Object pipelinedBytesGroupIdHashTable(BenchmarkData data)
+    {
+        BytesGroupIdHashTable hashTable = new PipelinedBytesGroupIdHashTable(data.getGroupCount(), data.getAverageKeyLength());
+
+        int[] groupIds = data.getGroupIds();
+        for (VariableWidthBlock page : data.getPages()) {
+            hashTable.putBlock(page, groupIds);
+        }
+
+        return hashTable;
+    }
+
+    @Benchmark
+    @OperationsPerInvocation(POSITIONS)
+    @CompilerControl(CompilerControl.Mode.DONT_INLINE)
     public Object inlineKeyBytesGroupIdHashTable(BenchmarkData data)
     {
         BytesGroupIdHashTable hashTable = new InlineKeyBytesGroupIdHashTable(data.getGroupCount(), data.getAverageKeyLength());

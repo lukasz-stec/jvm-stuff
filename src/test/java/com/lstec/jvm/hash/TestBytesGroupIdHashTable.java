@@ -19,6 +19,12 @@ public class TestBytesGroupIdHashTable
     private static final List<BiFunction<Integer, Integer, BytesGroupIdHashTable>> FACTORIES = List.of(
             SimpleBytesGroupIdHashTable::new,
             InlineKeyBytesGroupIdHashTable::new,
+            PipelinedBytesGroupIdHashTable::new,
+            // batch sizes that do not divide the block size, so batches straddle block ends
+            (groups, keyLength) -> new PipelinedBytesGroupIdHashTable(groups, keyLength, 1),
+            (groups, keyLength) -> new PipelinedBytesGroupIdHashTable(groups, keyLength, 7),
+            // sized far too small, so it rehashes repeatedly while batches are in flight
+            (groups, keyLength) -> new PipelinedBytesGroupIdHashTable(1, keyLength, 64),
             // no tag at all: every occupied slot on the probe path is compared in full
             (groups, keyLength) -> new TaggedBytesGroupIdHashTable(groups, keyLength, 0, groups),
             (groups, keyLength) -> new TaggedBytesGroupIdHashTable(groups, keyLength, 8, groups),
