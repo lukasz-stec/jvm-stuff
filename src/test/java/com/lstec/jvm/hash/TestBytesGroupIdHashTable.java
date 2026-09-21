@@ -29,6 +29,41 @@ public class TestBytesGroupIdHashTable
             (groups, keyLength) -> new TaggedBytesGroupIdHashTable(groups, keyLength, 32, Math.max(1, groups / 64)));
 
     @Test
+    public void testAllImplementationsAgreeRowByRow()
+    {
+        // the other assertions only check that ids are consistent and dense, which a table that
+        // numbers groups in the wrong order still satisfies; this pins the order itself
+        // fixed length keys, so the length in the slot filters nothing and every colliding
+        // probe becomes a candidate that has to be confirmed
+        List<byte[]> keys = distinctKeys(20_000, 24, 24);
+        Random random = new Random(21);
+        List<List<byte[]>> blocks = new ArrayList<>();
+        for (int block = 0; block < 60; block++) {
+            List<byte[]> rows = new ArrayList<>();
+            for (int i = 0; i < 700; i++) {
+                rows.add(keys.get(random.nextInt(keys.size())));
+            }
+            blocks.add(rows);
+        }
+
+        int[][] reference = null;
+        for (BiFunction<Integer, Integer, BytesGroupIdHashTable> factory : FACTORIES) {
+            // sized well under the real group count, so the tables grow while batches are live
+            BytesGroupIdHashTable hashTable = factory.apply(5000, 24);
+            int[][] actual = new int[blocks.size()][];
+            for (int block = 0; block < blocks.size(); block++) {
+                actual[block] = groupIds(hashTable, blocks.get(block));
+            }
+            if (reference == null) {
+                reference = actual;
+            }
+            else {
+                assertThat(actual).as("group ids must match the first implementation exactly").isEqualTo(reference);
+            }
+        }
+    }
+
+    @Test
     public void testRejectsImpossibleTagWidth()
     {
         for (int hashBits : new int[] {-1, 33}) {
@@ -155,7 +190,9 @@ public class TestBytesGroupIdHashTable
         Random random = new Random(count);
         List<byte[]> keys = new ArrayList<>();
         for (int i = 0; i < count; i++) {
-            byte[] key = new byte[Math.max(minLength, 4 + random.nextInt(maxLength - 3))];
+            byte[] key = new byte[minLength == maxLength
+                    ? minLength
+                    : Math.max(minLength, 4 + random.nextInt(maxLength - 3))];
             for (int j = 0; j < key.length; j++) {
                 key[j] = (byte) (j < 4 ? i >>> (j * 8) : random.nextInt());
             }
